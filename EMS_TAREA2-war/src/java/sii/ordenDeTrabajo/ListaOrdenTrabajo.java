@@ -61,9 +61,6 @@ public class ListaOrdenTrabajo implements Serializable {
     private Aviso aviso = null;
     private Brigada brigada_ot;
 
-    //@Inject
-    //MostrarAviso ma;
-    //////////////////////////////////////////////////////////////////////////////////////// Esto es lo nuevo para poder modificar y borrar 
     public String borrarOT(OrdenTrabajo o) {
         boolean encontrado = false;
         for (OrdenTrabajo a : datos) {
@@ -79,13 +76,6 @@ public class ListaOrdenTrabajo implements Serializable {
         return "OTborrada.xhtml";
     }
 
-    // Se le llama desde un aviso pasandole este 
-    /*
-    public String avisoLink(Aviso a){
-        aviso = a;
-        return "NuevaOrdenTrabajo.xhtml";
-    }
-     */
     public String OrdenModicar(OrdenTrabajo o) {
         ordenMostrada = o;
         return "modificarOT.xhtml";
@@ -148,7 +138,6 @@ public class ListaOrdenTrabajo implements Serializable {
         return "OTmodificada.xhtml";
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////
     public String volverGrid() {
         Date date = new Date();
         motivo = "";
@@ -198,13 +187,15 @@ public class ListaOrdenTrabajo implements Serializable {
         return "ordentrabajo.xhtml";
     }
 
+    public OrdenTrabajo getOrdenMostrada() {
+        return ordenMostrada;
+    }
+
     public void setOrdenMostrada(OrdenTrabajo ordenMostrada) {
         this.ordenMostrada = ordenMostrada;
     }
 
-    public OrdenTrabajo getOrdenMostrada() {
-        return ordenMostrada;
-    }
+ 
 
     public List<OrdenTrabajo> getDatos() {
         return datos;
@@ -233,10 +224,6 @@ public class ListaOrdenTrabajo implements Serializable {
         ot.setAviso(av);
         ot.setPrioridad(Prioridad.URGENTE);
         datos.add(ot);
-        // TEMPORAL
-        //aviso = ma.getAviso();
-        //Integer i = new Integer(1234567);
-        //aviso.setId_aviso(i);
 
     }
 
@@ -402,29 +389,6 @@ public class ListaOrdenTrabajo implements Serializable {
 
     public List<OrdenTrabajo> getListaOT() {
 
-        /*List<OrdenTrabajo> datos = new ArrayList<>();
-        OrdenTrabajo ot = new OrdenTrabajo();
-        ot.setMotivo("ho");
-        ot.setEstado(Estado.CERRADO);
-        Date date = new Date();
-        ot.setFecha_creac(date);
-        ot.setFecha_progr(date);
-        ot.setTaller("Taller1");
-        ot.setPto_trabajo(12);
-        ot.setObservaciones("hola");
-        ot.setUbicacion("calle de la alegria");
-        Random rd = new Random();
-        ot.setId_OT(rd.nextInt(1993));
-        Aviso av = new Aviso();
-        av.setId_aviso(123);
-        ot.setAviso(av);
-        ot.setPrioridad(Prioridad.URGENTE);
-        datos.add(ot);
-        
-        datos.add(new OrdenTrabajo(12, "trabajo1", "", "Fuentequebrada",new Date(116, 9, 1), new Date(116, 9, 1), "","los manolos","URGENTE",  "0.3,34.3",  1));
-        datos.add(new OrdenTrabajo(13, "trabajo2", "", "Fagirola",new Date(116, 3, 12), new Date(116, 9, 1), "","ferreteria manolo", "PLANIFICADO",  "0.3,34.3",  2));
-        datos.add(new OrdenTrabajo(14, "trabajo3", "", "La palmilla",new Date(116, 0, 14), new Date(116, 9, 1), "","no tiene","URGENTE",  "0.3,34.3", 3));
-         */
         return datos;
     }
 

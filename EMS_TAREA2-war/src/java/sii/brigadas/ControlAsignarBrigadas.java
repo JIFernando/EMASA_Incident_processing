@@ -36,15 +36,9 @@ public class ControlAsignarBrigadas implements Serializable {
 
     
     public void filtrar() {
-        /*if (campoVacio(id)) {
-            FacesContext ctx = FacesContext.getCurrentInstance();
-            ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Faltan datos", "Por favor, introduzca el número de la brigada"));
-        } else {
-            System.out.println("ID DE LA BRIGADA" + id_brigada);*/
-            filtrado = true;
-        /*}*/
 
-        //return "grid_asignar_brigadas.xhtml";
+            filtrado = true;
+
     }
 
     public List<Brigada> getListaBrigadasFiltradas() {

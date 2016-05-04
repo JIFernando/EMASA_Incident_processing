@@ -38,19 +38,6 @@ public class MostrarAviso implements Serializable {
         return "verAviso?faces-redirect=true";
     }
 
-    /*
-    public String capturarYEditar(Date fechaInicio, Date fechaFinal, String ubicacion, String coordenadas, String observaciones, Aviso.Prioridad prioridad, Aviso.Estado estado) {
-        aviso.setInic_Averia(fechaInicio);
-        aviso.setFin_averia(fechaFinal);
-        aviso.setUbicacion(ubicacion);
-        aviso.setCoordenada(coordenadas);
-        aviso.setObservaciones(observaciones);
-        aviso.setPrioridad(prioridad);
-        aviso.setEstado(estado);
-
-        return "editarAviso?faces-redirect=true";
-    }
-     */
     public String capturarYEditar() {
         return "editarAviso?faces-redirect=true";
     }

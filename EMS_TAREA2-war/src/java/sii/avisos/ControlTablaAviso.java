@@ -37,10 +37,6 @@ public class ControlTablaAviso implements Serializable {
     ListaAvisos la;
 
     public void filtrar(String p, String e, Date d1, Date d2) {
-        /*if (campoVacio(p) || campoVacio(e)) {
-            FacesContext ctx = FacesContext.getCurrentInstance();
-            ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Faltan datos", "Por favor, seleccione al menos prioridad y estado"));
-        } else {*/
         filtrado = true;
         prioridad = stringPrioridad(p);
         estado = stringEstado(e);
@@ -54,42 +50,10 @@ public class ControlTablaAviso implements Serializable {
         } else {
             fecha_fin = null;
         }
-        //}
     }
 
     public List<Aviso> getListaAvisosFiltrados() {
-        /*
-        List<Aviso> datos = new ArrayList<>();
-   
-        Aviso a1 = new Aviso();
-        a1.setId_aviso(12);
-        a1.setFecha_creacion(new Date(116, 9, 1));
-        a1.setUbicacion("Ciudad Jardín");
-        a1.setCoordenada("0.3,34.3");
-        a1.setObservaciones("observaciones");
-        a1.setPrioridad(Prioridad.URGENTE);
-        a1.setEstado(Estado.SIN_ATENDER);
-        Aviso a2 = new Aviso();
-        a2.setId_aviso(13);
-        a2.setFecha_creacion( new Date(116, 3, 12));
-        a2.setUbicacion("El Palo");
-        a2.setCoordenada("0.3,34.3");
-        a2.setObservaciones("observaciones");
-        a2.setPrioridad(Prioridad.PLANIFICADO);
-        a2.setEstado(Estado.EN_PROCESO);
-        Aviso a3 = new Aviso();
-        a3.setId_aviso(14);
-        a3.setFecha_creacion( new Date(116, 0, 14));
-        a3.setUbicacion("Centro");
-        a3.setCoordenada("0.3,34.3");
-        a3.setObservaciones("observaciones");
-        a3.setPrioridad(Prioridad.URGENTE);
-        a3.setEstado(Estado.EN_PROCESO);
-        datos.add(a1);
-        datos.add(a2);
-        datos.add(a3);*/
-
-        List<Aviso> datos = la.getListaAvisos();
+       List<Aviso> datos = la.getListaAvisos();
         List<Aviso> resultado = new ArrayList<>();
 
         for (Aviso a : datos) {
@@ -168,11 +132,6 @@ public class ControlTablaAviso implements Serializable {
 
     public void limpiar() {
         filtrado = false;
-        /*prioridad = null;
-        estado = null;
-        fecha_inicio = null;
-        fecha_fin = null;
-        id_aviso = null;*/
     }
 
     public Prioridad getPrioridad() {

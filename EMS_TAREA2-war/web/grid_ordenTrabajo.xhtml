@@ -77,7 +77,7 @@ and open the template in the editor.
                         <p:inputText value="#{controlTabla_OT.id_OT}"/>  </div>
                 </div>
                 <div class="col-md-4" style="margin-top: 18px; margin-left: 13px">
-                    <h:commandButton value="Buscar" action="#{controlTabla_OT.filtrar(listaOT.id_prioridad_seleccionada,listaOT.id_estado_seleccionado, calendarView.date3, calendarView.date4)}"/>
+                    <h:commandButton  class="boton" value="Buscar" action="#{controlTabla_OT.filtrar(listaOT.id_prioridad_seleccionada,listaOT.id_estado_seleccionado, calendarView.date3, calendarView.date4)}"/>
                 </div>
             </div>
         </h:form>
@@ -111,11 +111,11 @@ and open the template in the editor.
                         <h:outputText value="#{ordenesTrabajo.estado}" />
                     </p:column>
                     <p:column >
-                        <h:commandButton value = "Mostrar" id="mostrar_ordenTrabajo" action="#{listaOT.setOrdenMostrada2(ordenesTrabajo)}" style="margin-left: 7px"/>
+                        <h:commandButton  class="boton" value = "Mostrar" id="mostrar_ordenTrabajo" action="#{listaOT.setOrdenMostrada2(ordenesTrabajo)}" style="margin-left: 7px"/>
                         <br></br>
-                        <h:commandButton value = "Modificar" id="modificar_ordenTrabajo" action="#{listaOT.OrdenModicar(ordenesTrabajo)}" style="margin-left: 7px"/>
+                        <h:commandButton class="boton"  value = "Modificar" id="modificar_ordenTrabajo" action="#{listaOT.OrdenModicar(ordenesTrabajo)}" style="margin-left: 7px"/>
                         <br></br>
-                        <h:commandButton value = "Borrar" id="borrar_ordenTrabajo" action="#{listaOT.borrarOT(ordenesTrabajo)}" style="margin-left: 7px"/>
+                        <h:commandButton class="boton"  value = "Borrar" id="borrar_ordenTrabajo" action="#{listaOT.borrarOT(ordenesTrabajo)}" style="margin-left: 7px"/>
                     </p:column>
                 </p:dataTable>
 
@@ -146,11 +146,11 @@ and open the template in the editor.
                         <h:outputText value="#{ordenesTrabajo_filtro.estado}" />
                     </p:column>
                     <p:column >
-                        <h:commandButton value = "Mostrar" id="mostrar_ordenTrabajo2" action="#{listaOT.setOrdenMostrada2(ordenesTrabajo_filtrada)}" style="margin-left: 7px"/>
+                        <h:commandButton   class="boton" value = "Mostrar" id="mostrar_ordenTrabajo2" action="#{listaOT.setOrdenMostrada2(ordenesTrabajo_filtro)}" style="margin-left: 7px"/>
                         <br></br>
-                        <h:commandButton value = "Modificar" id="modificar_ordenTrabajo" action="#{listaOT.OrdenModicar(ordenesTrabajo_filtrada)}" style="margin-left: 7px"/>
+                        <h:commandButton  class="boton" value = "Modificar" id="modificar_ordenTrabajo" action="#{listaOT.OrdenModicar(ordenesTrabajo_filtro)}" style="margin-left: 7px"/>
                         <br></br>
-                        <h:commandButton value = "Borrar" id="borrar_ordenTrabajo" action="#{listaOT.borrarOT(ordenesTrabajo_filtrada)}" style="margin-left: 7px"/>
+                        <h:commandButton  class="boton" value = "Borrar" id="borrar_ordenTrabajo" action="#{listaOT.borrarOT(ordenesTrabajo_filtro)}" style="margin-left: 7px"/>
                     </p:column>
                 </p:dataTable>
             </c:if>
