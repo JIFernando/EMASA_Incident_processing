@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Grid Ordenes de Trabajo de un Operario</ui:define>
+
+    <ui:define name="contenido">
+
+        <!---->
+        <div class="row">
+            <div class="col-md-4" >
+                <p:outputLabel value="Fecha creación: " />
+            </div>
+            <div class="col-md-3" >
+                <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
+            </div>
+            <div class="col-md-3" >
+                <p:outputLabel value="Estado" style="margin-left: 13px"/>
+            </div>
+        </div>
+        <!---->
+
+        <h:form>
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <p:growl id="msgs" showDetail="true" />
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                        </h:panelGrid>
+
+                        <p:outputLabel value="Fecha programada: " />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
+                        </h:panelGrid>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                        <p:outputLabel for="prioridad" value="" />
+                        <p:selectOneListbox id="prioridad" value="#{listaOT.id_prioridad_seleccionada}">
+                            <f:selectItem itemLabel="URGENTE" itemValue="1"/>
+                            <f:selectItem itemLabel="PLANIFICADO" itemValue="2" />
+                            <f:selectItem itemLabel="TODOS" itemValue="3" />
+                        </p:selectOneListbox>             
+                    </h:panelGrid>
+                </div>
+                <div class="col-md-3">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                        <p:outputLabel for="estado" value="" />
+                        <p:selectOneListbox id="estado" value="#{listaOT.id_estado_seleccionado}">
+                            <f:selectItem itemLabel="CERRADO" itemValue="1" />
+                            <f:selectItem itemLabel="EN PROCESO" itemValue="2" />
+                            <f:selectItem itemLabel="SIN_ATENDER" itemValue="4" />
+                            <f:selectItem itemLabel="TODOS" itemValue="3" />
+                        </p:selectOneListbox>
+                    </h:panelGrid>
+                </div> 
+            </div> 
+            <div class="row">          
+                <div class="col-md-4">
+                    <div> <p:outputLabel value="Código de OT" /></div>
+                    <div>     
+
+                        <p:inputText value="#{controlTabla_OT.id_OT}"/>  </div>
+                </div>
+                <div class="col-md-4" style="margin-top: 18px; margin-left: 13px">
+                    <h:commandButton value="Buscar" action="#{controlTabla_OT.filtrar(listaOT.id_prioridad_seleccionada,listaOT.id_estado_seleccionado, calendarView.date3, calendarView.date4)}"/>
+                </div>
+            </div>
+        </h:form>
+
+        <h:form>
+            <!---->
+            <p:separator />
+
+            <c:if test="#{! controlTabla_OT.filtrado}">
+                <p:dataTable value="#{listaOT.listaOT}" var="ordenesTrabajo" resizableColumns="true">
+                    <p:column headerText="OT">
+                        <h:outputText value="#{ordenesTrabajo.id_OT}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha_creac">
+                        <h:outputText value="#{ordenesTrabajo.fecha_creac}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha_progr">
+                        <h:outputText value="#{ordenesTrabajo.fecha_progr}" />
+                    </p:column>
+
+                    <p:column headerText="Ubicacion">
+                        <h:outputText value="#{ordenesTrabajo.ubicacion}" />
+                    </p:column>
+
+                    <p:column headerText="Prioridad">
+                        <h:outputText value="#{ordenesTrabajo.prioridad}" />
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <h:outputText value="#{ordenesTrabajo.estado}" />
+                    </p:column>
+                    <p:column >
+                        <h:commandButton value = "Mostrar" id="mostrar_ordenTrabajo" action="#{listaOT.setOrdenMostrada2(ordenesTrabajo)}" style="margin-left: 7px"/>
+                        <br></br>
+                        <h:commandButton value = "Modificar" id="modificar_ordenTrabajo" action="#{listaOT.OrdenModicar(ordenesTrabajo)}" style="margin-left: 7px"/>
+                        <br></br>
+                        <h:commandButton value = "Borrar" id="borrar_ordenTrabajo" action="#{listaOT.borrarOT(ordenesTrabajo)}" style="margin-left: 7px"/>
+                    </p:column>
+                </p:dataTable>
+
+
+            </c:if>
+            <c:if test="#{controlTabla_OT.filtrado}">
+                <p:dataTable value="#{controlTabla_OT.listaOTFiltradas}" var="ordenesTrabajo_filtro" resizableColumns="true">
+                    <p:column headerText="Aviso">
+                        <h:outputText value="#{ordenesTrabajo_filtro.id_OT}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha_creac">
+                        <h:outputText value="#{ordenesTrabajo_filtro.fecha_creac}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha_progr">
+                        <h:outputText value="#{ordenesTrabajo_filtro.fecha_progr}" />
+                    </p:column>
+
+                    <p:column headerText="Ubicacion">
+                        <h:outputText value="#{ordenesTrabajo_filtro.ubicacion}" />
+                    </p:column>
+
+                    <p:column headerText="Prioridad">
+                        <h:outputText value="#{ordenesTrabajo_filtro.prioridad}" />
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <h:outputText value="#{ordenesTrabajo_filtro.estado}" />
+                    </p:column>
+                    <p:column >
+                        <h:commandButton value = "Mostrar" id="mostrar_ordenTrabajo2" action="#{listaOT.setOrdenMostrada2(ordenesTrabajo_filtrada)}" style="margin-left: 7px"/>
+                        <br></br>
+                        <h:commandButton value = "Modificar" id="modificar_ordenTrabajo" action="#{listaOT.OrdenModicar(ordenesTrabajo_filtrada)}" style="margin-left: 7px"/>
+                        <br></br>
+                        <h:commandButton value = "Borrar" id="borrar_ordenTrabajo" action="#{listaOT.borrarOT(ordenesTrabajo_filtrada)}" style="margin-left: 7px"/>
+                    </p:column>
+                </p:dataTable>
+            </c:if>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
