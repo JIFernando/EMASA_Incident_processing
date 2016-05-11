@@ -3,42 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/WEB-INF/templates/plantilla.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/OTcreado.xhtml</file>
             <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/nuevoAviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/controlUsuarios/Login.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/ordenDeTrabajo/ListaOrdenTrabajo.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/OTmodificada.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/OTborrada.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/brigadas/ControlAsignarBrigadas.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/verAviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/jpa/Aviso.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/contestar_aviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/brigadas/ListaBrigadas.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/editarAviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/controlUsuarios/Empleado.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/error.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/modificarOT.xhtml</file>
             <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/grid_ordenTrabajo.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/grid_asignar_brigadas.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/inicio.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/ordenDeTrabajo/ControlTabla_Grid_Ordenes.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/controlUsuarios/ControlAutorizacion.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/grid_ver_brigadas.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ControlTablaAviso.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/index.html</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ChartView.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/nuevo_aviso_vinculado.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/login.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/vincular.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/vincular_aviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/NuevaOrdenTrabajo.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/ordentrabajo.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/desconectarse.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/nuevo_aviso.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ListaDeAvisos.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ControlFiltrosGridAvisos.java</file>
             <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/grid_avisos.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/brigadas/ControlVerBrigadas.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ListaAvisos.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/MostrarAviso.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/NuevoAviso.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/ordenDeTrabajo/ControlTabla_Grid_Ordenes.java</file>
         </group>
     </open-files>
 </project-private>

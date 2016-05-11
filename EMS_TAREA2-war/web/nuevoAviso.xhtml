@@ -14,51 +14,51 @@
     <ui:define name="title">Crear un nuevo aviso</ui:define>
 
     <ui:define name="contenido">
-        
-        
-        
+
+
+
         <h:form id="nuevoAviso">
             <p:accordionPanel multiple="true">
                 <p:tab title="Resumen">
                     <!-- <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px"> -->
                     <h:panelGrid columns="5">
-                            <h:outputLabel value="ID" />
-                            <h:inputText value="#{listaAvisos.aviso.id_aviso}"/>
-                            <h:outputLabel />
-                            <h:outputLabel value="Fecha de inicio" style="padding-left:30px"/>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
-                            </h:panelGrid>
-
-                            <h:outputLabel value="Brigada" />
-                            <h:inputText />
-                            <h:outputLabel />
-                            <h:outputLabel value="Fecha de finalización" style="padding-left:30px"/>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
-                            </h:panelGrid>
-
-                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                                <p:outputLabel for="estado" value="" />
-                                <p:selectOneMenu id="estado" value="#{listaAvisos.aviso.estado}">
-                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
-                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
-                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                                </p:selectOneMenu>
-                            </h:panelGrid>
-                            <h:outputLabel value="" />
-                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                                <p:outputLabel for="prioridad" value="" />
-                                <p:selectOneMenu id="prioridad" value="#{listaAvisos.aviso.prioridad}">
-                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                                </p:selectOneMenu>             
-                            </h:panelGrid>
+                        <h:outputLabel value="ID" />
+                        <h:inputText value="#{listaAvisos.aviso.id_aviso}"/>
+                        <h:outputLabel />
+                        <h:outputLabel value="Fecha de inicio" style="padding-left:30px"/>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
                         </h:panelGrid>
+
+                        <h:outputLabel value="Brigada" />
+                        <h:inputText />
+                        <h:outputLabel />
+                        <h:outputLabel value="Fecha de finalización" style="padding-left:30px"/>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
+                        </h:panelGrid>
+
+                        <p:outputLabel value="Estado" style="margin-left: 13px"/>
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                            <p:outputLabel for="estado" value="" />
+                            <p:selectOneMenu id="estado" value="#{listaAvisos.aviso.estado}">
+                                <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:outputLabel value="" />
+                        <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                            <p:outputLabel for="prioridad" value="" />
+                            <p:selectOneMenu id="prioridad" value="#{listaAvisos.aviso.prioridad}">
+                                <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
+                                <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                            </p:selectOneMenu>             
+                        </h:panelGrid>
+                    </h:panelGrid>
                 </p:tab>
-             
+
                 <p:tab title="Brigada">
                     <div class="row">
                         <div class="col-md-3">
@@ -162,6 +162,80 @@
                         </p:panelGrid>
                     </div><br/>
                 </p:tab>
+                <p:tab title="Brigada">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h:outputLabel value="Brigada" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <h:inputText value="#{controlAsignarBrigadas.id}"/>
+                        </div>
+                        <!-- -->
+                        <br />
+                        <br />
+                        <div class="col-md-3">
+                            <div> <p:outputLabel value="Contrata" /> </div>
+                        </div>   
+                        <div class="col-md-4">
+                            <div> <p:inputText value="#{controlAsignarBrigadas.contrata}"/> </div>
+                        </div>
+                        <!-- -->
+                        <div class="col-md-1">
+                            <h:commandButton value="Buscar" styleClass="boton" action="#{controlAsignarBrigadas.filtrar()}"/>
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />        
+
+                    <p:separator />
+
+                    <c:if test="#{! controlAsignarBrigadas.filtrado}">
+
+                        <p:dataTable value="#{listaBrigadas.listaBrigadas}" var="brigadas" resizableColumns="true" emptyMessage="No hay datos">
+                            <p:column headerText="Brigada">
+                                <h:outputText value="#{brigadas.id}" />
+                            </p:column>
+
+                            <p:column headerText="Contrata">
+                                <h:outputText value="#{brigadas.contrata}" />
+                            </p:column>
+
+                            <p:column headerText="Capataz">
+                                <h:outputText value="#{brigadas.nombreCapataz}" />
+                            </p:column>
+
+                            <p:column headerText="Operarios">
+                                <h:outputText value="#{brigadas.nombreOperarios}" />
+                            </p:column>
+                        </p:dataTable>
+
+
+                    </c:if>
+                    <c:if test="#{controlAsignarBrigadas.filtrado}">
+                        <p:dataTable value="#{controlAsignarBrigadas.listaBrigadasFiltradas}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                            <p:column headerText="Brigada">
+                                <h:outputText value="#{brigadas_filtro.id}" />
+                            </p:column>
+
+                            <p:column headerText="Contrata">
+                                <h:outputText value="#{brigadas_filtro.contrata}" />
+                            </p:column>
+
+                            <p:column headerText="Capataz">
+                                <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
+                            </p:column>
+
+                            <p:column headerText="Operarios">
+                                <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                            </p:column>
+                        </p:dataTable>
+                    </c:if>
+
+                    <br />
+                </p:tab>
+
             </p:accordionPanel><br/>
 
             <div align="center">
