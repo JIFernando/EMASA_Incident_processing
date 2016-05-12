@@ -34,9 +34,9 @@ public class ControlAutorizacion implements Serializable {
         // Si el usuario es el administrador debe devolver la página admin.xhtml
         // Si el usuario es un usuario normal debe devolver la página normal.xhtml
         if (empleado == null) {
-            return "login?faces-redirect=true";
+            return "login.xhtml";
         } else {
-            return "inicio?faces-redirect=true";
+            return "inicio.xhtml";
         }
     }
 
