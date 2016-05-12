@@ -58,12 +58,10 @@ public class Login {
     public String autenticar() {
         if (!usuarioCorrecto()) {
             FacesContext ctx = FacesContext.getCurrentInstance();
-            ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "El usuario o contraseña incorrecto", "El usuario o contraseña incorrecto"));
-            System.out.println("Usuario incorrecto");
+            ctx.addMessage("user", new FacesMessage(FacesMessage.SEVERITY_ERROR, "El usuario o contraseña incorrecto", "El usuario o contraseña incorrecto"));
+            System.out.println("Usuaria incorrecto");
         }
-
         return ctrl.home();
-
     }
 
     private boolean usuarioCorrecto() {
