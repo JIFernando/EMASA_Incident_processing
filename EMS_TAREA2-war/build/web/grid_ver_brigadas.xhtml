@@ -11,97 +11,55 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
-    <ui:define name="title">Brigadas</ui:define>
+    <ui:define name="title">Grid Brigadas</ui:define>
 
     <ui:define name="contenido">
 
-        <br />
         <h:form>
-
-            <div class="row">
-                <div class="col-md-1">
-                    <p:outputLabel value="Brigada" />
+            <div class="row">          
+                <div class="col-md-3">
+                    <div> <h:outputLabel value="Brigada" />
+                    </div>
+                    <div>     
+                        <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                    </div>
                 </div>
-
-                <div class="col-md-4">
-                    <p:inputText value="#{controlVerBrigadas.id}"/> 
+                <div class="col-md-3">
+                    <div> <h:outputLabel value="Contrata" />
+                    </div>
+                    <div>     
+                        <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                    </div>
                 </div>
-                <!-- -->
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-1">
-                    <p:outputLabel value="Contrata" /> 
-                </div>   
-                <div class="col-md-4">
-                    <p:inputText value="#{controlVerBrigadas.contrata}"/> 
+                <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                    <h:commandButton class="boton" value="Buscar" action="grid_ver_brigadas.xhtml"/>
                 </div>
-                <!-- -->
-                <div class="col-md-1" style="height: 10px;"></div>
-                <div class="col-md-1">
-                    <h:commandButton class="boton" value="Buscar" action="#{controlVerBrigadas.filtrar()}"/>
+                <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                    <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                 </div>
-
-                <br />
             </div>
 
-        </h:form>
+            <p:separator />
 
-        <br />        
-
-        <p:separator />
-
-        <c:if test="#{! controlVerBrigadas.filtrado}">
-
-            <p:dataTable value="#{listaBrigadas.listaBrigadas}" var="brigadas" resizableColumns="true" emptyMessage="No hay datos">
-                <p:column headerText="Brigada">
-                    <h:outputText value="#{brigadas.id}" />
+            <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                <p:column headerText="Aviso">
+                    <h:outputText value="#{brigadas_filtro.id_brigada}" />
                 </p:column>
-
-                <p:column headerText="Contrata">
-                    <h:outputText value="#{brigadas.contrata}" />
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{brigadas_filtro.contrata}" />
                 </p:column>
-
-                <p:column headerText="Capataz">
-                    <h:outputText value="#{brigadas.nombreCapataz}" />
+                <p:column headerText="Ubicacion">
+                    <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
                 </p:column>
-
-                <p:column headerText="Operarios">
-                    <h:outputText value="#{brigadas.nombreOperarios}" />
+                <p:column headerText="Prioridad">
+                    <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
                 </p:column>
-
             </p:dataTable>
-
-
-        </c:if>
-        <div class="col-md-8">
-            <c:if test="#{controlVerBrigadas.filtrado}">
-                <p:dataTable value="#{controlVerBrigadas.listaBrigadasFiltradas}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                    <p:column headerText="Brigada">
-                        <h:outputText value="#{brigadas_filtro.id}" />
-                    </p:column>
-
-                    <p:column headerText="Contrata">
-                        <h:outputText value="#{brigadas_filtro.contrata}" />
-                    </p:column>
-
-                    <p:column headerText="Capataz">
-                        <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
-                    </p:column>
-
-                    <p:column headerText="Operarios">
-                        <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
-                    </p:column>
-
-                </p:dataTable>
-            </c:if>
-        </div>
-
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </h:form>
     </ui:define>
 
 </ui:composition>

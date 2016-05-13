@@ -12,7 +12,6 @@ package sii.avisos;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Date;
 import jpa.Aviso;
 
 @Named(value = "mostrarAviso")

@@ -74,7 +74,7 @@
                 </p:tab>
 
                 <p:tab title="Órdenes de trabajo">
-                    <p:dataTable value="#{listaOT.datos}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable value="#{listaDeOrdenTrabajo.datos}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Orden de trabajo">
                             <h:outputText value="#{orden.id_OT}" />
                         </p:column>
@@ -117,82 +117,50 @@
                     </p:dataTable><br/>
 
                     <div align="center">
-                        <h:commandButton id="nuevoAvisoVinculado" styleClass="boton" value="Nuevo aviso vinculado" action="nuevo_aviso_vinculado?faces-redirect=true"/>
+                        <a href="nuevo_aviso_vinculado.xhtml" id="nuevoAvisoVinculado" class="boton">Nuevo aviso vinculado</a>
                     </div>
                 </p:tab>
 
                 <p:tab title="Brigada">
-                    <div class="row">
+                    <div class="row">          
                         <div class="col-md-3">
-                            <div> <p:outputLabel value="Brigada" /> </div>
+                            <div> <h:outputLabel value="Brigada" />
+                            </div>
+                            <div>     
+                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                            </div>
                         </div>
-
-                        <div class="col-md-4">
-                            <div> <p:inputText value="#{controlAsignarBrigadas.id}"/> </div>
-                        </div>
-                        <!-- -->
-                        <br />
-                        <br />
                         <div class="col-md-3">
-                            <div> <p:outputLabel value="Contrata" /> </div>
-                        </div>   
-                        <div class="col-md-4">
-                            <div> <p:inputText value="#{controlAsignarBrigadas.contrata}"/> </div>
+                            <div> <h:outputLabel value="Contrata" />
+                            </div>
+                            <div>     
+                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                            </div>
                         </div>
-                        <!-- -->
-                        <div class="col-md-1">
-                            <h:commandButton value="Buscar" styleClass="boton" action="#{controlAsignarBrigadas.filtrar()}"/>
+                        <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
                         </div>
-
-                        <br />
+                        <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                        </div>
                     </div>
-                    <br />        
 
                     <p:separator />
 
-                    <c:if test="#{! controlAsignarBrigadas.filtrado}">
-
-                        <p:dataTable value="#{listaBrigadas.listaBrigadas}" var="brigadas" resizableColumns="true" emptyMessage="No hay datos">
-                            <p:column headerText="Brigada">
-                                <h:outputText value="#{brigadas.id}" />
-                            </p:column>
-
-                            <p:column headerText="Contrata">
-                                <h:outputText value="#{brigadas.contrata}" />
-                            </p:column>
-
-                            <p:column headerText="Capataz">
-                                <h:outputText value="#{brigadas.nombreCapataz}" />
-                            </p:column>
-
-                            <p:column headerText="Operarios">
-                                <h:outputText value="#{brigadas.nombreOperarios}" />
-                            </p:column>
-                        </p:dataTable>
-
-
-                    </c:if>
-                    <c:if test="#{controlAsignarBrigadas.filtrado}">
-                        <p:dataTable value="#{controlAsignarBrigadas.listaBrigadasFiltradas}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                            <p:column headerText="Brigada">
-                                <h:outputText value="#{brigadas_filtro.id}" />
-                            </p:column>
-
-                            <p:column headerText="Contrata">
-                                <h:outputText value="#{brigadas_filtro.contrata}" />
-                            </p:column>
-
-                            <p:column headerText="Capataz">
-                                <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
-                            </p:column>
-
-                            <p:column headerText="Operarios">
-                                <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
-                            </p:column>
-                        </p:dataTable>
-                    </c:if>
-
-                    <br />
+                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Aviso">
+                            <h:outputText value="#{brigadas_filtro.id_brigada}" />
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{brigadas_filtro.contrata}" />
+                        </p:column>
+                        <p:column headerText="Ubicacion">
+                            <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
+                        </p:column>
+                        <p:column headerText="Prioridad">
+                            <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                        </p:column>
+                    </p:dataTable>
                 </p:tab>
 
                 <p:tab title="Ubicación">

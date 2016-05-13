@@ -17,7 +17,7 @@
     <ui:define name="contenido">
         <h:form>
             <p:accordionPanel multiple="true">
-               <p:tab title="Datos principales">
+                <p:tab title="Datos principales">
                     <div class="row">
                         <div class="col-md-4">
                             <h:outputLabel value="ID Aviso" />
@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-md-4">
                             <p:outputLabel value="Fecha Programada" />
-                            <p:calendar id="button2" value="#{listaOT.fecha_progr}" showOn="button" />
+                            <p:calendar id="button2" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
                         </div>
                     </div>
                     <div class="row" style="height:5px">
@@ -34,27 +34,34 @@
                     <div class="row">
                         <div class="col-md-4">
                             <h:outputLabel value="Motivo de operación" />
-                            <h:inputText value="#{listaOT.motivo}"/> 
-                            <h:selectOneMenu styleClass="combi" id="estadoMenu" value="#{listaOT.estado_id}">
-                                <f:selectItem itemLabel="CERRADO" itemValue="1" />
-                                <f:selectItem itemLabel="EN PROCESO" itemValue="2" />
-                                <f:selectItem itemLabel="SIN ASIGNAR" itemValue="3" />
-                            </h:selectOneMenu>
+                            <h:inputText value="#{nuevaOrdenTrabajo.ot.motivo}"/> 
+                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
+                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                                <p:outputLabel for="estado" value="" />
+                                <p:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.estado}">
+                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3">              
                             <h:outputLabel value="Brigada" />
-                            <h:inputText value="#{mostrarAviso.aviso.brigada}"/>
-                            <h:selectOneMenu id="prioridadMenu" value="#{listaOT.prioridad_id}">
-                                <f:selectItem itemLabel="URGENTE" itemValue="1"/>
-                                <f:selectItem itemLabel="PLANIFICADO" itemValue="2" />
-         
-                            </h:selectOneMenu>
+                            <h:inputText value="#{nuevaOrdenTrabajo.id_brigada}" />
+                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
+                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                                <p:outputLabel for="prioridad" value="" />
+                                <p:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.prioridad}">
+                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
+                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                                </p:selectOneMenu>             
+                            </h:panelGrid>
                         </div>
                         <div class="col-md-3">
                             <h:outputLabel value="Pto trabajo" />
-                            <h:inputText value="#{listaOT.pto_trabajo}" />
-                            <h:selectOneMenu id="TallerMenu" value="#{listaOT.taller}">
+                            <h:inputText value="#{nuevaOrdenTrabajo.ot.pto_trabajo}" />
+                            <h:selectOneMenu id="TallerMenu" value="#{nuevaOrdenTrabajo.ot.taller}">
                                 <f:selectItem id="t1" itemLabel="Taller1" itemValue="Taller1" />
                                 <f:selectItem id="t2" itemLabel="Taller2" itemValue="Taller2" />
                                 <f:selectItem id="t3" itemLabel="Taller3" itemValue="Taller3" />
@@ -67,75 +74,71 @@
                     </div>
 
                 </p:tab>
-                
+
                 <p:tab title="Brigada">
-                    <c:if test="#{! controlAsignarBrigadas.filtrado}">
+                    <div class="row">          
+                        <div class="col-md-3">
+                            <div> <h:outputLabel value="Brigada" />
+                            </div>
+                            <div>     
+                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div> <h:outputLabel value="Contrata" />
+                            </div>
+                            <div>     
+                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                        </div>
+                    </div>
 
-                        <p:dataTable value="#{listaBrigadas.listaBrigadas}" var="brigadas" resizableColumns="true" emptyMessage="No hay datos">
-                            <p:column headerText="Brigada">
-                                <h:outputText value="#{brigadas.id}" />
-                            </p:column>
+                    <p:separator />
 
-                            <p:column headerText="Contrata">
-                                <h:outputText value="#{brigadas.contrata}" />
-                            </p:column>
-
-                            <p:column headerText="Capataz">
-                                <h:outputText value="#{brigadas.nombreCapataz}" />
-                            </p:column>
-
-                            <p:column headerText="Operarios">
-                                <h:outputText value="#{brigadas.nombreOperarios}" />
-                            </p:column>
-                        </p:dataTable>
-
-
-                    </c:if>
-                    <c:if test="#{controlAsignarBrigadas.filtrado}">
-                        <p:dataTable value="#{controlAsignarBrigadas.listaBrigadasFiltradas}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                            <p:column headerText="Brigada">
-                                <h:outputText value="#{brigadas_filtro.id}" />
-                            </p:column>
-
-                            <p:column headerText="Contrata">
-                                <h:outputText value="#{brigadas_filtro.contrata}" />
-                            </p:column>
-
-                            <p:column headerText="Capataz">
-                                <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
-                            </p:column>
-
-                            <p:column headerText="Operarios">
-                                <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
-                            </p:column>
-                        </p:dataTable>
-                    </c:if>
-
-                    <br />
+                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Aviso">
+                            <h:outputText value="#{brigadas_filtro.id_brigada}" />
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{brigadas_filtro.contrata}" />
+                        </p:column>
+                        <p:column headerText="Ubicacion">
+                            <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
+                        </p:column>
+                        <p:column headerText="Prioridad">
+                            <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                        </p:column>
+                    </p:dataTable>
                 </p:tab>               
                 <p:tab title="Ubicación">                    
                     <h:panelGrid columns="2" cellpadding="10">
                         <h:outputLabel value="Calle" styleClass="combi" />
-                        <h:inputText  id ="calle" value="#{listaOT.calle}"/>
+                        <h:inputText  id ="calle" value="#{nuevaOrdenTrabajo.calle}"/>
                         <h:outputLabel value="Localidad" />
-                        <h:inputText  id ="localidad" value="#{listaOT.localidad}"/>
+                        <h:inputText  id ="localidad" value="#{nuevaOrdenTrabajo.localidad}"/>
                         <h:outputLabel value="CP"/>
-                        <h:inputText  id = "cp" value="#{listaOT.cp}"/>
+                        <h:inputText  id = "cp" value="#{nuevaOrdenTrabajo.cp}"/>
                         <h:outputLabel value="Ubicación Técnica" />
-                        <h:inputText  id = "ut" value="#{listaOT.ut}" />
+                        <h:inputText  id = "ut" value="#{nuevaOrdenTrabajo.ut}" />
                     </h:panelGrid> 
 
                 </p:tab>
 
                 <p:tab title="Observaciones">
-                    <h:inputTextarea rows="5" cols="90" value="#{listaOT.observaciones}"/>
+                    <h:inputTextarea rows="5" cols="90" value="#{nuevaOrdenTrabajo.ot.observaciones}"/>
                 </p:tab>
             </p:accordionPanel>
 
             <br/>
 
             <div align="center">
-                 <a href="OTcreado.xhtml" class="boton" >Guardar</a>
+                <a href="OTcreado.xhtml" class="boton" >Guardar</a>
                 <h:commandButton id="reset" styleClass="boton" type="reset" value="Reiniciar" />
                 <a href="grid_ordenTrabajo.xhtml" class="boton" >Cancelar</a>
             </div>

@@ -16,7 +16,6 @@ import java.util.Date;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 @Entity
 public class OrdenTrabajo implements Serializable {
 
@@ -30,18 +29,17 @@ public class OrdenTrabajo implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha_creac, fecha_progr;
     private String taller;
+
     public enum Prioridad {
         URGENTE, PLANIFICADO, TODOS
-    };
-
+    }
     private Prioridad prioridad;
 
     public enum Estado {
-        SIN_ATENDER, EN_PROCESO, TODOS, CERRADO
-    };
+        SIN_ATENDER, EN_PROCESO, CERRADO, TODOS
+    }
     private Estado estado;
-    
-    
+
     private String observaciones;
     private Integer pto_trabajo;
 
@@ -132,14 +130,6 @@ public class OrdenTrabajo implements Serializable {
         this.fecha_progr = fecha_progr;
     }
 
-    public Enum getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
     public String getTaller() {
         return taller;
     }
@@ -148,12 +138,20 @@ public class OrdenTrabajo implements Serializable {
         this.taller = taller;
     }
 
-    public Enum getPrioridad() {
+    public Prioridad getPrioridad() {
         return prioridad;
     }
 
     public void setPrioridad(Prioridad prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public String getObservaciones() {

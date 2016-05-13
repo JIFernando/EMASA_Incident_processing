@@ -1,4 +1,4 @@
-package sii;
+package sii.avisos;
 
 import static java.awt.Color.white;
 import javax.annotation.PostConstruct;

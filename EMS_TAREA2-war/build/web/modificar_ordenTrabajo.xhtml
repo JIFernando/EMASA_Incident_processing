@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <link href="./css/ot.css" rel="stylesheet" type="text/css" />
+
+    <ui:define name="title">Modificar OT</ui:define>
+
+    <ui:define name="contenido">
+        <h:form>
+            <p:accordionPanel multiple="true">
+                <p:tab title="Datos principales">
+                    <h:panelGrid columns="4" cellspacing="15px" cellpadding="10px">
+                        <h:outputLabel value="ID Aviso" />
+                        <h:outputText id="mot_idAviso" value="#{mostrarOrdenTrabajo.ordenTrabajo.aviso.id_aviso}"/>                                               
+
+                        <h:outputLabel value="ID OT" />
+                        <h:inputText value="#{mostrarOrdenTrabajo.ordenTrabajo.id_OT}" disabled="true"/> 
+
+                        <p:outputLabel value="Fecha programada" />
+                        <p:calendar id="mot_fecha_programada" value="#{mostrarOrdenTrabajo.ordenTrabajo.fecha_progr}" showOn="button" />
+
+                        <p:outputLabel value="Fecha creación" />
+                        <p:calendar id="mot_fecha_creacion" value="#{mostrarOrdenTrabajo.ordenTrabajo.fecha_creac}" showOn="button" />
+
+                        <h:outputLabel value="Motivo de operación" />
+                        <h:inputText value="#{mostrarOrdenTrabajo.ordenTrabajo.motivo}"/> 
+
+                        <h:outputLabel value="Pto trabajo" />
+                        <h:inputText value="#{mostrarOrdenTrabajo.ordenTrabajo.pto_trabajo}"/>
+
+
+                        <h:selectOneMenu id="estado" value="#{mostrarOrdenTrabajo.ordenTrabajo.estado}">
+                            <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                            <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                            <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="mot_TallerMenu" value="#{mostrarOrdenTrabajo.ordenTrabajo.taller}"  >
+                            <f:selectItem id="t1" itemLabel="Taller1" itemValue="Taller1" />
+                            <f:selectItem id="t2" itemLabel="Taller2" itemValue="Taller2" />
+                            <f:selectItem id="t3" itemLabel="Taller3" itemValue="Taller3" />
+                            <f:selectItem id="t4" itemLabel="Taller4" itemValue="Taller4" />
+                        </h:selectOneMenu>
+                        <h:selectOneMenu id="mot_prioridadMenu" value="#{mostrarOrdenTrabajo.ordenTrabajo.prioridad}" >
+                            <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
+                            <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                        </h:selectOneMenu>
+                        <h:outputLabel value="" />
+                        <h:outputLabel value="Brigada" />
+                        <h:inputText/>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Brigada">
+                    <div class="row">          
+                        <div class="col-md-3">
+                            <div> <h:outputLabel value="Brigada" />
+                            </div>
+                            <div>     
+                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div> <h:outputLabel value="Contrata" />
+                            </div>
+                            <div>     
+                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
+                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                        </div>
+                    </div>
+
+                    <p:separator />
+
+                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Aviso">
+                            <h:outputText value="#{brigadas_filtro.id_brigada}" />
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{brigadas_filtro.contrata}" />
+                        </p:column>
+                        <p:column headerText="Ubicacion">
+                            <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
+                        </p:column>
+                        <p:column headerText="Prioridad">
+                            <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>         
+
+                <p:tab title="Ubicación">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <h:outputLabel value="Ubicación" styleClass="combi" />
+                        <h:inputTextarea rows="5" cols="90" id ="ub" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
+
+                    </h:panelGrid>
+                </p:tab>
+
+                <p:tab title="Observaciones">
+                    <h:inputTextarea rows="5" cols="90" value="#{mostrarOrdenTrabajo.ordenTrabajo.observaciones}" />
+                </p:tab>
+            </p:accordionPanel>
+
+            <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px">
+                <a href="OTmodificada.xhtml" class="boton"  id="volver">Guardar</a> 
+                <a href="grid_ordenTrabajo.xhtml" class="boton"  id="volver">Volver</a>  
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

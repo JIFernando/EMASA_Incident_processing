@@ -65,24 +65,13 @@ public class Brigada implements Serializable {
     public void setNombreOperarios(List<String> nombreOperarios) {
         this.nombreOperarios = nombreOperarios;
     }
-
-    
-    private Integer id;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
     
     private String contrata;
     private String nombreCapataz;
     private List<String> nombreOperarios;
     
     public Brigada (int id, String contrata, String nombreCapataz, List<String> nombreOperarios) {
-        this.id = id;
+        this.id_brigada = id;
         this.contrata = contrata;
         this.nombreCapataz = nombreCapataz;
         this.nombreOperarios = nombreOperarios;
