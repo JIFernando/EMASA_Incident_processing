@@ -16,6 +16,8 @@
     <ui:define name="contenido">
 
         <h:form>
+            <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
+            
             <div class="row">          
                 <div class="col-md-3">
                     <div> <h:outputLabel value="Brigada" />
@@ -42,17 +44,17 @@
             <p:separator />
 
             <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                <p:column headerText="Aviso">
+                <p:column headerText="Brigada">
                     <h:outputText value="#{brigadas_filtro.id_brigada}" />
                 </p:column>
-                <p:column headerText="Fecha">
-                    <h:outputText value="#{brigadas_filtro.contrata}" />
+                <p:column headerText="Contrata">
+                    <h:outputText value="#{brigadas_filtro.nombreContrata}" />
                 </p:column>
-                <p:column headerText="Ubicacion">
+                <p:column headerText="Capataz">
                     <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
                 </p:column>
-                <p:column headerText="Prioridad">
-                    <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                <p:column headerText="Operarios">
+                    <h:outputText value="#{brigadas_filtro.nombresOperarios}" />
                 </p:column>
             </p:dataTable>
             <br/>

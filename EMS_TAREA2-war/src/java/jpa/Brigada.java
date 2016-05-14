@@ -6,6 +6,7 @@
 package jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,45 @@ import javax.persistence.OneToMany;
 @Entity
 public class Brigada implements Serializable {
     
+    //  NUEVO CÓDIGO    //    
+    
+    public void addOperario (Operario o) {
+        //o.setBrigada_operario(this);
+        if (!operarios.isEmpty()) {
+            this.operarios.add(o);
+        } else {
+            operarios = new ArrayList<>();
+            this.operarios.add(o);
+        }
+        System.out.println("Operario " + o.getNombreCompleto() == null ? "añadido" : " añadido");
+    }
+    
+    public void addCapataz (Capataz c) {
+        //c.addBrigada(this);
+        if (this.capataz == null) this.capataz = c;
+        else capataz.removeBrigada(this); c.addBrigada(this);
+        System.out.println("Capataz " + c.getNombreCompleto() == null ? "añadido" : " añadido");
+    }
+    
+    public String getNombreContrata () {
+        return contrata_brigada.getNombre();
+    }
+    
+    public String getNombreCapataz () {
+        return capataz.getNombreCompleto() == null ? "" : capataz.getNombreCompleto();
+    }
+    
+    public String getNombresOperarios () {
+        String sOperarios = "";
+        for (int i = 0; i < operarios.size(); i++) {
+            if (i < operarios.size()-1) sOperarios = sOperarios + operarios.get(i).getNombreCompleto() + ", "; 
+            else sOperarios = sOperarios + operarios.get(i).getNombreCompleto();
+        }
+        System.out.println(sOperarios);
+        return sOperarios.equals("") ? "" : sOperarios;
+    }
+    
+    //  FIN NUEVO CÓDIGO    //
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,40 +82,6 @@ public class Brigada implements Serializable {
     @OneToMany(mappedBy = "brigada_operario")
     private List<Operario> operarios;
 
-    public String getContrata() {    
-        return contrata;
-    }
-
-    public void setContrata(String contrata) {
-        this.contrata = contrata;
-    }
-
-    public String getNombreCapataz() {
-        return nombreCapataz;
-    }
-
-    public void setNombreCapataz(String nombreCapataz) {
-        this.nombreCapataz = nombreCapataz;
-    }
-
-    public List<String> getNombreOperarios() {
-        return nombreOperarios;
-    }
-
-    public void setNombreOperarios(List<String> nombreOperarios) {
-        this.nombreOperarios = nombreOperarios;
-    }
-    
-    private String contrata;
-    private String nombreCapataz;
-    private List<String> nombreOperarios;
-    
-    public Brigada (int id, String contrata, String nombreCapataz, List<String> nombreOperarios) {
-        this.id_brigada = id;
-        this.contrata = contrata;
-        this.nombreCapataz = nombreCapataz;
-        this.nombreOperarios = nombreOperarios;
-    }
     
     public int getNumOperarios (List<Operario> listaOperarios) {
         return operarios.size() + 1;

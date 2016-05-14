@@ -51,13 +51,6 @@ public class Supervisor extends Empleado implements Serializable {
     /**
      * *************GETTERS Y SETTERS**************
      */
-    public Long getId() {
-        return this.id_empl;
-    }
-
-    public void setId(Long id) {
-        this.id_empl = id;
-    }
 
     public List<Aviso> getAvisos() {
         return avisos;
@@ -67,12 +60,5 @@ public class Supervisor extends Empleado implements Serializable {
         this.avisos = avisos;
     }
 
-    public Long getId_empl() {
-        return id_empl;
-    }
-
-    public void setId_empl(Long id_empl) {
-        this.id_empl = id_empl;
-    }
 
 }

@@ -13,9 +13,13 @@
     <link href="./css/ot.css" rel="stylesheet" type="text/css" />
 
     <ui:define name="title">Modificar OT</ui:define>
-
+    
+    
     <ui:define name="contenido">
         <h:form>
+            
+            <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
+            
             <p:accordionPanel multiple="true">
                 <p:tab title="Datos principales">
                     <h:panelGrid columns="4" cellspacing="15px" cellpadding="10px">
@@ -84,19 +88,19 @@
                     </div>
 
                     <p:separator />
-
+                                        
                     <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                        <p:column headerText="Aviso">
+                        <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
-                        <p:column headerText="Fecha">
-                            <h:outputText value="#{brigadas_filtro.contrata}" />
+                        <p:column headerText="Contrata">
+                            <h:outputText value="#{brigadas_filtro.nombreContrata}" />
                         </p:column>
-                        <p:column headerText="Ubicacion">
+                        <p:column headerText="Capataz">
                             <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
                         </p:column>
-                        <p:column headerText="Prioridad">
-                            <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                        <p:column headerText="Operarios">
+                            <h:outputText value="#{brigadas_filtro.nombresOperarios}" />
                         </p:column>
                     </p:dataTable>
                 </p:tab>         
