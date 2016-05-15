@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/grid_avisos.xhtml</file>
-            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/nuevo_aviso.xhtml</file>
-            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/WEB-INF/templates/plantilla.xhtml</file>
-            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/grid_ordenTrabajo.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/brigadas/ControlFiltrosGridBrigadas.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/jpa/Aviso.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/nuevo_aviso_vinculado.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/nuevo_aviso.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/NuevaOrdenTrabajo.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ListaDeAvisos.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/grid_avisos.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/NuevoAviso.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/verAviso.xhtml</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/jpa/Operario.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/jpa/Brigada.java</file>
+            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/MostrarAviso.java</file>
         </group>
     </open-files>
 </project-private>
