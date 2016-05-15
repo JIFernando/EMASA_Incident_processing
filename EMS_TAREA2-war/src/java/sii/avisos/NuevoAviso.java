@@ -23,6 +23,11 @@ public class NuevoAviso {
     private Estado estado;
     private Prioridad prioridad;
 
+    /*Aquí vamos a declara un Integer que guardará el ID de la brigada
+    Tendremos que hacer un método que, a partir de ese ID, busque el objeto
+    Brigada correspondiente dentro de la BD y lo asigne al aviso*/
+    private Integer id_brigada;
+
     @Inject
     ListaDeAvisos lda;
     private Aviso aviso;
@@ -69,6 +74,14 @@ public class NuevoAviso {
 
     public void setLda(ListaDeAvisos lda) {
         this.lda = lda;
+    }
+
+    public Integer getId_brigada() {
+        return id_brigada;
+    }
+
+    public void setId_brigada(Integer id_brigada) {
+        this.id_brigada = id_brigada;
     }
 
 }

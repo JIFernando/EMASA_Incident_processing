@@ -15,9 +15,8 @@
 
     <ui:define name="contenido">
         <h:form id="nuevoAviso">
-            <p:accordionPanel multiple="true">
+            <p:accordionPanel multiple="true">              
                 <p:tab title="Resumen">
-                    <!-- <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px"> -->
                     <h:panelGrid columns="5">
                         <h:outputLabel value="ID" />
                         <h:inputText value="#{nuevoAviso.aviso.id_aviso}"/>
@@ -28,7 +27,7 @@
                         </h:panelGrid>
 
                         <h:outputLabel value="Brigada" />
-                        <h:inputText />
+                        <h:inputText  value="#{nuevoAviso.id_brigada}"/>
                         <h:outputLabel />
                         <h:outputLabel value="Fecha de finalización" style="padding-left:30px"/>
                         <h:panelGrid columns="2" cellpadding="5">
@@ -83,17 +82,17 @@
                     <p:separator />
 
                     <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                        <p:column headerText="Aviso">
+                        <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
-                        <p:column headerText="Fecha">
-                            <h:outputText value="#{brigadas_filtro.contrata}" />
+                        <p:column headerText="Contrata">
+                            <h:outputText value="#{brigadas_filtro.contrata_brigada.nif}" />
                         </p:column>
-                        <p:column headerText="Ubicacion">
+                        <p:column headerText="Capataz">
                             <h:outputText value="#{brigadas_filtro.nombreCapataz}" />
                         </p:column>
-                        <p:column headerText="Prioridad">
-                            <h:outputText value="#{brigadas_filtro.nombreOperarios}" />
+                        <p:column headerText="Operarios">
+                            <h:outputText value="#{brigadas_filtro.nombresOperarios}" />
                         </p:column>
                     </p:dataTable>
                 </p:tab>

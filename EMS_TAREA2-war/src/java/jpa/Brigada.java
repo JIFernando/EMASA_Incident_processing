@@ -16,13 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Brigada implements Serializable {
-    
+
     //  NUEVO CÓDIGO    //    
-    
-    public void addOperario (Operario o) {
+    public void addOperario(Operario o) {
         //o.setBrigada_operario(this);
         if (!operarios.isEmpty()) {
             this.operarios.add(o);
@@ -32,34 +30,40 @@ public class Brigada implements Serializable {
         }
         System.out.println("Operario " + o.getNombreCompleto() == null ? "añadido" : " añadido");
     }
-    
-    public void addCapataz (Capataz c) {
+
+    public void addCapataz(Capataz c) {
         //c.addBrigada(this);
-        if (this.capataz == null) this.capataz = c;
-        else capataz.removeBrigada(this); c.addBrigada(this);
+        if (this.capataz == null) {
+            this.capataz = c;
+        } else {
+            capataz.removeBrigada(this);
+        }
+        c.addBrigada(this);
         System.out.println("Capataz " + c.getNombreCompleto() == null ? "añadido" : " añadido");
     }
-    
-    public String getNombreContrata () {
+
+    public String getNombreContrata() {
         return contrata_brigada.getNombre();
     }
-    
-    public String getNombreCapataz () {
+
+    public String getNombreCapataz() {
         return capataz.getNombreCompleto() == null ? "" : capataz.getNombreCompleto();
     }
-    
-    public String getNombresOperarios () {
+
+    public String getNombresOperarios() {
         String sOperarios = "";
         for (int i = 0; i < operarios.size(); i++) {
-            if (i < operarios.size()-1) sOperarios = sOperarios + operarios.get(i).getNombreCompleto() + ", "; 
-            else sOperarios = sOperarios + operarios.get(i).getNombreCompleto();
+            if (i < operarios.size() - 1) {
+                sOperarios = sOperarios + operarios.get(i).getNombreCompleto() + ", ";
+            } else {
+                sOperarios = sOperarios + operarios.get(i).getNombreCompleto();
+            }
         }
         System.out.println(sOperarios);
-        return sOperarios.equals("") ? "" : sOperarios;
+        return sOperarios;
     }
-    
+
     //  FIN NUEVO CÓDIGO    //
-    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,9 +74,8 @@ public class Brigada implements Serializable {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Capataz capataz;
-    
-    //------------------------------------------//
 
+    //------------------------------------------//
     //  Relación de uno a muchos entre BRIGADA Y AVISO
     @OneToMany(mappedBy = "brigada")
     private List<Aviso> avisos;
@@ -82,8 +85,7 @@ public class Brigada implements Serializable {
     @OneToMany(mappedBy = "brigada_operario")
     private List<Operario> operarios;
 
-    
-    public int getNumOperarios (List<Operario> listaOperarios) {
+    public int getNumOperarios(List<Operario> listaOperarios) {
         return operarios.size() + 1;
     }
     //------------------------------------------//
@@ -97,7 +99,6 @@ public class Brigada implements Serializable {
     @ManyToOne
     private Contrata contrata_brigada;
     //------------------------------------------//
-        
 
     @Override
     public String toString() {
@@ -181,8 +182,8 @@ public class Brigada implements Serializable {
     public void setContrata_brigada(Contrata contrata_brigada) {
         this.contrata_brigada = contrata_brigada;
     }
-    
-    public String getNombreCompletoCapataz () {
+
+    public String getNombreCompletoCapataz() {
         return "capataz.getNombre()" + " capataz.getApellido1()" + " capataz.getApellido2()";
     }
 
