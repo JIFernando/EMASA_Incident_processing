@@ -17,42 +17,59 @@
         <h:form id="nuevoAviso">
             <p:accordionPanel multiple="true">              
                 <p:tab title="Resumen">
-                    <h:panelGrid columns="5">
-                        <h:outputLabel value="ID" />
-                        <h:inputText value="#{nuevoAviso.aviso.id_aviso}"/>
-                        <h:outputLabel />
-                        <h:outputLabel value="Fecha de inicio" style="padding-left:30px"/>
-                        <h:panelGrid columns="2" cellpadding="5">
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <h:outputLabel value="ID" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText value="#{nuevoAviso.aviso.id_aviso}"/>
+                        </div>
+                        <div class="col-md-3">
+                            <p:outputLabel value="Fecha de inicio" />
+                        </div>
+                        <div class="col-md-5">
                             <p:calendar id="button" value="#{nuevoAviso.aviso.fecha_creacion}" showOn="button" />
-                        </h:panelGrid>
-
-                        <h:outputLabel value="Brigada" />
-                        <h:inputText  value="#{nuevoAviso.id_brigada}"/>
-                        <h:outputLabel />
-                        <h:outputLabel value="Fecha de finalización" style="padding-left:30px"/>
-                        <h:panelGrid columns="2" cellpadding="5">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-md-1">
+                            <h:outputLabel value="Brigada" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText  value="#{nuevoAviso.id_brigada}"/>
+                        </div>
+                        <div class="col-md-3">
+                            <h:outputLabel value="Fecha de finalización"/>
+                        </div>
+                        <div class="col-md-5">
                             <p:calendar id="button2" value="#{nuevoAviso.aviso.fin_averia}" showOn="button" />
-                        </h:panelGrid>
+                        </div>
 
-                        <p:outputLabel value="Estado" style="margin-left: 13px"/>
-                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                    </div>
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-md-1">
+                            <p:outputLabel value="Estado"/>
+                        </div>
+                        <div class="col-md-3">
                             <p:outputLabel for="estado" value="" />
-                            <p:selectOneMenu id="estado" value="#{nuevoAviso.estado}">
+                            <p:selectOneMenu id="estado" value="#{nuevoAviso.estado}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
                             </p:selectOneMenu>
-                        </h:panelGrid>
-                        <h:outputLabel value="" />
-                        <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
-                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                        </div>
+                        <div class="col-md-3">
+                            <p:outputLabel value="Prioridad"/>
+                        </div>
+                        <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
                             <p:selectOneMenu id="prioridad" value="#{nuevoAviso.prioridad}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            </p:selectOneMenu>             
-                        </h:panelGrid>
-                    </h:panelGrid>
+                            </p:selectOneMenu>  
+                        </div>
+                    </div>
                 </p:tab>
 
                 <p:tab title="Brigada">
@@ -98,20 +115,27 @@
                 </p:tab>
                 <p:tab title="Diagnóstico">
                     <div align="center">
-                        <h:selectManyCheckbox id="diagnosticos">
-                            <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
-                            <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
-                            <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
-                            <f:selectItem id="desborde" itemLabel="Desborde de presa" itemValue="4" />
-                            <f:selectItem id="canaleta" itemLabel="Canaleta rota" itemValue="5" />
-                        </h:selectManyCheckbox>
+                        <div class="row">
+                            <p:selectManyCheckbox id="diagnosticos">
+                                <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
+                                <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
+                                <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
+                                <f:selectItem id="desborde" itemLabel="Desborde de presa" itemValue="4" />
+                                <f:selectItem id="canaleta" itemLabel="Canaleta rota" itemValue="5" />
+                            </p:selectManyCheckbox>
+                        </div>
                     </div>
                 </p:tab>
 
                 <p:tab title="Observaciones">
-                    <div align="center">
-                        <h:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="90"/>
-                    </div>
+                    
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7">
+                                <p:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="55" autoResize="false"/>
+                            </div>
+                        </div>
+                    
                 </p:tab>
 
 
@@ -119,10 +143,10 @@
                     <div align="center">
                         <p:panelGrid columns="2">
                             <h:outputLabel value="Ubicación: " />
-                            <h:inputText value="#{nuevoAviso.aviso.ubicacion}"/>
+                            <p:inputText value="#{nuevoAviso.aviso.ubicacion}"/>
 
                             <h:outputLabel value="Coordenadas: " />
-                            <h:inputText value="#{nuevoAviso.aviso.coordenada}" />
+                            <p:inputText value="#{nuevoAviso.aviso.coordenada}" />
                         </p:panelGrid>
                     </div><br/>
                 </p:tab>
