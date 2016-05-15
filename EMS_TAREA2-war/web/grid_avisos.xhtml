@@ -16,6 +16,9 @@
     <ui:define name="contenido">
 
         <h:form>
+            
+            <p:remoteCommand name="onload" action="#{controlFiltrosGridAvisos.resetear()}" autoRun="true" />
+            
             <div class="row">
                 <div class="col-md-4">
                     <div>

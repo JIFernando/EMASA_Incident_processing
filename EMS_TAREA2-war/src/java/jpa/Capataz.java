@@ -6,6 +6,7 @@
 package jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -17,6 +18,23 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @DiscriminatorValue("C")
 @PrimaryKeyJoinColumn(name="C_EMPLEADOID")
 public class Capataz extends Empleado implements Serializable {
+    
+    //  NUEVO CÓDIGO    //
+    
+    public void addBrigada (Brigada b) {
+        if (!brigadas.isEmpty()) {
+            brigadas.add(b);
+        } else {
+            brigadas = new ArrayList<>();
+            brigadas.add(b);
+        }
+    }
+    
+    public void removeBrigada (Brigada b) {
+        brigadas.remove(b);
+    }
+    
+    //  FIN NUEVO CÓDIGO    //
     
     //  Relación de uno a muchos entre CAPATAZ Y BRIGADA
     @OneToMany(mappedBy="capataz")
@@ -51,14 +69,6 @@ public class Capataz extends Empleado implements Serializable {
     
      /***************GETTERS Y SETTERS***************/
     
-    public Long getId() {
-        return this.id_empl;
-    }
-
-    public void setId(Long id) {
-        this.id_empl = id;
-    }
-
     /**
      * @return the brigadas
      */

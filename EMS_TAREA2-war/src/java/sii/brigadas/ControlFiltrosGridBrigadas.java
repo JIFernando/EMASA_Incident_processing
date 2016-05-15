@@ -14,6 +14,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import jpa.Brigada;
 
@@ -58,7 +60,7 @@ public class ControlFiltrosGridBrigadas implements Serializable {
     }
 
     private boolean cumpleFiltroContrata(Brigada b) {
-        return b.getContrata().equalsIgnoreCase(contrata) || contrata == null || contrata.equals("");
+        return b.getNombreContrata().equalsIgnoreCase(contrata) || contrata == null || contrata.equals("");
     }
 
     public Integer getId_brigada() {

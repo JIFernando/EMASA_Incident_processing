@@ -11,6 +11,11 @@
     <ui:define name="title">Inicio</ui:define>
 
     <ui:define name="contenido">
+        
+        <h:form>
+            <p:remoteCommand name="onload" action="#{controlFiltrosGridAvisos.resetear()}" autoRun="true" />
+        </h:form>
+        
         <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
             <div class="row" style="margin-top:25px;">
                 <div class="col-md-2">

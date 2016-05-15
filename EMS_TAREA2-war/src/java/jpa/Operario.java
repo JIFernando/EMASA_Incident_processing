@@ -50,28 +50,13 @@ public class Operario extends Empleado implements Serializable {
     /**
      * *************GETTERS Y SETTERS**************
      */
-    public Long getId() {
-        return this.id_empl;
-    }
-
-    public void setId(Long id) {
-        this.id_empl = id;
-    }
-
+    
     public Brigada getBrigada_operario() {
         return brigada_operario;
     }
 
     public void setBrigada_operario(Brigada brigada_operario) {
         this.brigada_operario = brigada_operario;
-    }
-
-    public Long getId_empl() {
-        return id_empl;
-    }
-
-    public void setId_empl(Long id_empl) {
-        this.id_empl = id_empl;
     }
 
 }

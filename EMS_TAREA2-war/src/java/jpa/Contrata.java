@@ -16,6 +16,14 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Contrata implements Serializable {
+    
+    //  NUEVO CÓDIGO
+    
+    public Contrata () {
+        this.nif = "";
+        this.nombre = "";
+        this.sede = "";
+    }
 
     private static final long serialVersionUID = 1L;
     @Id
