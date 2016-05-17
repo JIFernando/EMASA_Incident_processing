@@ -19,12 +19,16 @@
             <p:accordionPanel multiple="true">
                 <p:tab title="Datos principales">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h:outputLabel value="ID Aviso" />
+                        </div>
+                        <div class="col-md-2">
                             <h:outputText id="idAviso" value="#{mostrarAviso.aviso.id_aviso}"/>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <p:outputLabel value="Fecha Programada" />
+                        </div>
+                        <div class="col-md-3">
                             <p:calendar id="button2" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
                         </div>
                     </div>
@@ -32,35 +36,34 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h:outputLabel value="Motivo de operación" />
-                            <h:inputText value="#{nuevaOrdenTrabajo.ot.motivo}"/> 
-                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                                <p:outputLabel for="estado" value="" />
-                                <p:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.estado}">
-                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
-                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
-                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                                </p:selectOneMenu>
-                            </h:panelGrid>
-
                         </div>
-                        <div class="col-md-3">              
+                        <div class="col-md-2">
+                            <p:inputText value="#{nuevaOrdenTrabajo.ot.motivo}"/> 
+                        </div>
+                        <div class="col-md-2">
                             <h:outputLabel value="Brigada" />
-                            <h:inputText value="#{nuevaOrdenTrabajo.id_brigada}" />
-                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                                <p:outputLabel for="prioridad" value="" />
-                                <p:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.prioridad}">
-                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                                </p:selectOneMenu>             
-                            </h:panelGrid>
                         </div>
                         <div class="col-md-3">
+                            <p:inputText value="#{nuevaOrdenTrabajo.id_brigada}" />
+                        </div>
+                    </div>
+                    <div class="row" style="height:5px">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
                             <h:outputLabel value="Pto trabajo" />
-                            <h:inputText value="#{nuevaOrdenTrabajo.ot.pto_trabajo}" />
+                        </div>
+                        <div class="col-md-2">
+                            <p:inputText value="#{nuevaOrdenTrabajo.ot.pto_trabajo}" />
+                        </div>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Taller" />
+                        </div>
+                        <div class="col-md-3">
                             <h:selectOneMenu id="TallerMenu" value="#{nuevaOrdenTrabajo.ot.taller}">
                                 <f:selectItem id="t1" itemLabel="Taller1" itemValue="Taller1" />
                                 <f:selectItem id="t2" itemLabel="Taller2" itemValue="Taller2" />
@@ -68,11 +71,36 @@
                                 <f:selectItem id="t4" itemLabel="Taller4" itemValue="Taller4" />
                             </h:selectOneMenu>
                         </div>
-                        <div class="col-md-2">
-
-                        </div>
                     </div>
 
+                    <div class="row" style="height:5px">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p:outputLabel value="Estado"/>
+                        </div>
+                        <div class="col-md-2">
+                            <p:outputLabel for="estado" value="" />
+                            <p:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.ot.estado}" style="width:120px">
+                                <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p:outputLabel value="Prioridad"/>
+                        </div>
+                        <div class="col-md-3">
+                            <p:outputLabel for="prioridad" value="" />
+                            <p:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.ot.prioridad}">
+                                <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
+                                <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                            </p:selectOneMenu>  
+                        </div>
+                    </div>
                 </p:tab>
 
                 <p:tab title="Brigada">
@@ -131,7 +159,7 @@
                 </p:tab>
 
                 <p:tab title="Observaciones">
-                    <h:inputTextarea rows="5" cols="90" value="#{nuevaOrdenTrabajo.ot.observaciones}"/>
+                    <p:inputTextarea rows="5" cols="90" value="#{nuevaOrdenTrabajo.ot.observaciones}"/>
                 </p:tab>
             </p:accordionPanel>
 
