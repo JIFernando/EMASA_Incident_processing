@@ -27,11 +27,26 @@ import javax.persistence.OneToMany;
 @Entity
 @Inheritance(strategy = JOINED)
 public class Empleado implements Serializable {
+    
+    //  NUEVO CÓDIGO
+    
+    public Empleado () {
+        this.nombre = "";
+        this.apellido1 = "";
+        this.apellido2 = "";
+        this.password = "";
+    }
+    
+    public String getNombreCompleto () {
+        return nombre == null && apellido1 == null && apellido2 == null ? " " : nombre + " " + apellido1 + " " + apellido2;
+    }
+    
+    //  FIN NUEVO CÓDIGO
 
     // private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id_empl;
+    protected Integer id_empl;
     private String nombre;
     private String apellido1, apellido2;
     private String password;
@@ -74,13 +89,6 @@ public class Empleado implements Serializable {
     /**
      * *************GETTERS Y SETTERS**************
      */
-    public Long getId() {
-        return getId_empl();
-    }
-
-    public void setId(Long id) {
-        this.setId_empl(getId_empl());
-    }
 
     public List<Aviso> getAvisos() {
         return avisos;
@@ -93,14 +101,14 @@ public class Empleado implements Serializable {
     /**
      * @return the id_empl
      */
-    public Long getId_empl() {
+    public Integer getId_empl() {
         return id_empl;
     }
 
     /**
      * @param id_empl the id_empl to set
      */
-    public void setId_empl(Long id_empl) {
+    public void setId_empl(Integer id_empl) {
         this.id_empl = id_empl;
     }
 

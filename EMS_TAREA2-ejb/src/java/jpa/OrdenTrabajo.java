@@ -16,32 +16,40 @@ import java.util.Date;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 @Entity
 public class OrdenTrabajo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_OT;
+    private Integer id_OT;
     private String trabajo;
     private String motivo;
     private String ubicacion;
     @Temporal(TemporalType.DATE)
     private Date fecha_creac, fecha_progr;
-    private String estado;
     private String taller;
-    private String prioridad;
-    private String observaciones;
-    private Long pto_trabajo;
 
-    // Relación muchos a uno entre ORDENDETRABAJO y AVISO
+    public enum Prioridad {
+        URGENTE, PLANIFICADO, TODOS
+    }
+    private Prioridad prioridad;
+
+    public enum Estado {
+        SIN_ATENDER, EN_PROCESO, CERRADO, TODOS
+    }
+    private Estado estado;
+
+    private String observaciones;
+    private Integer pto_trabajo;
+
+    // RelaciÃ³n muchos a uno entre ORDENDETRABAJO y AVISO
     @ManyToOne
     @JoinColumn(nullable = false)
     private Aviso aviso;
     //------------------------------------------//
 
-    //  Relación de muchos a uno entre ORDENDETRABAJO Y BRIGADA
+    //  RelaciÃ³n de muchos a uno entre ORDENDETRABAJO Y BRIGADA
     @ManyToOne
     private Brigada brigada_ot;
     //------------------------------------------//
@@ -74,11 +82,11 @@ public class OrdenTrabajo implements Serializable {
     /**
      * *************GETTERS Y SETTERS**************
      */
-    public Long getId_OT() {
+    public Integer getId_OT() {
         return id_OT;
     }
 
-    public void setId_OT(Long id_OT) {
+    public void setId_OT(Integer id_OT) {
         this.id_OT = id_OT;
     }
 
@@ -122,14 +130,6 @@ public class OrdenTrabajo implements Serializable {
         this.fecha_progr = fecha_progr;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getTaller() {
         return taller;
     }
@@ -138,12 +138,20 @@ public class OrdenTrabajo implements Serializable {
         this.taller = taller;
     }
 
-    public String getPrioridad() {
+    public Prioridad getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(Prioridad prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public String getObservaciones() {
@@ -154,11 +162,11 @@ public class OrdenTrabajo implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public Long getPto_trabajo() {
+    public Integer getPto_trabajo() {
         return pto_trabajo;
     }
 
-    public void setPto_trabajo(Long pto_trabajo) {
+    public void setPto_trabajo(Integer pto_trabajo) {
         this.pto_trabajo = pto_trabajo;
     }
 

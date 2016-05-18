@@ -5,6 +5,7 @@
  */
 package jpa;
 //
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,57 +21,64 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Aviso implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_aviso;
+    private Integer id_aviso;
     @Temporal(TemporalType.DATE)
     private Date fecha_creacion, inic_Averia, fin_averia, fecha_asig;
-    private String estado;
+
+    public enum Estado {
+        SIN_ATENDER, EN_PROCESO, CERRADO, TODOS
+    }
+    private Estado estado;
     private String ubicacion;
     private String observaciones;
-    private String prioridad;
+
+    public enum Prioridad {
+        URGENTE, PLANIFICADO, TODOS
+    }
+    private Prioridad prioridad;
     private String coordenada;
-    
+
     //  Relación de muchos a muchos entre AVISO Y DIAGNOSTICO
     @ManyToMany
-    @JoinTable(name = "aviso_diagnostico", joinColumns = @JoinColumn(name = "aviso_fk"), inverseJoinColumns = @JoinColumn(name ="diagnostico_fk"))
+    @JoinTable(name = "aviso_diagnostico", joinColumns = @JoinColumn(name = "aviso_fk"), inverseJoinColumns = @JoinColumn(name = "diagnostico_fk"))
     private List<Diagnostico> esDeTipo;
     //-----------------------------------------------//
-       
+
     //  Relación de muchos a muchos REFLEXIVA  en AVISO
     @ManyToMany
-    @JoinTable(name = "aviso_reflexivo", joinColumns = @JoinColumn(name = "aviso_ref_fk"), inverseJoinColumns = @JoinColumn(name ="aviso_ref_2_fk"))
+    @JoinTable(name = "aviso_reflexivo", joinColumns = @JoinColumn(name = "aviso_ref_fk"), inverseJoinColumns = @JoinColumn(name = "aviso_ref_2_fk"))
     private List<Aviso> avisoEnlazado;
     @ManyToMany(mappedBy = "avisoEnlazado")
     private List<Aviso> avisoEnlazado2;
     //-----------------------------------------------//
-    
+
     //  Relación muchos a uno de AVISO a EMPLEADO
     @ManyToOne
     private Empleado empleado;
     //------------------------------------------//
-    
+
     //  Relación de uno a muchos entre AVISO Y OrdenDeTrabajo
-    @OneToMany(mappedBy="aviso")
+    @OneToMany(mappedBy = "aviso")
     private List<OrdenTrabajo> ordentrabajo;
     //------------------------------------------//
-    
+
     //  Relación de muchos a uno entre AVISO Y CIUDADANOS
     @ManyToOne
     private Ciudadano ciudadano;
     //------------------------------------------//
-    
+
     //  Relación de muchos a uno entre AVISO Y SUPERVISOR
     @ManyToOne
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable = false)
     private Supervisor supervisor;
     //------------------------------------------//
-    
+
     //  Relación de muchos a uno entre AVISO Y BRIGADA
     @ManyToOne
     private Brigada brigada;
@@ -101,17 +109,17 @@ public class Aviso implements Serializable {
         return "emasa.Aviso[ id=" + id_aviso + " ]";
     }
 
-    /*****************GETTERS Y SETTERS*****************/
-        
-    public Long getId_aviso() {
+    /**
+     * ***************GETTERS Y SETTERS****************
+     */
+    public Integer getId_aviso() {
         return id_aviso;
     }
 
-    public void setId_aviso(Long id_aviso) {
+    public void setId_aviso(Integer id_aviso) {
         this.id_aviso = id_aviso;
     }
 
-    
     /**
      * @return the fecha_creacion
      */
@@ -171,14 +179,14 @@ public class Aviso implements Serializable {
     /**
      * @return the estado
      */
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
@@ -213,14 +221,14 @@ public class Aviso implements Serializable {
     /**
      * @return the prioridad
      */
-    public String getPrioridad() {
+    public Prioridad getPrioridad() {
         return prioridad;
     }
 
     /**
      * @param prioridad the prioridad to set
      */
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(Prioridad prioridad) {
         this.prioridad = prioridad;
     }
 
@@ -349,5 +357,5 @@ public class Aviso implements Serializable {
     public void setBrigada(Brigada brigada) {
         this.brigada = brigada;
     }
-    
+
 }

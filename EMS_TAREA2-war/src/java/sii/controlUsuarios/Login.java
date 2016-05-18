@@ -6,11 +6,13 @@ package sii.controlUsuarios;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "login")
 @RequestScoped
@@ -45,6 +47,8 @@ public class Login {
     }
     @Inject
     private ControlAutorizacion ctrl;
+   // @EJB
+   // private BaseDeDatosLocal bbdd;
 
     /**
      * Creates a new instance of Login
@@ -65,6 +69,7 @@ public class Login {
     }
 
     private boolean usuarioCorrecto() {
+        //bbdd.getAvisos();
         boolean encontrado = false;
         int i = 0;
         while (!encontrado && i < empleados.size()) {

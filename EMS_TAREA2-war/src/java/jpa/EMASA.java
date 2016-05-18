@@ -15,7 +15,7 @@ public class EMASA {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-           Persistence.generateSchema("EMASAPU", null);
+           Persistence.generateSchema("EMS_TAREA2-ejbPU", null);
     }
     
 }
