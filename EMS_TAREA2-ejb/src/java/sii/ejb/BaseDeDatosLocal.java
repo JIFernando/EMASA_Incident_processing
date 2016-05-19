@@ -33,4 +33,9 @@ public interface BaseDeDatosLocal {
 
     public void modificarOT(OrdenTrabajo a);
 
+    public OrdenTrabajo mostrarOT(OrdenTrabajo ot);
+
+    //private void compruebaOT(OrdenTrabajo ot);
+    public void borrarOT(OrdenTrabajo ot);
+
 }
