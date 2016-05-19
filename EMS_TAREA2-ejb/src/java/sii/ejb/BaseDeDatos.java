@@ -9,7 +9,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import jpa.Aviso;
+import jpa.*;
 
 /**
  *
@@ -25,9 +25,17 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
     @Override
     public List<Aviso> getAvisos() {
-        Aviso u = new Aviso();
-        em.persist(u);
         return em.createQuery("select u from Aviso u", Aviso.class).getResultList();
     }
+    
+    public List<OrdenTrabajo> getOrdenesTrabajo(){
+        return em.createQuery("select u from OrdenTrabajo u", OrdenTrabajo.class).getResultList();
+    }
 
+    public void insertarOT(OrdenTrabajo a){
+        em.persist(a);
+    }  
+    public void modificarOT(OrdenTrabajo a){
+        em.merge(a);
+    }
 }

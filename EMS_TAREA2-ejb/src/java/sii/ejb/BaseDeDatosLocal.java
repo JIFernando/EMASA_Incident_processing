@@ -7,7 +7,7 @@ package sii.ejb;
 
 import java.util.List;
 import javax.ejb.Local;
-import jpa.Aviso;
+import jpa.*;
 
 /**
  *
@@ -16,4 +16,7 @@ import jpa.Aviso;
 @Local
 public interface BaseDeDatosLocal {
     public List<Aviso> getAvisos();
+    public List<OrdenTrabajo> getOrdenesTrabajo();
+    public void insertarOT(OrdenTrabajo a);
+    public void modificarOT(OrdenTrabajo a);
 }
