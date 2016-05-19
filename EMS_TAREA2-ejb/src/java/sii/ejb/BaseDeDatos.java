@@ -10,10 +10,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import jpa.Aviso;
-import jpa.Empleado;
-import jpa.Supervisor;
 import sii.exception.EmasaException;
+import jpa.*;
 
 /**
  *
@@ -30,7 +28,6 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public List<Aviso> getAvisos() {
         List<Aviso> res = em.createQuery("select a from Aviso a", Aviso.class).getResultList();
-       
         return res;
     }
 
@@ -54,4 +51,15 @@ public class BaseDeDatos implements BaseDeDatosLocal {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public List<OrdenTrabajo> getOrdenesTrabajo() {
+        return em.createQuery("select u from OrdenTrabajo u", OrdenTrabajo.class).getResultList();
+    }
+
+    public void insertarOT(OrdenTrabajo a) {
+        em.persist(a);
+    }
+
+    public void modificarOT(OrdenTrabajo a) {
+        em.merge(a);
+    }
 }

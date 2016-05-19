@@ -7,9 +7,8 @@ package sii.ejb;
 
 import java.util.List;
 import javax.ejb.Local;
-import jpa.Aviso;
-import jpa.Empleado;
 import sii.exception.EmasaException;
+import jpa.*;
 
 /**
  *
@@ -27,4 +26,11 @@ public interface BaseDeDatosLocal {
     public void modificarAviso(Aviso aviso);
 
     public void eliminarAviso(Aviso aviso);
+
+    public List<OrdenTrabajo> getOrdenesTrabajo();
+
+    public void insertarOT(OrdenTrabajo a);
+
+    public void modificarOT(OrdenTrabajo a);
+
 }
