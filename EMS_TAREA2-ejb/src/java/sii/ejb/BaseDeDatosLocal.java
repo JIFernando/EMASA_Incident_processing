@@ -19,4 +19,7 @@ public interface BaseDeDatosLocal {
     public List<OrdenTrabajo> getOrdenesTrabajo();
     public void insertarOT(OrdenTrabajo a);
     public void modificarOT(OrdenTrabajo a);
+    public OrdenTrabajo mostrarOT(OrdenTrabajo ot);
+    //private void compruebaOT(OrdenTrabajo ot);
+    public void borrarOT(OrdenTrabajo ot);
 }
