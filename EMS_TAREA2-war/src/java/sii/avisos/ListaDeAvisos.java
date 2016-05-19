@@ -9,9 +9,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
+import sii.ejb.BaseDeDatosLocal;
 
 /**
  * Esta clase contendrá todos los avisos de la base de datos
@@ -22,10 +24,12 @@ public class ListaDeAvisos implements Serializable {
 
     List<Aviso> datos;
 
+    @EJB
+    BaseDeDatosLocal bdl;
+
     public ListaDeAvisos() {
 
-        datos = new ArrayList<>();
-
+        /*
         Aviso a1 = new Aviso();
         a1.setId_aviso(12);
         a1.setFecha_creacion(new Date(116, 9, 1));
@@ -61,18 +65,19 @@ public class ListaDeAvisos implements Serializable {
         a3.setEstado(Aviso.Estado.EN_PROCESO);
         datos.add(a1);
         datos.add(a2);
-        datos.add(a3);
+        datos.add(a3);*/
     }
 
     public List<Aviso> getDatos() {
+        datos = bdl.getAvisos();
         return datos;
     }
 
     public void setDatos(List<Aviso> datos) {
         this.datos = datos;
     }
-    
-    public void addDatos(Aviso a){
+
+    public void addDatos(Aviso a) {
         this.datos.add(a);
     }
 

@@ -47,7 +47,6 @@ public class ControlFiltrosGridAvisos implements Serializable {
     public List<Aviso> getListaAvisosFiltrados() {
         List<Aviso> datos = la.getDatos();
         List<Aviso> resultado = new ArrayList<>();
-
         for (Aviso a : datos) {
             if (cumpleFiltroPrioridad(a) && cumpleFiltroEstado(a)
                     && cumpleFiltroFechaInicio(a) && cumpleFiltroFechaFin(a)
@@ -84,10 +83,6 @@ public class ControlFiltrosGridAvisos implements Serializable {
 
     private boolean cumpleFiltroId(Aviso a) {
         return id_aviso == null || a.getId_aviso().equals(id_aviso);
-    }
-
-    private boolean campoVacio(String p) {
-        return !(p.equals("1") || p.equals("2") || p.equals("3") || p.equals("4"));
     }
 
     public Prioridad getPrioridad() {

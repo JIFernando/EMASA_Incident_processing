@@ -8,6 +8,8 @@ package sii.ejb;
 import java.util.List;
 import javax.ejb.Local;
 import jpa.Aviso;
+import jpa.Empleado;
+import sii.exception.EmasaException;
 
 /**
  *
@@ -15,5 +17,14 @@ import jpa.Aviso;
  */
 @Local
 public interface BaseDeDatosLocal {
+
     public List<Aviso> getAvisos();
+
+    public void compruebaLogin(Empleado empleado) throws EmasaException;
+
+    public void insertarAviso(Aviso aviso);
+
+    public void modificarAviso(Aviso aviso);
+
+    public void eliminarAviso(Aviso aviso);
 }

@@ -5,11 +5,15 @@
  */
 package sii.ejb;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import jpa.Aviso;
+import jpa.Empleado;
+import jpa.Supervisor;
+import sii.exception.EmasaException;
 
 /**
  *
@@ -25,9 +29,29 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
     @Override
     public List<Aviso> getAvisos() {
-        Aviso u = new Aviso();
-        em.persist(u);
-        return em.createQuery("select u from Aviso u", Aviso.class).getResultList();
+        List<Aviso> res = em.createQuery("select a from Aviso a", Aviso.class).getResultList();
+       
+        return res;
+    }
+
+    @Override
+    public void compruebaLogin(Empleado empleado) throws EmasaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insertarAviso(Aviso aviso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificarAviso(Aviso aviso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminarAviso(Aviso aviso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
