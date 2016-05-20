@@ -22,30 +22,57 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
     @PersistenceContext(unitName = "EMS_TAREA2-ejbPU")
     private EntityManager em;
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 
+    /**
+     * 
+     * Devuelve una lista con todos los avisos creados
+     * 
+     * @return
+     */
     @Override
     public List<Aviso> getAvisos() {
         List<Aviso> res = em.createQuery("select a from Aviso a", Aviso.class).getResultList();
         return res;
     }
 
+    /**
+     * 
+     * @param empleado
+     * @throws EmasaException
+     */
     @Override
     public void compruebaLogin(Empleado empleado) throws EmasaException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * 
+     * Inserta un aviso en la base de datos
+     * 
+     * @param aviso
+     */
     @Override
     public void insertarAviso(Aviso aviso) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * Modifica un aviso que ya existe en la base de datos
+     * 
+     * @param aviso
+     */
     @Override
     public void modificarAviso(Aviso aviso) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * Elimina un aviso de la base de datos
+     * 
+     * @param aviso
+     */
     @Override
     public void eliminarAviso(Aviso aviso) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

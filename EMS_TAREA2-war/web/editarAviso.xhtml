@@ -55,8 +55,31 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px;">
+                        <div class="col-md-1">
+                            <p:outputLabel value="Estado" />
+                        </div>
+                        <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
+                            <div class="col-md-2">
+                                <p:outputLabel for="estado" value="" />
+                                <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" style="width:120px">
+                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                                </h:selectOneMenu>
+                            </div>
+                        </c:if>
+                        <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
+                            <div class="col-md-2">
+                                <p:outputLabel for="estado" value="" />
+                                <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" disabled="true" style="width:120px">
+                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                                </h:selectOneMenu>
+                            </div>
+                        </c:if>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <p:outputLabel value="Prioridad" />
                         </div>
                         <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
@@ -69,15 +92,18 @@
                             </div>
                         </c:if>
                         <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
-                            <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
-                                <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                                <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            </h:selectOneMenu> 
+                            <div class="col-md-3">
+                                <p:outputLabel for="prioridad" value="" />
+                                <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
+                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
+                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                                </h:selectOneMenu> 
+                            </div>
                         </c:if>
                     </div>
+                    
                     <div class="row" style="margin-top:5px;">
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <p:outputLabel value="Supervisor"/>
                         </div>
 
@@ -91,21 +117,18 @@
                                 </h:selectOneMenu>
                             </div>
                         </c:if>
+
+                        <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
+                            <div class="col-md-3">
+                                <p:outputLabel for="supervisor" value="" />
+                                <h:selectOneMenu id="supervisor" disabled="true">
+                                    <f:selectItem itemLabel="Supervisor 1" />
+                                    <f:selectItem itemLabel="Supervisor 2"/>
+                                    <f:selectItem itemLabel="Supervisor 3" />
+                                </h:selectOneMenu>
+                            </div>
+                        </c:if>
                     </div>
-
-
-
-                    <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
-                        <div class="col-md-3">
-                            <p:outputLabel for="supervisor" value="" />
-                            <h:selectOneMenu id="supervisor" disabled="true">
-                                <f:selectItem itemLabel="Supervisor 1" />
-                                <f:selectItem itemLabel="Supervisor 2"/>
-                                <f:selectItem itemLabel="Supervisor 3" />
-                            </h:selectOneMenu>
-                        </div>
-                    </c:if>
-
                 </p:tab>
 
                 <p:tab title="Diagnóstico">

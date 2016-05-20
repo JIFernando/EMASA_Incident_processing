@@ -15,47 +15,79 @@
 
     <ui:define name="contenido">
         <h:form id="verAviso">
-            
+
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
-            
+
             <p:accordionPanel multiple="true">
                 <p:tab title="Resumen">
-                    <h:panelGrid columns="5" styleClass="ui-responsive">
-                        <h:outputLabel value="ID" />
-                        <h:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
-                        <h:outputLabel value="" />
-                        <h:outputLabel value="Inicio avería" />
-                        <h:panelGrid columns="2" cellpadding="5">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <h:outputLabel value="ID" />
+                        </div>
+                        <div class="col-md-2">
+                            <h:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
+                        </div>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Inicio avería" />
+                        </div>
+                        <div class="col-md-3">
                             <p:calendar id="button" value="#{mostrarAviso.aviso.inic_Averia}" showOn="button" disabled="true"/>
-                        </h:panelGrid>
+                        </div>
+                    </div>
 
-                        <h:outputLabel value="Brigada" />
-                        <h:inputText value="#{mostrarAviso.aviso.brigada}" disabled="true"/>
-                        <h:outputLabel value="" />
-                        <h:outputLabel value="Fin avería" />
-                        <h:panelGrid columns="2" cellpadding="5">
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-1">
+                            <h:outputLabel value="Brigada" />
+                        </div>
+                        <div class="col-md-2">
+                            <h:inputText value="#{mostrarAviso.aviso.brigada}" disabled="true"/>
+                        </div>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Fin avería" />
+                        </div>
+                        <div class="col-md-3">
                             <p:calendar id="button2" value="#{mostrarAviso.aviso.fin_averia}" showOn="button"  disabled="true"/>
-                        </h:panelGrid>
+                        </div>
+                    </div>
 
-                        <p:outputLabel value="Estado" style="margin-left: 13px"/>
-                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                    <div class="row" style="margin-top: 5px">
+                        <div class="col-md-1">
+                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
+                        </div>
+                        <div class="col-md-2">
                             <p:outputLabel for="estado" value="" />
-                            <p:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" disabled="true">
+                            <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" disabled="true">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                            </p:selectOneMenu>
-                        </h:panelGrid>
-                        <h:outputLabel value="" />
-                        <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
-                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-md-2">
+                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
+                        </div>
+                        <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
-                            <p:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
+                            <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            </p:selectOneMenu>             
-                        </h:panelGrid>
-                    </h:panelGrid>
+                            </h:selectOneMenu> 
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-1">
+                            <p:outputLabel value="Supervisor"/>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p:outputLabel for="supervisor" value="" />
+                            <h:selectOneMenu id="supervisor" disabled="true">
+                                <f:selectItem itemLabel="Supervisor 1" />
+                                <f:selectItem itemLabel="Supervisor 2"/>
+                                <f:selectItem itemLabel="Supervisor 3" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
                 </p:tab>
 
                 <p:tab title="Diagnóstico">

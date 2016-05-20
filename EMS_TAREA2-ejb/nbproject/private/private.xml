@@ -10,5 +10,9 @@
             <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatosLocal.java</file>
             <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-ejb/src/conf/persistence.xml</file>
         </group>
+        <group name="Documents">
+            <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatos.java</file>
+            <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatosLocal.java</file>
+        </group>
     </open-files>
 </project-private>

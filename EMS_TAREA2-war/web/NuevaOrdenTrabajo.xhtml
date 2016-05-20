@@ -32,11 +32,9 @@
                             <p:calendar id="button2" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
                         </div>
                     </div>
-                    <div class="row" style="height:5px">
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
+                    
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-3" style="margin-top:5px;">
                             <h:outputLabel value="Motivo de operación" />
                         </div>
                         <div class="col-md-2">
@@ -49,11 +47,8 @@
                             <p:inputText value="#{nuevaOrdenTrabajo.id_brigada}" />
                         </div>
                     </div>
-                    <div class="row" style="height:5px">
 
-                    </div>
-
-                    <div class="row">
+                    <div class="row" style="margin-top:5px;">
                         <div class="col-md-3">
                             <h:outputLabel value="Pto trabajo" />
                         </div>
@@ -73,21 +68,17 @@
                         </div>
                     </div>
 
-                    <div class="row" style="height:5px">
-
-                    </div>
-
-                    <div class="row">
+                    <div class="row" style="margin-top:5px;">
                         <div class="col-md-3">
                             <p:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-2">
                             <p:outputLabel for="estado" value="" />
-                            <p:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.ot.estado}" style="width:120px">
+                            <h:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.ot.estado}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
                         </div>
 
                         <div class="col-md-2">
@@ -95,10 +86,10 @@
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
-                            <p:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.ot.prioridad}">
+                            <h:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.ot.prioridad}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            </p:selectOneMenu>  
+                            </h:selectOneMenu>  
                         </div>
                     </div>
                 </p:tab>
