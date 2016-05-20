@@ -20,7 +20,6 @@
 
             <p:accordionPanel multiple="true">
                 <p:tab title="Resumen">
-                    <!--<h:panelGrid columns="5" styleClass="ui-responsive">-->
                     <div class="row">
                         <div class="col-md-1">
                             <h:outputLabel value="ID" />
@@ -36,12 +35,12 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px;">
-                        <!--<div class="col-md-2">
+                        <!-- <div class="col-md-2">
                             <c:if test="#{mostrarAviso.aviso.brigada != null}">
                                 <h:outputLabel value="Brigada" />
                                 <h:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" />
                             </c:if>
-                        </div>-->
+                        </div> -->
                         <div class="col-md-3">
                             <c:if test="#{mostrarAviso.aviso.brigada == null}">
                                 <h:outputLabel value="Brigada: Sin asignar" />
@@ -101,7 +100,7 @@
                             </div>
                         </c:if>
                     </div>
-                    
+
                     <div class="row" style="margin-top:5px;">
                         <div class="col-md-1">
                             <p:outputLabel value="Supervisor"/>
@@ -256,8 +255,10 @@
             </div><br/>
 
             <div align="center">
-                <a href="grid_avisos.xhtml" class="boton">Guardar</a>
-                <a href="grid_avisos.xhtml" class="boton">Volver atrás</a>                
+                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{mostrarAviso.editarAviso()}"/>
+                <!-- Se podría poner un botón para borrar aviso si quisiéramos -->
+                <!-- <h:commandButton id="volverAtras" styleClass="boton" value="Volver atrás" action="grid_avisos.xhtml"/> -->
+                <a href="grid_avisos.xhtml" class="boton">Volver atrás</a>
             </div><br/><br/><br/><br/>
         </h:form>
     </ui:define>

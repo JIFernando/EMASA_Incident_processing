@@ -1,23 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sii.avisos;
 
-/**
- *
- * @author JenniferAdmin
- */
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import jpa.Aviso;
+import jpa.Supervisor;
+import sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "mostrarAviso")
 @SessionScoped
 public class MostrarAviso implements Serializable {
 
+    @EJB
+    BaseDeDatosLocal bdl;
+    
     Aviso aviso;
 
     public MostrarAviso() {
@@ -41,4 +38,15 @@ public class MostrarAviso implements Serializable {
         return "editarAviso?faces-redirect=true";
     }
 
+    public String editarAviso() {
+        bdl.modificarAviso(aviso);
+        
+        return "grid_avisos.xhtml";
+    }
+    
+    public String eliminarAviso() {
+        bdl.eliminarAviso(aviso);
+        
+        return "grid_avisos.xhtml";
+    }
 }

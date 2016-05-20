@@ -29,7 +29,7 @@
                             <p:outputLabel value="Fecha de inicio" />
                         </div>
                         <div class="col-md-5">
-                            <p:calendar id="button" value="#{nuevoAviso.aviso.fecha_creacion}" showOn="button" />
+                            <p:calendar id="button" value="#{nuevoAviso.aviso.inic_Averia}" showOn="button" />
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px">
@@ -53,21 +53,21 @@
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="estado" value="" />
-                            <p:selectOneMenu id="estado" value="#{nuevoAviso.estado}" style="width:120px">
+                            <h:selectOneMenu id="estado" value="#{nuevoAviso.estado}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                            </p:selectOneMenu>
+                            </h:selectOneMenu>
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
-                            <p:selectOneMenu id="prioridad" value="#{nuevoAviso.prioridad}">
+                            <h:selectOneMenu id="prioridad" value="#{nuevoAviso.prioridad}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            </p:selectOneMenu>  
+                            </h:selectOneMenu>  
                         </div>
                     </div>
                 </p:tab>

@@ -214,8 +214,8 @@
             <div align="center">
                 <h:commandButton id="editar" styleClass="boton" action="#{mostrarAviso.capturarYEditar()}" value="Editar" />
                 <div class="col-md-1"></div>
-                <h:commandButton id="volver" styleClass="boton" action="grid_avisos.xhtml" value="Volver a la página anterior" />
-
+                <h:commandButton id="volver" styleClass="boton" action="grid_avisos.xhtml?faces-redirect=true" value="Volver a la página anterior" />
+                <!-- <a href="grid_avisos.xhtml" class="boton">Volver atrás</a> -->
             </div>
         </h:form>
         <br/>

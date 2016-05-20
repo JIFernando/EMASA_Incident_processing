@@ -53,7 +53,8 @@ public class BaseDeDatos implements BaseDeDatosLocal {
      */
     @Override
     public void insertarAviso(Aviso aviso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet.");
+        em.persist(aviso);
     }
 
     /**
@@ -64,7 +65,8 @@ public class BaseDeDatos implements BaseDeDatosLocal {
      */
     @Override
     public void modificarAviso(Aviso aviso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet.");
+        em.merge(aviso);
     }
 
     /**
@@ -75,7 +77,8 @@ public class BaseDeDatos implements BaseDeDatosLocal {
      */
     @Override
     public void eliminarAviso(Aviso aviso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet.");
+        // em.remove(em.merge(aviso));
     }
 
     @Override
@@ -113,4 +116,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
             throw new otException();
         }
     }*/
+    
+    @Override
+    public Supervisor obtenerSupervisor(Integer id) {
+        Supervisor sup = em.find(Supervisor.class, id);
+        
+        return sup;
+    }
 }

@@ -5,12 +5,15 @@
  */
 package sii.avisos;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import jpa.Aviso;
 import jpa.Aviso.Estado;
 import jpa.Aviso.Prioridad;
+import jpa.Supervisor;
+import sii.ejb.BaseDeDatosLocal;
 
 /**
  *
@@ -31,6 +34,9 @@ public class NuevoAviso {
     @Inject
     ListaDeAvisos lda;
     private Aviso aviso;
+    
+    @EJB
+    BaseDeDatosLocal bdl;
 
     public NuevoAviso() {
         aviso = new Aviso();
@@ -45,9 +51,14 @@ public class NuevoAviso {
     }
 
     public String guardarAviso() {
+        Supervisor sup = bdl.obtenerSupervisor(1);
+        aviso.setSupervisor(sup);
+        
         aviso.setPrioridad(prioridad);
         aviso.setEstado(estado);
-        lda.addDatos(aviso);
+        
+        bdl.insertarAviso(aviso);
+        // lda.addDatos(aviso);
 
         return "grid_avisos.xhtml";
     }
