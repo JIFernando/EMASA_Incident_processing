@@ -116,7 +116,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
             throw new otException();
         }
     }*/
-    
+    @Override
+    public Brigada obtenerBrigada(Integer id) {
+        Brigada sup = em.find(Brigada.class, id);
+        
+        return sup;
+    }
     @Override
     public Supervisor obtenerSupervisor(Integer id) {
         Supervisor sup = em.find(Supervisor.class, id);

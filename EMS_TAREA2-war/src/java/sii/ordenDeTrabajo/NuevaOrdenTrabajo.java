@@ -11,9 +11,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import jpa.Aviso;
+import jpa.Brigada;
 import jpa.OrdenTrabajo.Estado;
 import jpa.OrdenTrabajo.Prioridad;
 import jpa.OrdenTrabajo;
+import sii.avisos.MostrarAviso;
 
 /**
  *
@@ -25,6 +27,8 @@ public class NuevaOrdenTrabajo {
 
     @Inject
     ListaDeOrdenTrabajo lot;
+    @Inject
+    MostrarAviso ma;
     private OrdenTrabajo ot;
     
     public NuevaOrdenTrabajo() {
@@ -37,8 +41,12 @@ public class NuevaOrdenTrabajo {
     private String ubicacion;
     private Date fecha_progr;
     private Estado estado;
+
+
     private String taller;
     private Prioridad prioridad;
+    private String estado_id;
+    private String prioridad_id;
 
     private String observaciones;
     private String calle;
@@ -49,22 +57,91 @@ public class NuevaOrdenTrabajo {
 
     private Integer pto_trabajo;
 
-    public String guardarAviso() {
-        ot.setPrioridad(prioridad);
-        ot.setEstado(estado);
-        ot.setAviso(new Aviso());
-        ot.setMotivo(motivo);
-        ot.setUbicacion(ubicacion);
-        ot.setFecha_progr(fecha_progr);
-        ot.setTaller(taller);
-        ot.setObservaciones(observaciones);
-        ot.setUbicacion(calle+" "+ localidad +" " + cp + " " + ut);
-        ot.setPto_trabajo(pto_trabajo);
-        lot.addDatos(ot);
+    public String guardarOT() {
+//        OrdenTrabajo not = new OrdenTrabajo();
+//        not.setPrioridad(prioridad);
+//        not.setEstado(estado);
+//        //mostrarAviso.aviso.id_aviso
+//        not.setAviso(ma.getAviso());
+//        not.setMotivo(motivo);
+//        not.setUbicacion(ubicacion);
+//        not.setFecha_progr(fecha_progr);
+//        not.setTaller(taller);
+//        not.setObservaciones(observaciones);
+//        not.setUbicacion(calle+" "+ localidad +" " + cp + " " + ut);
+//        not.setPto_trabajo(pto_trabajo);
+        if (id_brigada != null){
+            Brigada b =  this.lot.getBrigada(id_brigada);
+            if (b!= null){
+                ot.setBrigada_ot(b);
+            }else return "errorBrigadaNoEncontrada.xhtml";
+        }
+        ot.setAviso(ma.getAviso());
+        Date d = new Date();
+        ot.setFecha_creac(d);
+//        ot.setTaller(taller);
+        ot.setUbicacion(calle+" "+ localidad +" " + cp + " " + ut);        
+        ot.setEstado(this.stringEstado(this.estado_id));
+        ot.setPrioridad(this.stringPrioridad(this.prioridad_id));
+        
+        lot.setOT(ot);
+        ot = new OrdenTrabajo();
+        return "OTcreado.xhtml";
+    }
+    
+    private Estado stringEstado(String e) {
+        Estado res;
+        switch (e) {
+            case "CERRADO":
+                res = Estado.CERRADO;
+                break;
+            case "EN_PROCESO":
+                res = Estado.EN_PROCESO;
+                break;
+            default:
+                res = Estado.SIN_ATENDER;
+                break;
+        }
+        return res;
+    }
+    
+    private Prioridad stringPrioridad(String p) {
+        Prioridad res;
 
-        return "grid_ordenTrabajo.xhtml";
+        switch (p) {
+            case "URGENTE":
+                res = Prioridad.URGENTE;
+                break;
+            default:
+                res = Prioridad.PLANIFICADO;
+                break;
+
+        }
+        return res;
+    }
+        public MostrarAviso getMa() {
+        return ma;
     }
 
+    public void setMa(MostrarAviso ma) {
+        this.ma = ma;
+    }
+
+    public String getEstado_id() {
+        return estado_id;
+    }
+
+    public void setEstado_id(String estado_id) {
+        this.estado_id = estado_id;
+    }
+
+    public String getPrioridad_id() {
+        return prioridad_id;
+    }
+
+    public void setPrioridad_id(String prioridad_id) {
+        this.prioridad_id = prioridad_id;
+    }
     public OrdenTrabajo getOt() {
         return ot;
     }

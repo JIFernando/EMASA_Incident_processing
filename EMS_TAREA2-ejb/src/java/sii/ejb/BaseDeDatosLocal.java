@@ -42,5 +42,7 @@ public interface BaseDeDatosLocal {
     //private void compruebaOT(OrdenTrabajo ot);
     public void borrarOT(OrdenTrabajo ot);
 
+    public Brigada obtenerBrigada(Integer id);
+
     public Supervisor obtenerSupervisor(Integer id);
 }

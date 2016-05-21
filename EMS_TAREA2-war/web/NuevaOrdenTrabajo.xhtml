@@ -32,9 +32,11 @@
                             <p:calendar id="button2" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
                         </div>
                     </div>
-                    
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-md-3" style="margin-top:5px;">
+                    <div class="row" style="height:5px">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
                             <h:outputLabel value="Motivo de operación" />
                         </div>
                         <div class="col-md-2">
@@ -47,8 +49,11 @@
                             <p:inputText value="#{nuevaOrdenTrabajo.id_brigada}" />
                         </div>
                     </div>
+                    <div class="row" style="height:5px">
 
-                    <div class="row" style="margin-top:5px;">
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-3">
                             <h:outputLabel value="Pto trabajo" />
                         </div>
@@ -68,17 +73,21 @@
                         </div>
                     </div>
 
-                    <div class="row" style="margin-top:5px;">
+                    <div class="row" style="height:5px">
+
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-3">
                             <p:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-2">
                             <p:outputLabel for="estado" value="" />
-                            <h:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.ot.estado}" style="width:120px">
+                            <p:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.estado_id}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                            </h:selectOneMenu>
+                            </p:selectOneMenu>
                         </div>
 
                         <div class="col-md-2">
@@ -86,10 +95,18 @@
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.ot.prioridad}">
+                            <p:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.prioridad_id}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            </h:selectOneMenu>  
+                            </p:selectOneMenu>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h:outputLabel value="Trabajo" />
+                        </div>
+                        <div class="col-md-2">
+                            <p:inputText value="#{nuevaOrdenTrabajo.ot.trabajo}"/> 
                         </div>
                     </div>
                 </p:tab>
@@ -121,7 +138,7 @@
                     <p:separator />
 
                     <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
-                        <p:column headerText="Aviso">
+                        <p:column headerText="id">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
                         <p:column headerText="Fecha">
@@ -157,7 +174,7 @@
             <br/>
 
             <div align="center">
-                <a href="OTcreado.xhtml" class="boton" >Guardar</a>
+                <h:commandButton id="guardar" action="#{nuevaOrdenTrabajo.guardarOT()}" styleClass="boton" value="Guardar" />
                 <h:commandButton id="reset" styleClass="boton" type="reset" value="Reiniciar" />
                 <a href="grid_ordenTrabajo.xhtml" class="boton" >Cancelar</a>
             </div>
