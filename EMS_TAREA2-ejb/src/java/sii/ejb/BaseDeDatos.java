@@ -98,24 +98,15 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
     @Override
     public OrdenTrabajo mostrarOT(OrdenTrabajo ot) {
-        //compruebaOT(ot);
         OrdenTrabajo o = em.find(OrdenTrabajo.class, ot.getId_OT());
         return o;
     }
 
     @Override
     public void borrarOT(OrdenTrabajo ot) {
-        //compruebaOT(ot);
         em.remove(em.merge(ot));
     }
-    /*@Override
-    private void compruebaOT(OrdenTrabajo ot) throws otException{
-        OrdenTrabajo u2 = em.find(OrdenTrabajo.class, ot);
-        
-        if (u2 == null) {
-            throw new otException();
-        }
-    }*/
+
     @Override
     public Brigada obtenerBrigada(Integer id) {
         Brigada sup = em.find(Brigada.class, id);

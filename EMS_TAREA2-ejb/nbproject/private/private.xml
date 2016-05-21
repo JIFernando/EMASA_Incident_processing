@@ -14,5 +14,10 @@
             <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatos.java</file>
             <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatosLocal.java</file>
         </group>
+        <group name="trabajo de internet">
+            <file>file:/D:/Uma/tercerAño/Segundo%20Cuatrimestre/trabajo%20de%20internet/1/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatosLocal.java</file>
+            <file>file:/D:/Uma/tercerAño/Segundo%20Cuatrimestre/trabajo%20de%20internet/1/EMS_TAREA2-ejb/src/java/sii/exception/ContraseniaInvalidaException.java</file>
+            <file>file:/D:/Uma/tercerAño/Segundo%20Cuatrimestre/trabajo%20de%20internet/1/EMS_TAREA2-ejb/src/java/sii/ejb/BaseDeDatos.java</file>
+        </group>
     </open-files>
 </project-private>

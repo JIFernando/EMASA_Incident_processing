@@ -182,7 +182,8 @@
             </p:accordionPanel>
 
             <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px">
-                <a href="OTmodificada.xhtml" class="boton"  id="volver">Guardar</a> 
+                <!--<a href="OTmodificada.xhtml" class="boton"  id="volver">Guardar</a> -->
+                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{mostrarOrdenTrabajo.capturarYEditar()}"/>
                 <a href="grid_ordenTrabajo.xhtml" class="boton"  id="volver">Volver</a>  
             </h:panelGrid>
         </h:form>

@@ -12,17 +12,18 @@ package sii.ordenDeTrabajo;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import jpa.OrdenTrabajo;
+import sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "mostrarOrdenTrabajo")
 @SessionScoped
 public class MostrarOrdenTrabajo implements Serializable {
 
+    @EJB
+    BaseDeDatosLocal bdl;
+    
     OrdenTrabajo ordenTrabajo;
-
-    public MostrarOrdenTrabajo() {
-
-    }
 
     public OrdenTrabajo getOrdenTrabajo() {
         return ordenTrabajo;
@@ -34,12 +35,29 @@ public class MostrarOrdenTrabajo implements Serializable {
 
     public String capturarYMostrarOrdenTrabajo(OrdenTrabajo ot) {
         this.ordenTrabajo = ot;
+        bdl.mostrarOT(ordenTrabajo);
         return "ver_ordenTrabajo.xhtml";
     }
 
+    public String eliminarOT(OrdenTrabajo ot){
+        this.ordenTrabajo = ot;
+        bdl.borrarOT(ordenTrabajo);
+        return "OTborrada.xhtml";
+    }
+    
+    public String capturarYEditar() {
+        
+        bdl.modificarOT(ordenTrabajo);
+        
+        //return "modificar_ordenTrabajo?faces-redirect=true";
+        return "OTmodificada.xhtml";
+    }
+    
     public String capturarYEditar(OrdenTrabajo ot) {
         this.ordenTrabajo = ot;
-        return "modificar_ordenTrabajo?faces-redirect=true";
+        //bdl.modificarOT(ordenTrabajo);
+        //return "modificar_ordenTrabajo.xhtml";
+        return "modificar_ordenTrabajo.xhtml";
     }
 
 }

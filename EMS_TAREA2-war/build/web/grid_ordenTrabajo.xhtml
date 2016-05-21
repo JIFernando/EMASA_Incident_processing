@@ -110,7 +110,7 @@
                 <p:column >
                     <p:commandButton value = "Mostrar" id="mostrar_ot" action="#{mostrarOrdenTrabajo.capturarYMostrarOrdenTrabajo(ordenTrabajo_filtro)}" style="margin-left: 7px;"/><br/>
                     <p:commandButton value = "Modificar" id="modificar_ot" action="#{mostrarOrdenTrabajo.capturarYEditar(ordenTrabajo_filtro)}" style="margin-left: 7px;"/><br/>
-                    <p:commandButton value = "Borrar" id="borrar_ot" action="OTborrada.xhtml" style="margin-left: 7px;"/>
+                    <p:commandButton value = "Borrar" id="borrar_ot" action="#{mostrarOrdenTrabajo.eliminarOT(ordenTrabajo_filtro)}" style="margin-left: 7px;"/>
                 </p:column>
             </p:dataTable>
             <br/>
