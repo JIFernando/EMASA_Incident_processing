@@ -24,9 +24,9 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     private EntityManager em;
 
     /**
-     * 
+     *
      * Devuelve una lista con todos los avisos creados
-     * 
+     *
      * @return
      */
     @Override
@@ -36,7 +36,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     }
 
     /**
-     * 
+     *
      * @param empleado
      * @throws EmasaException
      */
@@ -46,9 +46,9 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     }
 
     /**
-     * 
+     *
      * Inserta un aviso en la base de datos
-     * 
+     *
      * @param aviso
      */
     @Override
@@ -60,7 +60,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     /**
      *
      * Modifica un aviso que ya existe en la base de datos
-     * 
+     *
      * @param aviso
      */
     @Override
@@ -72,7 +72,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     /**
      *
      * Elimina un aviso de la base de datos
-     * 
+     *
      * @param aviso
      */
     @Override
@@ -98,25 +98,49 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
     @Override
     public OrdenTrabajo mostrarOT(OrdenTrabajo ot) {
+        //compruebaOT(ot);
         OrdenTrabajo o = em.find(OrdenTrabajo.class, ot.getId_OT());
         return o;
     }
 
     @Override
     public void borrarOT(OrdenTrabajo ot) {
+        //compruebaOT(ot);
         em.remove(em.merge(ot));
     }
 
+    /*@Override
+    private void compruebaOT(OrdenTrabajo ot) throws otException{
+        OrdenTrabajo u2 = em.find(OrdenTrabajo.class, ot);
+        
+        if (u2 == null) {
+            throw new otException();
+        }
+    }*/
     @Override
     public Brigada obtenerBrigada(Integer id) {
         Brigada sup = em.find(Brigada.class, id);
-        
+
         return sup;
     }
+
     @Override
     public Supervisor obtenerSupervisor(Integer id) {
         Supervisor sup = em.find(Supervisor.class, id);
-        
+
         return sup;
     }
+
+    @Override
+    public List<Brigada> getBrigadas() {
+        List<Brigada> res = em.createQuery("select b from Brigada b", Brigada.class).getResultList();
+        return res;
+    }
+
+    @Override
+    public List<Operario> getOperarios() {
+        List<Operario> res = em.createQuery("select o from Operario o", Operario.class).getResultList();
+        return res;
+    }
+
 }
