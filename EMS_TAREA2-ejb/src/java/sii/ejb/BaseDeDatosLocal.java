@@ -45,4 +45,9 @@ public interface BaseDeDatosLocal {
     public Brigada obtenerBrigada(Integer id);
 
     public Supervisor obtenerSupervisor(Integer id);
+
+    public List<Brigada> getBrigadas();
+
+    public List<Operario> getOperarios();
+
 }

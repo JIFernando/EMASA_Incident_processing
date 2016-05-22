@@ -14,8 +14,6 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import jpa.Brigada;
 
@@ -39,10 +37,10 @@ public class ControlFiltrosGridBrigadas implements Serializable {
         List<Brigada> resultado = new ArrayList<>();
 
         for (Brigada b : datos) {
-            if (cumpleFiltroIdBrigada(b) && cumpleFiltroContrata(b)) {
-                resultado.add(b);
+            if (cumpleFiltroIdBrigada(b) && cumpleFiltroContrata(b)) {               
+                resultado.add(b);               
             }
-        }
+        }        
         return resultado;
     }
 

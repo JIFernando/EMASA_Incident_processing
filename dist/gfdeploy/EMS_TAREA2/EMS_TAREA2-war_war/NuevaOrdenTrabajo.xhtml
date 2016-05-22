@@ -16,6 +16,7 @@
 
     <ui:define name="contenido">
         <h:form>
+            <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
             <p:accordionPanel multiple="true">
                 <p:tab title="Datos principales">
                     <div class="row">

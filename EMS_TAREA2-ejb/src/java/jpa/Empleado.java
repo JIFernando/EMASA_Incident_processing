@@ -22,27 +22,39 @@ import javax.persistence.InheritanceType;
 import static javax.persistence.InheritanceType.JOINED;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
 @Inheritance(strategy = JOINED)
 public class Empleado implements Serializable {
-    
+
     //  NUEVO CÓDIGO
-    
-    public Empleado () {
+    public Empleado() {
         this.nombre = "";
         this.apellido1 = "";
         this.apellido2 = "";
         this.password = "";
     }
-    
-    public String getNombreCompleto () {
-        return nombre == null && apellido1 == null && apellido2 == null ? " " : nombre + " " + apellido1 + " " + apellido2;
-    }
-    
-    //  FIN NUEVO CÓDIGO
 
+    public String getNombreCompleto() {
+        String nombre, apellido1, apellido2;
+        if (this.nombre == null) {
+            nombre = "";
+        } else {
+            nombre = this.nombre;
+        }
+        if (this.apellido1 == null) {
+            apellido1 = "";
+        } else {
+            apellido1 = this.apellido1;
+        }
+        if (this.apellido2 == null) {
+            apellido2 = "";
+        } else {
+            apellido2 = this.apellido2;
+        }
+        return nombre + " " + apellido1 + " " + apellido2;
+    }
+
+    //  FIN NUEVO CÓDIGO
     // private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -85,11 +97,9 @@ public class Empleado implements Serializable {
         return "emasa.Empleado[ id=" + getId_empl() + " ]";
     }
 
-    
     /**
      * *************GETTERS Y SETTERS**************
      */
-
     public List<Aviso> getAvisos() {
         return avisos;
     }
