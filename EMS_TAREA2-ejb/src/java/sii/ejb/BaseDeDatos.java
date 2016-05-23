@@ -143,4 +143,9 @@ public class BaseDeDatos implements BaseDeDatosLocal {
         return res;
     }
 
+    @Override
+    public List<Empleado> getEmpleados() {
+        List<Empleado> res = em.createQuery("select e from Empleado e", Empleado.class).getResultList();
+        return res;
+    }
 }

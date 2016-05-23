@@ -49,5 +49,6 @@ public interface BaseDeDatosLocal {
     public List<Brigada> getBrigadas();
 
     public List<Operario> getOperarios();
-
+    
+    public List<Empleado> getEmpleados();
 }

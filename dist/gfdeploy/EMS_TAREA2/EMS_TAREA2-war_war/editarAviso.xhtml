@@ -67,7 +67,7 @@
                                 </h:selectOneMenu>
                             </div>
                         </c:if>
-                        <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
+                        <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
                             <div class="col-md-2">
                                 <p:outputLabel for="estado" value="" />
                                 <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" disabled="true" style="width:120px">
@@ -90,7 +90,7 @@
                                 </h:selectOneMenu>
                             </div>
                         </c:if>
-                        <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
+                        <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
                             <div class="col-md-3">
                                 <p:outputLabel for="prioridad" value="" />
                                 <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
@@ -117,7 +117,7 @@
                             </div>
                         </c:if>
 
-                        <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
+                        <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
                             <div class="col-md-3">
                                 <p:outputLabel for="supervisor" value="" />
                                 <h:selectOneMenu id="supervisor" disabled="true">

@@ -8,6 +8,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
+import jpa.Empleado;
 
 /**
  *

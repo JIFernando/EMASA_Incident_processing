@@ -67,6 +67,11 @@ public class Empleado implements Serializable {
     private String tipo_horario;
     private Long salario;
 
+    public enum Rol {
+        SUPERVISOR, CAPATAZ, OPERARIO
+    }
+    private Rol rol;
+
     //  Relación de uno a muchos entre EMPLEADOS Y AVISO
     @OneToMany(mappedBy = "empleado")
     private List<Aviso> avisos;
@@ -234,4 +239,11 @@ public class Empleado implements Serializable {
         this.salario = salario;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 }

@@ -221,7 +221,7 @@
         <br/>
         <form action="mailto:anonimo@mail.com" method="post">
             <div align ="center" >
-                <c:if test="#{controlAutorizacion.empleado.rol == 'NORMAL'}">
+                <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
                     <input class="boton" type="submit" value="Petición de reasignación"></input>
                 </c:if>
             </div>
