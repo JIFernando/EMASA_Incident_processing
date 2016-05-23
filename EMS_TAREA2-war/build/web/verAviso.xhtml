@@ -109,7 +109,7 @@
                 </p:tab>
 
                 <p:tab title="Órdenes de trabajo">
-                    <p:dataTable value="#{listaDeOrdenTrabajo.datos}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable value="#{listaDeOrdenTrabajo.obtenerOTsVinculadas(mostrarAviso.aviso)}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Orden de trabajo">
                             <h:outputText value="#{orden.id_OT}" />
                         </p:column>
@@ -133,24 +133,30 @@
                 </p:tab>
 
                 <p:tab title="Avisos vinculados">
-                    <p:dataTable value="#{listaAvisos.listaAvisos}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
-                        <p:column headerText="Aviso">
-                            <h:outputText value="#{lista.id_aviso}" />
-                        </p:column>
+                    <!--<c:choose>
+                        <c:when test="${mostrarAviso.aviso.avisoEnlazado != null}">-->
+                            <p:dataTable value="#{mostrarAviso.aviso.avisoEnlazado}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
+                                <p:column headerText="Aviso">
+                                    <h:outputText value="#{lista.id_aviso}" />
+                                </p:column>
 
-                        <p:column headerText="Inicio avería">
-                            <h:outputText value="#{lista.inic_Averia}" />
-                        </p:column>
+                                <p:column headerText="Inicio avería">
+                                    <h:outputText value="#{lista.inic_Averia}" />
+                                </p:column>
 
-                        <p:column headerText="Fin avería">
-                            <h:outputText value="#{lista.fin_averia}" />
-                        </p:column>
+                                <p:column headerText="Fin avería">
+                                    <h:outputText value="#{lista.fin_averia}" />
+                                </p:column>
 
-                        <p:column headerText="Brigada">
-                            <h:outputText value="#{lista.brigada}" />
-                        </p:column>
-                    </p:dataTable><br/>
+                                <p:column headerText="Brigada">
+                                    <h:outputText value="#{lista.brigada}" />
+                                </p:column>
 
+                            </p:dataTable><br/>
+                    <!--    </c:when>
+                        <c:otherwise> No hay avisos enlazados.</c:otherwise>
+                    
+                    </c:choose> -->
                     <div align="center">
                         <a href="nuevo_aviso_vinculado.xhtml" id="nuevoAvisoVinculado" class="boton">Nuevo aviso vinculado</a>
                     </div>

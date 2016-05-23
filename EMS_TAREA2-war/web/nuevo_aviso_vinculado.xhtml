@@ -142,9 +142,9 @@
             </div><br/>
 
             <div class="row" style="margin-left:19%">
-                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{listaDeAvisos.crearAviso(nuevoAviso.aviso.id_aviso, calendarView.date3, calendarView.date4,
+                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.aviso.id_aviso, calendarView.date3, calendarView.date4,
                                                                                            nuevoAviso.aviso.ubicacion, nuevoAviso.aviso.coordenada, nuevoAviso.aviso.observaciones,
-                                                                                           nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado)}"/>
+                                                                                           nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado, mostrarAviso.aviso)}"/>
                 <div class="col-md-1"></div>
                 <h:commandButton type="reset" id="reset" styleClass="boton" value="Reiniciar" style="margin-top:5px;"/>
                 <div class="col-md-1"></div>

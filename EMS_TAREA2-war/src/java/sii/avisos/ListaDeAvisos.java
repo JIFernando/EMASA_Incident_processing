@@ -13,6 +13,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
+import jpa.Empleado;
+import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
 
 /**
@@ -72,7 +74,10 @@ public class ListaDeAvisos implements Serializable {
         datos = bdl.getAvisos();
         return datos;
     }
-
+//    public List<Aviso> getAvisosVinculados(Aviso avs) {
+//        //List<Aviso> avisos = bdl.getAvisos();
+//        return avs.getAvisoEnlazado();
+//    }
     public void setDatos(List<Aviso> datos) {
         this.datos = datos;
     }
@@ -81,7 +86,7 @@ public class ListaDeAvisos implements Serializable {
         this.datos.add(a);
     }
 
-    public String crearAviso(int id, Date fechaInicio, Date fechaFinal, String ubicacion, String coordenadas, String observaciones, Aviso.Prioridad prioridad, Aviso.Estado estado) {
+    public String crearAvisoVinculado(int id, Date fechaInicio, Date fechaFinal, String ubicacion, String coordenadas, String observaciones, Aviso.Prioridad prioridad, Aviso.Estado estado, Aviso vin) {
         Date fecha_creacion = new Date();
 
         Aviso a = new Aviso();
@@ -94,9 +99,29 @@ public class ListaDeAvisos implements Serializable {
         a.setObservaciones(observaciones);
         a.setPrioridad(prioridad);
         a.setEstado(estado);
-        a.setSupervisor(null);
-
-        datos.add(a);
+        
+        Supervisor sup = bdl.obtenerSupervisor(1);
+        a.setSupervisor(sup);
+        if( vin.getAvisoEnlazado() == null){
+            List<Aviso> avisosVincu2 = new ArrayList<>();
+            avisosVincu2.add(a);
+            vin.setAvisoEnlazado(avisosVincu2);
+        }else{
+            List<Aviso> avi = vin.getAvisoEnlazado();
+            avi.add(a);
+            vin.setAvisoEnlazado(avi);
+        }
+        
+        
+        List<Aviso> avisosVincu = new ArrayList<>();
+        avisosVincu.add(vin);
+        a.setAvisoEnlazado(avisosVincu);
+        
+        
+        // a.setSupervisor(null);
+        bdl.insertarAviso(a);
+        bdl.modificarAviso(vin);
+        //datos.add(a);
 
         return "grid_avisos.xhtml";
     }

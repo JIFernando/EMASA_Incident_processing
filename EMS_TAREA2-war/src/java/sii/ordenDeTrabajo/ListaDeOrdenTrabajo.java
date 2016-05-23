@@ -55,6 +55,14 @@ public class ListaDeOrdenTrabajo implements Serializable {
         return datos;
     }
 
+    public List<OrdenTrabajo> obtenerOTsVinculadas(Aviso a){
+        List<OrdenTrabajo> datosAvisos = new ArrayList<>();
+        for (OrdenTrabajo ot : datos){
+            if (ot.getAviso().getId_aviso() == a.getId_aviso())
+                datosAvisos.add(ot);
+        }
+        return datosAvisos;
+    }
     public Brigada getBrigada(Integer id) {
         return bdl.obtenerBrigada(id);
     }

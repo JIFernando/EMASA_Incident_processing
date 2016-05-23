@@ -80,7 +80,10 @@ public class NuevaOrdenTrabajo {
         Date d = new Date();
         ot.setFecha_creac(d);
 //        ot.setTaller(taller);
-        ot.setUbicacion(calle+" "+ localidad +" " + cp + " " + ut);        
+        ubicacion = calle +" "+ localidad +" " + cp + " " + ut;
+        if(ubicacion != null){
+            ot.setUbicacion(ubicacion);        
+        }
         ot.setEstado(this.stringEstado(this.estado_id));
         ot.setPrioridad(this.stringPrioridad(this.prioridad_id));
         
@@ -88,7 +91,9 @@ public class NuevaOrdenTrabajo {
         ot = new OrdenTrabajo();
         return "OTcreado.xhtml";
     }
-    
+    public <T> T nvl(T arg0, T arg1) {
+        return (arg0 == null)?arg1:arg0;
+    }
     private Estado stringEstado(String e) {
         Estado res;
         switch (e) {
