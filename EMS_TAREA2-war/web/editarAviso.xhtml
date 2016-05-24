@@ -41,10 +41,11 @@
                                 <h:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" />
                             </c:if>
                         </div> -->
-                        <div class="col-md-3">
-                            <c:if test="#{mostrarAviso.aviso.brigada == null}">
-                                <h:outputLabel value="Brigada: Sin asignar" />
-                            </c:if>
+                        <div class="col-md-1">
+                            <h:outputLabel value="Brigada" />
+                        </div>
+                        <div class="col-md-2">
+                            <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true" />
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Fin avería" />
