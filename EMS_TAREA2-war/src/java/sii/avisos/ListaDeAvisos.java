@@ -124,5 +124,5 @@ public class ListaDeAvisos implements Serializable {
         //datos.add(a);
 
         return "grid_avisos.xhtml";
-    }
+    }   
 }

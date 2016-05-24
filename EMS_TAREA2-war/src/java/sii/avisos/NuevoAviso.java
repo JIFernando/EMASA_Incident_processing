@@ -5,6 +5,9 @@
  */
 package sii.avisos;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -26,7 +29,7 @@ public class NuevoAviso {
     private Estado estado;
     private Prioridad prioridad;
 
-    /*Aquí vamos a declara un Integer que guardará el ID de la brigada
+    /*Aquí vamos a declarar un Integer que guardará el ID de la brigada
     Tendremos que hacer un método que, a partir de ese ID, busque el objeto
     Brigada correspondiente dentro de la BD y lo asigne al aviso*/
     private Integer id_brigada;
@@ -34,7 +37,7 @@ public class NuevoAviso {
     @Inject
     ListaDeAvisos lda;
     private Aviso aviso;
-    
+
     @EJB
     BaseDeDatosLocal bdl;
 
@@ -51,14 +54,24 @@ public class NuevoAviso {
     }
 
     public String guardarAviso() {
-        Supervisor sup = bdl.obtenerSupervisor(1);
+        List<Supervisor> supervisores = bdl.getSupervisores();
+        int num = supervisores.size();
+
+        Random rnd = new Random();
+        int aleatorio = rnd.nextInt(num);
+
+        Supervisor sup = supervisores.get(aleatorio);
         aviso.setSupervisor(sup);
-        
+
+        aviso.setFecha_creacion(new Date());
+
         aviso.setPrioridad(prioridad);
         aviso.setEstado(estado);
-        
+
+        aviso.setId_aviso(tomarMaximoId() + 1);
+
+        System.out.println("Id en NuevoAviso: " + aviso.getId_aviso());
         bdl.insertarAviso(aviso);
-        // lda.addDatos(aviso);
 
         return "grid_avisos.xhtml";
     }
@@ -95,4 +108,23 @@ public class NuevoAviso {
         this.id_brigada = id_brigada;
     }
 
+    public BaseDeDatosLocal getBdl() {
+        return bdl;
+    }
+
+    public void setBdl(BaseDeDatosLocal bdl) {
+        this.bdl = bdl;
+    }
+
+    public Integer tomarMaximoId() {
+        List<Aviso> avisos = lda.getDatos();
+        int maximo = Integer.MIN_VALUE;
+        for (Aviso a : avisos) {
+            if (maximo < a.getId_aviso()) {
+                maximo = a.getId_aviso();
+            }
+        }
+        System.out.println("Nuevo id: " + (maximo+1));
+        return maximo;
+    }
 }

@@ -111,6 +111,7 @@ public class Aviso implements Serializable {
 
     /**
      * ***************GETTERS Y SETTERS****************
+     * @return 
      */
     public Integer getId_aviso() {
         return id_aviso;

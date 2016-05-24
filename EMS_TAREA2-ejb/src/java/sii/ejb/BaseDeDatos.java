@@ -54,6 +54,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public void insertarAviso(Aviso aviso) {
         // throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("NUEVO ID: "+ aviso.getId_aviso());
         em.persist(aviso);
     }
 
@@ -146,6 +147,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public List<Empleado> getEmpleados() {
         List<Empleado> res = em.createQuery("select e from Empleado e", Empleado.class).getResultList();
+        return res;
+    }
+
+    @Override
+    public List<Supervisor> getSupervisores() {
+        List<Supervisor> res = em.createQuery("select e from Supervisor e", Supervisor.class).getResultList();
         return res;
     }
 }
