@@ -25,7 +25,7 @@
                             <h:outputLabel value="ID" />
                         </div>
                         <div class="col-md-2">
-                            <h:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
+                            <p:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Inicio avería" />
@@ -40,13 +40,28 @@
                             <h:outputLabel value="Brigada" />
                         </div>
                         <div class="col-md-2">
-                            <h:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true"/>
+                            <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Fin avería" />
                         </div>
                         <div class="col-md-3">
                             <p:calendar id="button2" value="#{mostrarAviso.aviso.fin_averia}" showOn="button"  disabled="true"/>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-md-1">
+                            <h:outputLabel value="Ciudadano originador" />
+                        </div>
+                        <div class="col-md-2">
+                            <p:inputText value="#{mostrarAviso.aviso.ciudadano.id_ciudadano}" disabled="true" />
+                        </div>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Empleado originador" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText value="#{mostrarAviso.aviso.empleado.id_empl}" disabled="true" />
                         </div>
                     </div>
 
@@ -79,15 +94,44 @@
                             <p:outputLabel value="Supervisor"/>
                         </div>
 
-                        <div class="col-md-3">
-                            <p:outputLabel for="supervisor" value="" />
-                            <h:selectOneMenu id="supervisor" disabled="true">
-                                <f:selectItem itemLabel="Supervisor 1" />
-                                <f:selectItem itemLabel="Supervisor 2"/>
-                                <f:selectItem itemLabel="Supervisor 3" />
-                            </h:selectOneMenu>
+                        <div class="col-md-2">
+                            <p:inputText value="#{mostrarAviso.aviso.supervisor.id_empl}" disabled="true" />
                         </div>
                     </div>
+                </p:tab>
+                
+                <p:tab title="Ciudadanos">
+                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{lista_ciudadanos.id_ciudadano}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{lista_ciudadanos.nombre}" />
+                        </p:column>
+                        <p:column headerText="Primer apellido">
+                            <h:outputText value="#{lista_ciudadanos.apellido1}" />
+                        </p:column>
+                        <p:column headerText="Email">
+                            <h:outputText value="#{lista_ciudadanos.email}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+                
+                <p:tab title="Empleados">
+                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{lista_empleados.id_empl}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{lista_empleados.nombre}" />
+                        </p:column>
+                        <p:column headerText="Primer apellido">
+                            <h:outputText value="#{lista_empleados.apellido1}" />
+                        </p:column>
+                        <p:column headerText="Rol">
+                            <h:outputText value="#{lista_empleados.rol}" />
+                        </p:column>
+                    </p:dataTable>
                 </p:tab>
 
                 <p:tab title="Diagnóstico">
@@ -135,24 +179,24 @@
                 <p:tab title="Avisos vinculados">
                     <!--<c:choose>
                         <c:when test="${mostrarAviso.aviso.avisoEnlazado != null}">-->
-                            <p:dataTable value="#{mostrarAviso.aviso.avisoEnlazado}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
-                                <p:column headerText="Aviso">
-                                    <h:outputText value="#{lista.id_aviso}" />
-                                </p:column>
+                    <p:dataTable value="#{mostrarAviso.aviso.avisoEnlazado}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Aviso">
+                            <h:outputText value="#{lista.id_aviso}" />
+                        </p:column>
 
-                                <p:column headerText="Inicio avería">
-                                    <h:outputText value="#{lista.inic_Averia}" />
-                                </p:column>
+                        <p:column headerText="Inicio avería">
+                            <h:outputText value="#{lista.inic_Averia}" />
+                        </p:column>
 
-                                <p:column headerText="Fin avería">
-                                    <h:outputText value="#{lista.fin_averia}" />
-                                </p:column>
+                        <p:column headerText="Fin avería">
+                            <h:outputText value="#{lista.fin_averia}" />
+                        </p:column>
 
-                                <p:column headerText="Brigada">
-                                    <h:outputText value="#{lista.brigada}" />
-                                </p:column>
+                        <p:column headerText="Brigada">
+                            <h:outputText value="#{lista.brigada}" />
+                        </p:column>
 
-                            </p:dataTable><br/>
+                    </p:dataTable><br/>
                     <!--    </c:when>
                         <c:otherwise> No hay avisos enlazados.</c:otherwise>
                     

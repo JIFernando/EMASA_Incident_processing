@@ -104,13 +104,14 @@
                 <p:column headerText="Estado">
                     <h:outputText value="#{avisos_filtro.estado}" />
                 </p:column>
-                <p:column headerText="Ciudadano">
-                    <h:outputText value="Ciudadano1" />
+                <p:column headerText="Originador">
+                    <h:outputText value="#{avisos_filtro.ciudadano.email}" />
                 </p:column>
-                <p:column >
-                    <form action="mailto:anonimo@mail.com" method="post">
+                <p:column>
+                    <form action="mailto:#{avisos_filtro.ciudadano.email}" method="post">
                         <input class="boton" type="submit" value="Avisar"></input>
-                    </form>  </p:column>
+                    </form>
+                </p:column>
             </p:dataTable>
             <br/>
             <br/>

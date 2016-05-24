@@ -124,14 +124,28 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
         return sup;
     }
-    
+
     @Override
     public Supervisor obtenerSupervisor(Integer id) {
         Supervisor sup = em.find(Supervisor.class, id);
-        
+
         return sup;
     }
     
+    @Override
+    public Empleado obtenerEmpleado(Integer id){
+        Empleado emp = em.find(Empleado.class, id);
+        
+        return emp;
+    }
+    
+    @Override
+    public Ciudadano obtenerCiudadano(Integer id) {
+        Ciudadano ciu = em.find(Ciudadano.class, id);
+        
+        return ciu;
+    }
+
     @Override
     public List<Supervisor> getSupervisores() {
         List<Supervisor> res = em.createQuery("select s from Supervisor s", Supervisor.class).getResultList();
@@ -153,6 +167,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public List<Empleado> getEmpleados() {
         List<Empleado> res = em.createQuery("select e from Empleado e", Empleado.class).getResultList();
+        return res;
+    }
+
+    public List<Ciudadano> getCiudadanos() {
+        List<Ciudadano> res = em.createQuery("select c from Ciudadano c", Ciudadano.class).getResultList();
         return res;
     }
 }
