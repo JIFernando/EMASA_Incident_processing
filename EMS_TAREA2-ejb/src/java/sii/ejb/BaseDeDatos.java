@@ -5,6 +5,7 @@
  */
 package sii.ejb;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -124,12 +125,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
         return sup;
     }
-
+    
     @Override
     public Supervisor obtenerSupervisor(Integer id) {
         Supervisor sup = em.find(Supervisor.class, id);
-
+        
         return sup;
+    }
+    
+    @Override
+    public List<Supervisor> getSupervisores() {
+        List<Supervisor> res = em.createQuery("select s from Supervisor s", Supervisor.class).getResultList();
+        return res;
     }
 
     @Override
@@ -147,12 +154,6 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public List<Empleado> getEmpleados() {
         List<Empleado> res = em.createQuery("select e from Empleado e", Empleado.class).getResultList();
-        return res;
-    }
-
-    @Override
-    public List<Supervisor> getSupervisores() {
-        List<Supervisor> res = em.createQuery("select e from Supervisor e", Supervisor.class).getResultList();
         return res;
     }
 }

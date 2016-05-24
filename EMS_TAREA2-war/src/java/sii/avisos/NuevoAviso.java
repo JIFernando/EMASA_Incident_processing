@@ -64,7 +64,6 @@ public class NuevoAviso {
         aviso.setSupervisor(sup);
 
         aviso.setFecha_creacion(new Date());
-
         aviso.setPrioridad(prioridad);
         aviso.setEstado(estado);
 
