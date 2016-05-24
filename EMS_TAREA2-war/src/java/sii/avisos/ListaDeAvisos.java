@@ -78,6 +78,7 @@ public class ListaDeAvisos implements Serializable {
 //        //List<Aviso> avisos = bdl.getAvisos();
 //        return avs.getAvisoEnlazado();
 //    }
+
     public void setDatos(List<Aviso> datos) {
         this.datos = datos;
     }
@@ -99,25 +100,23 @@ public class ListaDeAvisos implements Serializable {
         a.setObservaciones(observaciones);
         a.setPrioridad(prioridad);
         a.setEstado(estado);
-        
+
         Supervisor sup = bdl.obtenerSupervisor(1);
         a.setSupervisor(sup);
-        if( vin.getAvisoEnlazado() == null){
+        if (vin.getAvisoEnlazado() == null) {
             List<Aviso> avisosVincu2 = new ArrayList<>();
             avisosVincu2.add(a);
             vin.setAvisoEnlazado(avisosVincu2);
-        }else{
+        } else {
             List<Aviso> avi = vin.getAvisoEnlazado();
             avi.add(a);
             vin.setAvisoEnlazado(avi);
         }
-        
-        
+
         List<Aviso> avisosVincu = new ArrayList<>();
         avisosVincu.add(vin);
         a.setAvisoEnlazado(avisosVincu);
-        
-        
+
         // a.setSupervisor(null);
         bdl.insertarAviso(a);
         bdl.modificarAviso(vin);

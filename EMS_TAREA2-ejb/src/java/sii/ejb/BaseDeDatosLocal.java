@@ -43,12 +43,14 @@ public interface BaseDeDatosLocal {
     public void borrarOT(OrdenTrabajo ot);
 
     public Brigada obtenerBrigada(Integer id);
-
+    
     public Supervisor obtenerSupervisor(Integer id);
+    
+    public List<Supervisor> getSupervisores();
 
     public List<Brigada> getBrigadas();
 
     public List<Operario> getOperarios();
-    
+
     public List<Empleado> getEmpleados();
 }

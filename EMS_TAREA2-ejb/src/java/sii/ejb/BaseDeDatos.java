@@ -5,6 +5,7 @@
  */
 package sii.ejb;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -54,6 +55,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public void insertarAviso(Aviso aviso) {
         // throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("NUEVO ID: "+ aviso.getId_aviso());
         em.persist(aviso);
     }
 
@@ -123,12 +125,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
         return sup;
     }
-
+    
     @Override
     public Supervisor obtenerSupervisor(Integer id) {
         Supervisor sup = em.find(Supervisor.class, id);
-
+        
         return sup;
+    }
+    
+    @Override
+    public List<Supervisor> getSupervisores() {
+        List<Supervisor> res = em.createQuery("select s from Supervisor s", Supervisor.class).getResultList();
+        return res;
     }
 
     @Override
