@@ -104,9 +104,8 @@
                 <p:column headerText="Estado">
                     <h:outputText value="#{avisos_filtro.estado}" />
                 </p:column>
-                <p:column headerText="Ciudadano">
+                <p:column headerText="Originador">
                     <h:outputText value="#{avisos_filtro.ciudadano.email}" />
-                    <!-- <h:outputText value="Ciudadano1" /> -->
                 </p:column>
                 <p:column>
                     <form action="mailto:#{avisos_filtro.ciudadano.email}" method="post">

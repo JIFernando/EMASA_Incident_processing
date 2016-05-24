@@ -16,7 +16,7 @@ public class MostrarAviso implements Serializable {
     BaseDeDatosLocal bdl;
     
     Aviso aviso;
-
+    
     public MostrarAviso() {
 
     }
@@ -39,6 +39,9 @@ public class MostrarAviso implements Serializable {
     }
 
     public String editarAviso() {
+        Supervisor sup = bdl.obtenerSupervisor(aviso.getSupervisor().getId_empl());
+        aviso.setSupervisor(sup);
+        
         bdl.modificarAviso(aviso);
         
         return "grid_avisos.xhtml";

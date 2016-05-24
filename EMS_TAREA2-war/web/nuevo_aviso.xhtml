@@ -50,6 +50,20 @@
                     </div>
                     <div class="row" style="margin-top:5px">
                         <div class="col-md-1">
+                            <h:outputLabel value="Ciudadano originador" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText value="#{nuevoAviso.id_ciudadano}" />
+                        </div>
+                        <div class="col-md-3">
+                            <h:outputLabel value="Empleado originador" />
+                        </div>
+                        <div class="col-md-5">
+                            <p:inputText value="#{nuevoAviso.id_empleado}" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-md-1">
                             <p:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-3">
@@ -114,6 +128,41 @@
                         </p:column>
                     </p:dataTable>
                 </p:tab>
+                
+                <p:tab title="Ciudadanos">
+                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{lista_ciudadanos.id_ciudadano}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{lista_ciudadanos.nombre}" />
+                        </p:column>
+                        <p:column headerText="Primer apellido">
+                            <h:outputText value="#{lista_ciudadanos.apellido1}" />
+                        </p:column>
+                        <p:column headerText="Email">
+                            <h:outputText value="#{lista_ciudadanos.email}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+                
+                <p:tab title="Empleados">
+                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{lista_empleados.id_empl}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{lista_empleados.nombre}" />
+                        </p:column>
+                        <p:column headerText="Primer apellido">
+                            <h:outputText value="#{lista_empleados.apellido1}" />
+                        </p:column>
+                        <p:column headerText="Rol">
+                            <h:outputText value="#{lista_empleados.rol}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+                
                 <p:tab title="Diagnóstico">
                     <div align="center">
                         <div class="row">

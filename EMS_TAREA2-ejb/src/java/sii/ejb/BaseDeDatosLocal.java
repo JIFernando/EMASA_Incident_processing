@@ -46,6 +46,10 @@ public interface BaseDeDatosLocal {
     
     public Supervisor obtenerSupervisor(Integer id);
     
+    public Empleado obtenerEmpleado(Integer id);
+    
+    public Ciudadano obtenerCiudadano(Integer id);
+    
     public List<Supervisor> getSupervisores();
 
     public List<Brigada> getBrigadas();
@@ -53,4 +57,6 @@ public interface BaseDeDatosLocal {
     public List<Operario> getOperarios();
 
     public List<Empleado> getEmpleados();
+    
+    public List<Ciudadano> getCiudadanos();
 }

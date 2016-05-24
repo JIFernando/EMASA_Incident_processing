@@ -25,7 +25,7 @@
                             <h:outputLabel value="ID" />
                         </div>
                         <div class="col-md-2">
-                            <h:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
+                            <p:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Inicio avería" />
@@ -53,6 +53,22 @@
                             <p:calendar id="button2" value="#{mostrarAviso.aviso.fin_averia}" showOn="button" />
                         </div>
                     </div>
+
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-md-1">
+                            <h:outputLabel value="Ciudadano originador" />
+                        </div>
+                        <div class="col-md-2">
+                            <p:inputText value="#{mostrarAviso.aviso.ciudadano.id_ciudadano}" disabled="true" />
+                        </div>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Empleado originador" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText value="#{mostrarAviso.aviso.empleado.id_empl}" disabled="true" />
+                        </div>
+                    </div>
+
                     <div class="row" style="margin-top:5px;">
                         <div class="col-md-1">
                             <p:outputLabel value="Estado" />
@@ -107,6 +123,7 @@
                         </div>
 
                         <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
+                            <!-- 
                             <div class="col-md-3">
                                 <p:outputLabel for="supervisor" value="" />
                                 <h:selectOneMenu id="supervisor">
@@ -115,9 +132,14 @@
                                     <f:selectItem itemLabel="Supervisor 3" />
                                 </h:selectOneMenu>
                             </div>
+                            -->
+                            <div class="col-md-3">
+                                <p:inputText value="#{mostrarAviso.aviso.supervisor.id_empl}" />
+                            </div>
                         </c:if>
 
                         <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
+                            <!-- 
                             <div class="col-md-3">
                                 <p:outputLabel for="supervisor" value="" />
                                 <h:selectOneMenu id="supervisor" disabled="true">
@@ -126,8 +148,47 @@
                                     <f:selectItem itemLabel="Supervisor 3" />
                                 </h:selectOneMenu>
                             </div>
+                            -->
+
+                            <div class="col-md-3">
+                                <p:inputText value="#{mostrarAviso.aviso.supervisor.id_empl}" disabled="true" />
+                            </div>
                         </c:if>
                     </div>
+                </p:tab>
+                
+                <p:tab title="Ciudadanos">
+                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{lista_ciudadanos.id_ciudadano}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{lista_ciudadanos.nombre}" />
+                        </p:column>
+                        <p:column headerText="Primer apellido">
+                            <h:outputText value="#{lista_ciudadanos.apellido1}" />
+                        </p:column>
+                        <p:column headerText="Email">
+                            <h:outputText value="#{lista_ciudadanos.email}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+                
+                <p:tab title="Empleados">
+                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{lista_empleados.id_empl}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{lista_empleados.nombre}" />
+                        </p:column>
+                        <p:column headerText="Primer apellido">
+                            <h:outputText value="#{lista_empleados.apellido1}" />
+                        </p:column>
+                        <p:column headerText="Rol">
+                            <h:outputText value="#{lista_empleados.rol}" />
+                        </p:column>
+                    </p:dataTable>
                 </p:tab>
 
                 <p:tab title="Diagnóstico">
