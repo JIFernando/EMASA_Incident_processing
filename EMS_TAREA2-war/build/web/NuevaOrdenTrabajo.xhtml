@@ -17,7 +17,7 @@
     <ui:define name="contenido">
         <h:form>
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
-            <p:accordionPanel multiple="true">
+            <p:accordionPanel>
                 <p:tab title="Datos principales">
                     <div class="row">
                         <div class="col-md-3">
@@ -102,11 +102,11 @@
                             </h:selectOneMenu>  
                         </div>
                     </div>
-                    
+
                     <div class="row" style="height:5px">
 
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-3">
                             <h:outputLabel value="Trabajo" />
@@ -158,22 +158,43 @@
                         </p:column>
                     </p:dataTable>
                 </p:tab>               
-                <p:tab title="Ubicación">                    
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:outputLabel value="Calle" styleClass="combi" />
-                        <p:inputText  id ="calle" value="#{nuevaOrdenTrabajo.calle}"/>
-                        <h:outputLabel value="Localidad" />
-                        <p:inputText  id ="localidad" value="#{nuevaOrdenTrabajo.localidad}"/>
-                        <h:outputLabel value="CP"/>
-                        <p:inputText  id = "cp" value="#{nuevaOrdenTrabajo.cp}"/>
-                        <h:outputLabel value="Ubicación Técnica" />
-                        <p:inputText  id = "ut" value="#{nuevaOrdenTrabajo.ut}" />
-                    </h:panelGrid> 
-
+                <p:tab title="Ubicación">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h:outputLabel value="Calle" styleClass="combi" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText  id ="calle" value="#{nuevaOrdenTrabajo.calle}"/>
+                        </div>
+                    </div>   
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-3">
+                            <h:outputLabel value="Localidad" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText  id ="localidad" value="#{nuevaOrdenTrabajo.localidad}"/>
+                        </div>
+                    </div> 
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-3">
+                            <h:outputLabel value="CP"/>
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText  id = "cp" value="#{nuevaOrdenTrabajo.cp}"/>
+                        </div>
+                    </div> 
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-3">
+                            <h:outputLabel value="Ubicación Técnica" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:inputText  id = "ut" value="#{nuevaOrdenTrabajo.ut}" />
+                        </div>
+                    </div> 
                 </p:tab>
 
                 <p:tab title="Observaciones">
-                    <div align="true">
+                    <div align="center">
                         <p:inputTextarea rows="5" cols="90" value="#{nuevaOrdenTrabajo.ot.observaciones}"/>
                     </div>
                 </p:tab>
@@ -182,9 +203,20 @@
             <br/>
 
             <div align="center">
-                <h:commandButton id="guardar" action="#{nuevaOrdenTrabajo.guardarOT()}" styleClass="boton" value="Guardar"/>
-                <h:commandButton id="reset" styleClass="boton" type="reset" value="Reiniciar" />
-                <a href="grid_ordenTrabajo.xhtml" class="boton" >Cancelar</a>
+                <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-1" style="margin-top:5px;">
+                        <h:commandButton id="guardar" action="#{nuevaOrdenTrabajo.guardarOT()}" styleClass="boton" value="Guardar"/>
+                    </div>
+                    <div class="col-md-1" style="margin-top:5px;">
+                        <h:commandButton id="reset" styleClass="boton" type="reset" value="Reiniciar" />
+                    </div>
+                    <div class="col-md-1" style="margin-top:5px;">
+                        <a href="grid_ordenTrabajo.xhtml" class="boton" >Cancelar</a>
+                    </div>
+                </div>
             </div>
         </h:form><br/><br/><br/><br/>
     </ui:define>

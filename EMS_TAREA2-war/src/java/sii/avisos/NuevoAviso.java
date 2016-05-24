@@ -69,12 +69,12 @@ public class NuevoAviso {
             Brigada bri = bdl.obtenerBrigada(id_brigada);
             aviso.setBrigada(bri);
         }
-        
+
         if (id_ciudadano != null) {
             Ciudadano ciu = bdl.obtenerCiudadano(id_ciudadano);
             aviso.setCiudadano(ciu);
         }
-        
+
         if (id_empleado != null) {
             Empleado emp = bdl.obtenerEmpleado(id_empleado);
             aviso.setEmpleado(emp);
@@ -83,6 +83,12 @@ public class NuevoAviso {
         aviso.setPrioridad(prioridad);
         aviso.setEstado(estado);
 
+        aviso.setPrioridad(prioridad);
+        aviso.setEstado(estado);
+
+        aviso.setId_aviso(tomarMaximoId() + 1);
+
+        System.out.println("Id en NuevoAviso: " + aviso.getId_aviso());
         bdl.insertarAviso(aviso);
 
         return "grid_avisos.xhtml";
@@ -152,5 +158,25 @@ public class NuevoAviso {
 
     public void setId_empleado(Integer id_empleado) {
         this.id_empleado = id_empleado;
+    }
+
+    public BaseDeDatosLocal getBdl() {
+        return bdl;
+    }
+
+    public void setBdl(BaseDeDatosLocal bdl) {
+        this.bdl = bdl;
+    }
+
+    public Integer tomarMaximoId() {
+        List<Aviso> avisos = lda.getDatos();
+        int maximo = Integer.MIN_VALUE;
+        for (Aviso a : avisos) {
+            if (maximo < a.getId_aviso()) {
+                maximo = a.getId_aviso();
+            }
+        }
+        System.out.println("Nuevo id: " + (maximo + 1));
+        return maximo;
     }
 }

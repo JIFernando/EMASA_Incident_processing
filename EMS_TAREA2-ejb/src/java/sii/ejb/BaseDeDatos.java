@@ -55,6 +55,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public void insertarAviso(Aviso aviso) {
         // throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("NUEVO ID: "+ aviso.getId_aviso());
         em.persist(aviso);
     }
 
