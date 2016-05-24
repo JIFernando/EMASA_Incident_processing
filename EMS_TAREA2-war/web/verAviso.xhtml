@@ -18,7 +18,7 @@
 
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
 
-            <p:accordionPanel multiple="true">
+            <p:accordionPanel>
                 <p:tab title="Resumen">
                     <div class="row">
                         <div class="col-md-1">
@@ -52,7 +52,7 @@
 
                     <div class="row" style="margin-top: 5px">
                         <div class="col-md-1">
-                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
+                            <p:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-2">
                             <p:outputLabel for="estado" value="" />
@@ -63,7 +63,7 @@
                             </h:selectOneMenu>
                         </div>
                         <div class="col-md-2">
-                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
+                            <p:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
@@ -209,10 +209,10 @@
                         <p:panelGrid columns="2">
                             <h:outputLabel value="Ubicación: " />
                             <h:inputText value="#{mostrarAviso.aviso.ubicacion}" disabled="true" />
-
                             <h:outputLabel value="Coordenadas: " />
                             <h:inputText value="#{mostrarAviso.aviso.coordenada}" disabled="true" />
                         </p:panelGrid>
+                        
                     </div><br/>
                 </p:tab>
             </p:accordionPanel><br/>

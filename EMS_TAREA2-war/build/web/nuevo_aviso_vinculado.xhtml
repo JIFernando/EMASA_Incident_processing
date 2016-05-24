@@ -16,52 +16,78 @@
     <ui:define name="contenido">
         <h:form id="nuevoAviso">
             <p:remoteCommand name="onload" action="#{controlFiltrosGridAvisos.resetear()}" autoRun="true" />
-            
-            <p:accordionPanel multiple="true">
+
+            <p:accordionPanel>
                 <p:tab title="Resumen">
-                    <div class="col-md-3">
-                        <h:outputLabel value="Aviso al que está vinculado" style="padding-right: 8px"/>
-                        <h:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
-                    </div>
-                    <!-- <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px"> -->
-                    <div class="col-md-9">
-                        <h:panelGrid columns="5">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h:outputLabel value="Aviso al que estÃ¡ vinculado" style="padding-right: 8px"/>
+                        </div>
+
+                        <div class="col-md-1">
+                            <p:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true" style="width:30px;"/>
+                        </div>
+
+                        <!-- <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px"> -->
+                        <div class="col-md-1">
                             <h:outputLabel value="ID" />
+                        </div>
+                        <div class="col-md-2">
                             <h:outputLabel value="#{nuevoAviso.tomarSiguienteId()}" />
-                            <h:outputLabel />
+                        </div>
+                        <div class="col-md-2">
                             <h:outputLabel value="Fecha de inicio" />
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
-                            </h:panelGrid>
+                        </div>
+                        <div class="col-md-3">
+                            <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                        </div>
 
-                            <h:outputLabel value="Brigada" />
-                            <h:inputText />
-                            <h:outputLabel />
-                            <h:outputLabel value="Fecha de finalización" />
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
-                            </h:panelGrid>
-
-                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                                <p:outputLabel for="estado" value="" />
-                                <p:selectOneMenu id="estado" value="#{nuevoAviso.aviso.estado}">
-                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
-                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
-                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                                </p:selectOneMenu>
-                            </h:panelGrid>
-                            <h:outputLabel value="" />
-                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                                <p:outputLabel for="prioridad" value="" />
-                                <p:selectOneMenu id="prioridad" value="#{nuevoAviso.aviso.prioridad}">
-                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                                </p:selectOneMenu>             
-                            </h:panelGrid>
-                        </h:panelGrid>
                     </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-1">
+                            <h:outputLabel value="Brigada" />
+                        </div>
+                        <div class="col-md-2">
+                            <p:inputText />
+                        </div>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Fecha de finalizaciÃ³n" />
+                        </div>
+                        <div class="col-md-3">
+                            <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-1">
+                            <p:outputLabel value="Estado" style="margin-left: 13px"/>
+                        </div>
+                        <div class="col-md-2">
+                            <p:outputLabel for="estado" value="" />
+                            <h:selectOneMenu id="estado" value="#{nuevoAviso.aviso.estado}">
+                                <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-md-1">
+                            <p:outputLabel value="Prioridad" style="margin-left: 13px"/>
+                        </div>
+                        <div class="col-md-3">
+                            <p:outputLabel for="prioridad" value="" />
+                            <h:selectOneMenu id="prioridad" value="#{nuevoAviso.aviso.prioridad}">
+                                <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
+                                <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+
                 </p:tab>
 
                 <p:tab title="Brigada">
@@ -105,11 +131,11 @@
                         </p:column>
                     </p:dataTable>
                 </p:tab>
-                <p:tab title="Diagnóstico">
+                <p:tab title="DiagnÃ³stico">
                     <div align="center">
                         <h:selectManyCheckbox id="diagnosticos">
                             <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
-                            <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
+                            <f:selectItem id="tuberia" itemLabel="TuberÃ­a rota" itemValue="2" />
                             <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
                             <f:selectItem id="desborde" itemLabel="Desborde de presa" itemValue="4" />
                             <f:selectItem id="canaleta" itemLabel="Canaleta rota" itemValue="5" />
@@ -119,15 +145,15 @@
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <h:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="90"/>
+                        <p:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="90"/>
                     </div>
                 </p:tab>
 
 
-                <p:tab title="Ubicación">
+                <p:tab title="UbicaciÃ³n">
                     <div align="center">
                         <p:panelGrid columns="2">
-                            <h:outputLabel value="Ubicación: " />
+                            <h:outputLabel value="UbicaciÃ³n: " />
                             <h:inputText value="#{nuevoAviso.aviso.ubicacion}"/>
 
                             <h:outputLabel value="Coordenadas: " />
@@ -140,15 +166,25 @@
             <div align="center">
                 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:340px;width:700px;'><div id='gmap_canvas' style='height:440px;width:700px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google map							</a></small></div><div><small><a href="https://botonmegusta.org">botonmegusta.org</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:11, center:new google.maps.LatLng(36.721261, - 4.421265500000004), mapTypeId: google.maps.MapTypeId.ROADMAP}; map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions); marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(36.721261, - 4.421265500000004)}); infowindow = new google.maps.InfoWindow({content:'Malaga, Spain'}); google.maps.event.addListener(marker, 'click', function(){infowindow.open(map, marker); }); infowindow.open(map, marker); }google.maps.event.addDomListener(window, 'load', init_map);</script>
             </div><br/>
+            <div align="center">
+                <div class="row">
+                    <div class="col-md-4">
+                        
+                    </div>
+                    <div class="col-md-1">
+                        <h:commandButton id="guardar" styleClass="boton" style="margin-top:5px;" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.tomarSiguienteId(), calendarView.date3, calendarView.date4,
+                                                                                                   nuevoAviso.aviso.ubicacion, nuevoAviso.aviso.coordenada, nuevoAviso.aviso.observaciones,
+                                                                                                   nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado, mostrarAviso.aviso)}"/>
 
-            <div class="row" style="margin-left:19%">
-                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.tomarSiguienteId(), calendarView.date3, calendarView.date4,
-                                                                                           nuevoAviso.aviso.ubicacion, nuevoAviso.aviso.coordenada, nuevoAviso.aviso.observaciones,
-                                                                                           nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado, mostrarAviso.aviso)}"/>
-                <div class="col-md-1"></div>
-                <h:commandButton type="reset" id="reset" styleClass="boton" value="Reiniciar" style="margin-top:5px;"/>
-                <div class="col-md-1"></div>
-                <h:commandButton id="cancelar" styleClass="boton" value="Cancelar" action="grid_avisos.xhtml" style="margin-top:5px;"/>
+                    </div>
+                    <div class="col-md-1">
+                        <h:commandButton type="reset" id="reset" styleClass="boton" value="Reiniciar" style="margin-top:5px;"/>
+
+                    </div>
+                    <div class="col-md-1">
+                        <h:commandButton id="cancelar" styleClass="boton" value="Cancelar" action="grid_avisos.xhtml" style="margin-top:5px;"/>
+                    </div>
+                </div>
             </div>
             <br/><br/><br/><br/>
         </h:form>
