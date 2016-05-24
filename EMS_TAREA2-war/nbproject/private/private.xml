@@ -7,10 +7,9 @@
             <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/editarAviso.xhtml</file>
         </group>
         <group>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/controlUsuarios/Login.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ControlFiltrosGridAvisos.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ListaDeAvisos.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/controlUsuarios/ControlAutorizacion.java</file>
+            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/nuevo_aviso.xhtml</file>
+            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/WEB-INF/templates/plantilla.xhtml</file>
+            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/js/mapa.js</file>
         </group>
     </open-files>
 </project-private>
