@@ -270,6 +270,10 @@
     color: white !important;
 }
 
+.ui-widget .ui-widget{
+    margin-left:15px;
+}
+
 
 
 
