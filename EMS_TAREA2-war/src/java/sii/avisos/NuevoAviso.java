@@ -5,6 +5,9 @@
  */
 package sii.avisos;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -51,14 +54,21 @@ public class NuevoAviso {
     }
 
     public String guardarAviso() {
-        Supervisor sup = bdl.obtenerSupervisor(1);
+        List<Supervisor> supervisores = bdl.getSupervisores();
+        int num = supervisores.size();
+        
+        Random rnd = new Random();
+        int aleatorio = rnd.nextInt(num);
+        
+        Supervisor sup = supervisores.get(aleatorio);
         aviso.setSupervisor(sup);
+                
+        aviso.setFecha_creacion(new Date());
         
         aviso.setPrioridad(prioridad);
         aviso.setEstado(estado);
         
         bdl.insertarAviso(aviso);
-        // lda.addDatos(aviso);
 
         return "grid_avisos.xhtml";
     }

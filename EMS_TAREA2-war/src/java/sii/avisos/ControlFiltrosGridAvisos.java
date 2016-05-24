@@ -19,11 +19,13 @@ import javax.inject.Inject;
 import jpa.Aviso;
 import jpa.Aviso.Estado;
 import jpa.Aviso.Prioridad;
+import jpa.Ciudadano;
 
 @Named(value = "controlFiltrosGridAvisos")
 @SessionScoped
 public class ControlFiltrosGridAvisos implements Serializable {
 
+    // private Ciudadano ciudadano;
     private Prioridad prioridad;
     private Estado estado;
     private Date fecha_inicio;

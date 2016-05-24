@@ -125,4 +125,14 @@ public class ListaDeAvisos implements Serializable {
 
         return "grid_avisos.xhtml";
     }
+    
+    public List<Aviso> obtenerAvisosVinculados(Aviso aviso) {
+        List<Aviso> res = new ArrayList<Aviso>();
+        
+        for (Aviso a : datos) {
+            
+        }
+        
+        return res;
+    }
 }
