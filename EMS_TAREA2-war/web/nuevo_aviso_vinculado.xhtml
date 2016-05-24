@@ -27,7 +27,7 @@
                     <div class="col-md-9">
                         <h:panelGrid columns="5">
                             <h:outputLabel value="ID" />
-                            <h:inputText value="#{nuevoAviso.aviso.id_aviso}" />
+                            <h:outputLabel value="#{nuevoAviso.tomarSiguienteId()}" />
                             <h:outputLabel />
                             <h:outputLabel value="Fecha de inicio" />
                             <h:panelGrid columns="2" cellpadding="5">
@@ -142,7 +142,7 @@
             </div><br/>
 
             <div class="row" style="margin-left:19%">
-                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.aviso.id_aviso, calendarView.date3, calendarView.date4,
+                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.tomarSiguienteId(), calendarView.date3, calendarView.date4,
                                                                                            nuevoAviso.aviso.ubicacion, nuevoAviso.aviso.coordenada, nuevoAviso.aviso.observaciones,
                                                                                            nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado, mostrarAviso.aviso)}"/>
                 <div class="col-md-1"></div>

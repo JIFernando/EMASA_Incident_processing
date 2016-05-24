@@ -126,4 +126,8 @@ public class NuevoAviso {
         System.out.println("Nuevo id: " + (maximo+1));
         return maximo;
     }
+    
+     public Integer tomarSiguienteId() {
+        return tomarMaximoId()+1;
+    }
 }
