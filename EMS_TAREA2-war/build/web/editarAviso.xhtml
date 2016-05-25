@@ -25,7 +25,7 @@
                             <h:outputLabel value="ID" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true"/>
+                            <p:inputText id="ea_id" value="#{mostrarAviso.aviso.id_aviso}"  disabled="true"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Inicio avería" />
@@ -40,10 +40,10 @@
                         </div>
                         <div class="col-md-3">
                             <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
-                                <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" />
+                                <p:inputText id="ea_brigada" value="#{mostrarAviso.aviso.brigada.id_brigada}" />
                             </c:if>
                             <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
-                                <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true" />
+                                <p:inputText id="ea_idsd" value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true" />
                             </c:if>
                         </div>
                         <div class="col-md-2">
@@ -59,13 +59,13 @@
                             <h:outputLabel value="Ciudadano originador" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarAviso.aviso.ciudadano.id_ciudadano}" disabled="true" />
+                            <p:inputText id="ea_ciudadano" value="#{mostrarAviso.aviso.ciudadano.id_ciudadano}" disabled="true" />
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Empleado originador" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarAviso.aviso.empleado.id_empl}" disabled="true" />
+                            <p:inputText id="ea_empl" value="#{mostrarAviso.aviso.empleado.id_empl}" disabled="true" />
                         </div>
                     </div>
 
@@ -77,9 +77,9 @@
                             <div class="col-md-3">
                                 <p:outputLabel for="estado" value="" />
                                 <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" style="width:120px">
-                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
-                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
-                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                                    <f:selectItem id="ea_es1" itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                    <f:selectItem id="ea_es2" itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                    <f:selectItem id="ea_es3" itemLabel="CERRADO" itemValue="CERRADO" />
                                 </h:selectOneMenu>
                             </div>
                         </c:if>
@@ -87,9 +87,9 @@
                             <div class="col-md-3">
                                 <p:outputLabel for="estado" value="" />
                                 <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" disabled="true" style="width:120px">
-                                    <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
-                                    <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
-                                    <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
+                                    <f:selectItem id="ea_es1" itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
+                                    <f:selectItem id="ea_es2" itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
+                                    <f:selectItem id="ea_es3" itemLabel="CERRADO" itemValue="CERRADO" />
                                 </h:selectOneMenu>
                             </div>
                         </c:if>
@@ -101,17 +101,17 @@
                             <div class="col-md-3">
                                 <p:outputLabel for="prioridad" value="" />
                                 <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}">
-                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                                    <f:selectItem id="ea_p1" itemLabel="URGENTE" itemValue="URGENTE"/>
+                                    <f:selectItem id="ea_p2" itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                                 </h:selectOneMenu>
                             </div>
                         </c:if>
                         <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
                             <div class="col-md-3">
                                 <p:outputLabel for="prioridad" value="" />
-                                <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
-                                    <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                                    <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
+                                <h:selectOneMenu id="prioridad2" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
+                                    <f:selectItem id="ea_pr1" itemLabel="URGENTE" itemValue="URGENTE"/>
+                                    <f:selectItem id="ea_pr2" itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                                 </h:selectOneMenu> 
                             </div>
                         </c:if>
@@ -134,7 +134,7 @@
                             </div>
                             -->
                             <div class="col-md-3">
-                                <p:inputText value="#{mostrarAviso.aviso.supervisor.id_empl}" />
+                                <p:inputText id="ea_emplea" value="#{mostrarAviso.aviso.supervisor.id_empl}" />
                             </div>
                         </c:if>
 
@@ -151,14 +151,14 @@
                             -->
 
                             <div class="col-md-3">
-                                <p:inputText value="#{mostrarAviso.aviso.supervisor.id_empl}" disabled="true" />
+                                <p:inputText id="ea_empleado" value="#{mostrarAviso.aviso.supervisor.id_empl}" disabled="true" />
                             </div>
                         </c:if>
                     </div>
                 </p:tab>
 
                 <p:tab title="Ciudadanos">
-                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="ea_ciudata" value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
                             <h:outputText value="#{lista_ciudadanos.id_ciudadano}" />
                         </p:column>
@@ -175,7 +175,7 @@
                 </p:tab>
 
                 <p:tab title="Empleados">
-                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="ea_empledata" value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
                             <h:outputText value="#{lista_empleados.id_empl}" />
                         </p:column>
@@ -205,12 +205,12 @@
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <p:inputTextarea value="#{mostrarAviso.aviso.observaciones}" rows="5" cols="90" />
+                        <p:inputTextarea id="ea_obsv" value="#{mostrarAviso.aviso.observaciones}" rows="5" cols="90" />
                     </div>
                 </p:tab>
 
                 <p:tab title="Órdenes de trabajo">
-                    <p:dataTable value="#{listaDeOrdenTrabajo.datos}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="ottable" value="#{listaDeOrdenTrabajo.datos}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Orden de trabajo">
                             <h:outputText value="#{orden.id_OT}" />
                         </p:column>
@@ -234,7 +234,7 @@
                 </p:tab>
 
                 <p:tab title="Avisos vinculados">
-                    <p:dataTable value="#{listaDeAvisos.datos}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="ea_avisosvinc" value="#{listaDeAvisos.datos}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Aviso">
                             <h:outputText value="#{lista.id_aviso}" />
                         </p:column>
@@ -274,16 +274,16 @@
                             </div>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                            <h:commandButton id="ea_bus" class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                            <h:commandButton id="ea_rest" class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                         </div>
                     </div>
 
                     <p:separator />
 
-                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="ea_brigtabla" value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
@@ -303,10 +303,10 @@
                     <div align="center">
                         <p:panelGrid columns="2">
                             <h:outputLabel value="Ubicación: " />
-                            <h:inputText value="#{mostrarAviso.aviso.ubicacion}"/>
+                            <h:inputText id="ea_ubicacion" value="#{mostrarAviso.aviso.ubicacion}"/>
 
                             <h:outputLabel value="Coordenadas: " />
-                            <h:inputText value="#{mostrarAviso.aviso.coordenada}" />
+                            <h:inputText id="ea_coorde" value="#{mostrarAviso.aviso.coordenada}" />
                         </p:panelGrid>
                     </div><br/>
                 </p:tab>

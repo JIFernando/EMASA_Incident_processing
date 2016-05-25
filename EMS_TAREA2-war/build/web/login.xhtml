@@ -16,10 +16,10 @@
                         <img src="./recursos/emasa.png"></img>
                     </div>
                     <h:form id="login-form">
-                        <h:inputText id="user" a:placeholder="Usuario" styleClass="caja" value="#{login.usuario}" />
+                        <h:inputText id="user" a:placeholder="Usuario" styleClass="caja"  value="#{login.usuario}" />
                         <h:message for="user"/>
-                        <h:inputSecret a:placeholder="Contraseña" styleClass="caja" value="#{login.contrasenia}"/>
-                        <h:commandButton value="Entrar" styleClass="apply" action="#{login.autenticar()}"/>
+                        <h:inputSecret a:placeholder="Contraseña" styleClass="caja" id ="login_contrasenia" value="#{login.contrasenia}"/>
+                        <h:commandButton value="Entrar" id ="login_autenticar" styleClass="apply" action="#{login.autenticar()}"/>
                         <!-- <p class="message">¿No estás registrado? <a href="#">Crear una cuenta</a></p>-->                    
                     <h:messages/>
                     </h:form>
