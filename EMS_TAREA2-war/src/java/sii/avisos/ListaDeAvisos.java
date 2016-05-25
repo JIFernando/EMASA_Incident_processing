@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
@@ -19,7 +20,7 @@ import sii.ejb.BaseDeDatosLocal;
  * Esta clase contendrá todos los avisos de la base de datos
  */
 @Named(value = "listaDeAvisos")
-@SessionScoped
+@RequestScoped
 public class ListaDeAvisos implements Serializable {
 
     List<Aviso> datos;

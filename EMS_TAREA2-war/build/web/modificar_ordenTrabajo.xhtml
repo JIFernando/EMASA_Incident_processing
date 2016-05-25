@@ -175,7 +175,7 @@
                     <div align="center">
                         <h:panelGrid columns="2" cellpadding="10">
                             <h:outputLabel value="Ubicación" styleClass="combi" />
-                            <h:inputTextarea id="mot_textarea_ubicacion" rows="5" cols="90" id ="ub" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
+                            <h:inputTextarea id="mot_textarea_ubicacion" rows="5" cols="90" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
                         </h:panelGrid>
                     </div>
                 </p:tab>
@@ -190,7 +190,7 @@
             <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px">
                 <!--<a href="OTmodificada.xhtml" class="boton"  id="volver">Guardar</a> -->
                 <h:commandButton id="mot_guardar" styleClass="boton" value="Guardar" action="#{mostrarOrdenTrabajo.capturarYEditar()}" style="padding-right: 5px"/>
-                <a href="grid_ordenTrabajo.xhtml" id="mot_boton_volver" class="boton"  id="volver">Volver</a>  
+                <a href="grid_ordenTrabajo.xhtml" id="mot_boton_volver" class="boton"  >Volver</a>  
             </h:panelGrid>
         </h:form><br/><br/><br/><br/>
     </ui:define>

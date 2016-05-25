@@ -21,21 +21,21 @@
                     <div>
                         <h:outputLabel value="Fecha: desde" />                  
                         <h:panelGrid columns="2" cellpadding="5" id="ca_panel1">
-                            <p:calendar id="button" value="#{controlFiltrosGridAvisos.fecha_inicio}" showOn="button" id="ca_calendar1"/>
+                            <p:calendar value="#{controlFiltrosGridAvisos.fecha_inicio}" showOn="button" id="ca_calendar1"/>
                         </h:panelGrid>
 
                         <h:outputLabel value="Fecha: hasta" />
 
                         <h:panelGrid columns="2" cellpadding="5" id="ca_panel2">
-                            <p:calendar id="button2" value="#{controlFiltrosGridAvisos.fecha_fin}" showOn="button" id="ca_calendar2"/>
+                            <p:calendar value="#{controlFiltrosGridAvisos.fecha_fin}" showOn="button" id="ca_calendar2"/>
                         </h:panelGrid>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <h:outputLabel value="Prioridad" style="margin-left: 13px"/>
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value" id="ca_panel3">
-                        <h:outputLabel for="prioridad" value="" />
-                        <p:selectOneListbox id="prioridad" value="#{controlFiltrosGridAvisos.prioridad }" id="ca_select1">
+                        <h:outputLabel for="ca_select1" value="" />
+                        <p:selectOneListbox id="ca_select1" value="#{controlFiltrosGridAvisos.prioridad }">
                             <f:selectItem itemLabel="URGENTE" itemValue="URGENTE" id="ca_item1"/>
                             <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" id="ca_item2"/>
                             <f:selectItem itemLabel="TODOS" itemValue="TODOS" id="ca_item3"/>
@@ -45,8 +45,8 @@
                 <div class="col-md-3">
                     <h:outputLabel value="Estado" style="margin-left: 13px"/>
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value" id="ca_panel4">
-                        <h:outputLabel for="estado" value="" />
-                        <p:selectOneListbox id="estado" value="#{controlFiltrosGridAvisos.estado}" id="ca_select2" >
+                        <h:outputLabel for="ca_select2" value="" />
+                        <p:selectOneListbox id="ca_select2" value="#{controlFiltrosGridAvisos.estado}" >
                             <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" id="ca_item4"/>
                             <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" id="ca_item5"/>
                             <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" id="ca_item6"/>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Buscar" action="grid_avisos.xhtml" id="ca_command1"/>
+                    <h:commandButton class="boton" value="Buscar" action="contestar_aviso.xhtml" id="ca_command1"/>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
                     <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridAvisos.resetear() }" id="ca_command2"/>

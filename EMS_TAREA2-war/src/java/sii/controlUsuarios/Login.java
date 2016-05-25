@@ -72,6 +72,7 @@ public class Login {
 
     private boolean usuarioCorrecto() {
         boolean encontrado = false;
+        if(usuario!=null){
         System.out.println("Usuario introducido: " + usuario);
         List<Empleado> empleadosbd = bdl.getEmpleados();
         System.out.println("Empleados de la bd"+empleadosbd);
@@ -83,5 +84,8 @@ public class Login {
             }
         }
         return encontrado;
+        }else{
+            return false;
+        }
     }
 }

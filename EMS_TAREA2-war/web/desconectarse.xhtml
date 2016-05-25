@@ -17,8 +17,8 @@ and open the template in the editor.
 
     <ui:define name="contenido">
         ¿Seguro que quiere salir?
-        <h:form>
-            <p:commandButton id ="si" value="Sí" action="#{controlAutorizacion.logout()}"></p:commandButton>
+        <h:form id="desc_form">
+            <p:commandButton id ="si" value="Si" action="#{controlAutorizacion.logout()}"></p:commandButton>
             <p:commandButton id ="no" value="No" action="inicio.xhtml"></p:commandButton>
         </h:form>
     </ui:define>
