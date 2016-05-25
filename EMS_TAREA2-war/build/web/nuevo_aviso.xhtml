@@ -16,7 +16,7 @@
     <ui:define name="contenido">
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script src="./js/mapa.js"></script>
-        <h:form id="nuevoAviso">
+        <h:form id="na_form">
             <p:accordionPanel>              
                 <p:tab title="Resumen">
                     <div class="row">
@@ -24,13 +24,13 @@
                             <h:outputLabel value="ID" />
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel value="#{nuevoAviso.tomarMaximoId() + 1}"/>
+                            <p:outputLabel value="#{nuevoAviso.tomarMaximoId() + 1}" id="na_id_aviso"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Fecha de inicio" />
                         </div>
                         <div class="col-md-3">
-                            <p:calendar id="button" value="#{nuevoAviso.aviso.inic_Averia}" showOn="button" />
+                            <p:calendar value="#{nuevoAviso.aviso.inic_Averia}" showOn="button" id="na_fecha_inicio_averia"/>
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px">
@@ -38,13 +38,13 @@
                             <h:outputLabel value="Brigada" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText  value="#{nuevoAviso.id_brigada}"/>
+                            <p:inputText  value="#{nuevoAviso.id_brigada}" id="na_brigada"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Fecha de finalización"/>
                         </div>
                         <div class="col-md-3">
-                            <p:calendar id="button2" value="#{nuevoAviso.aviso.fin_averia}" showOn="button" />
+                            <p:calendar id="na_fecha_fin_averia" value="#{nuevoAviso.aviso.fin_averia}" showOn="button" />
                         </div>
 
                     </div>
@@ -53,13 +53,13 @@
                             <h:outputLabel value="Ciudadano originador" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{nuevoAviso.id_ciudadano}" />
+                            <p:inputText value="#{nuevoAviso.id_ciudadano}" id="na_id_ciudadano"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Empleado originador" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{nuevoAviso.id_empleado}" />
+                            <p:inputText value="#{nuevoAviso.id_empleado}" id="na_id_empleado"/>
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px">
@@ -67,8 +67,8 @@
                             <h:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="estado" value="" />
-                            <h:selectOneMenu id="estado" value="#{nuevoAviso.estado}" style="width:120px">
+                            <p:outputLabel for="na_select_estado" value="" />
+                            <h:selectOneMenu id="na_select_estado" value="#{nuevoAviso.estado}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
@@ -78,8 +78,8 @@
                             <h:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{nuevoAviso.prioridad}">
+                            <p:outputLabel for="na_select_prioridad" value="" />
+                            <h:selectOneMenu id="na_select_prioridad" value="#{nuevoAviso.prioridad}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                             </h:selectOneMenu>  
@@ -93,27 +93,27 @@
                             <div> <h:outputLabel value="Brigada" />
                             </div>
                             <div>     
-                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                                <p:inputText id="na_input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div> <h:outputLabel value="Contrata" />
                             </div>
                             <div>     
-                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                                <p:inputText id="na_input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
                             </div>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}" id="na_boton_buscar"/>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}" id="na_boton_reiniciar"/>
                         </div>
                     </div>
 
                     <p:separator />
 
-                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos" id="na_tabla_brigada">
                         <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
@@ -130,7 +130,7 @@
                 </p:tab>
                 
                 <p:tab title="Ciudadanos">
-                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos" id="na_tabla_ciudadano">
                         <p:column headerText="Id">
                             <h:outputText value="#{lista_ciudadanos.id_ciudadano}" />
                         </p:column>
@@ -147,7 +147,7 @@
                 </p:tab>
                 
                 <p:tab title="Empleados">
-                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos" id="na_tabla_empleados">
                         <p:column headerText="Id">
                             <h:outputText value="#{lista_empleados.id_empl}" />
                         </p:column>
@@ -166,7 +166,7 @@
                 <p:tab title="Diagnóstico">
                     <div align="center">
                         <div class="row">
-                            <p:selectManyCheckbox id="diagnosticos" value="#{nuevoAviso.diagnosticos}">
+                            <p:selectManyCheckbox id="na_diagnosticos" value="#{nuevoAviso.diagnosticos}">
                                 <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
                                 <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
                                 <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
@@ -182,7 +182,7 @@
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-7">
-                            <p:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="55" autoResize="false"/>
+                            <p:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="55" autoResize="false" id="na_observaciones"/>
                         </div>
                     </div>
 
@@ -193,10 +193,10 @@
                     <div align="center">
                         <p:panelGrid columns="2">
                             <h:outputLabel value="Ubicación: " />
-                            <p:inputText id="direccion" value="#{nuevoAviso.aviso.ubicacion}"/>
+                            <p:inputText id="na_direccion" value="#{nuevoAviso.aviso.ubicacion}"/>
 
                             <h:outputLabel value="Coordenadas: " />
-                            <p:inputText value="#{nuevoAviso.aviso.coordenada}" />
+                            <p:inputText value="#{nuevoAviso.aviso.coordenada}" id="na_coordenada"/>
                         </p:panelGrid>
                     </div><br/>
                 </p:tab>
@@ -242,13 +242,13 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-1" style="margin-top:5px;">
-                        <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{nuevoAviso.guardarAviso()}" style="margin-left:5px"/>
+                        <h:commandButton id="na_boton_guardar" styleClass="boton" value="Guardar" action="#{nuevoAviso.guardarAviso()}" style="margin-left:5px"/>
                     </div> 
                     <div class="col-md-1" style="margin-top:5px;">
-                        <h:commandButton type="reset" id="reset" styleClass="boton" value="Reiniciar" style="margin-left:5px"/>
+                        <h:commandButton type="na_boton_reset" id="reset" styleClass="boton" value="Reiniciar" style="margin-left:5px"/>
                     </div>
                     <div class="col-md-1" style="margin-top:5px;">
-                        <h:commandButton id="cancelar" styleClass="boton" value="Cancelar" action="grid_avisos.xhtml" style="margin-left:5px"/>
+                        <h:commandButton id="na_boton_cancelar" styleClass="boton" value="Cancelar" action="grid_avisos.xhtml" style="margin-left:5px"/>
                     </div>
                 </div>
             </div>
