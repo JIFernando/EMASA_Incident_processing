@@ -43,7 +43,7 @@ public class MostrarOrdenTrabajo implements Serializable {
     public String eliminarOT(OrdenTrabajo ot){
         this.ordenTrabajo = ot;
         bdl.borrarOT(ordenTrabajo);
-        return "grid_ordenTrabajo.xhtml";
+        return "grid_ordenTrabajo?faces-redirect=true";
     }
     
     public String capturarYEditar() {
@@ -51,7 +51,7 @@ public class MostrarOrdenTrabajo implements Serializable {
         bdl.modificarOT(ordenTrabajo);
         
         //return "modificar_ordenTrabajo?faces-redirect=true";
-        return "OTmodificada.xhtml";
+        return "grid_ordenTrabajo.xhtml";
     }
     
     public String capturarYEditar(OrdenTrabajo ot) {
