@@ -10,14 +10,9 @@
             <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/editarAviso.xhtml</file>
         </group>
         <group>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/ordenDeTrabajo/NuevaOrdenTrabajo.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ChartView.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/ListaDeAvisos.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/NuevoAviso.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/editarAviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/web/verAviso.xhtml</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/ordenDeTrabajo/ListaDeOrdenTrabajo.java</file>
-            <file>file:/C:/Users/JenniferAdmin/Documents/NetBeansProjects/EMS_TAREA2/EMS_TAREA2-war/src/java/sii/avisos/MostrarAviso.java</file>
+            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/grid_ver_brigadas.xhtml</file>
+            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/NuevaOrdenTrabajo.xhtml</file>
+            <file>file:/Users/Jotadrive/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/nuevo_aviso_vinculado.xhtml</file>
         </group>
     </open-files>
 </project-private>
