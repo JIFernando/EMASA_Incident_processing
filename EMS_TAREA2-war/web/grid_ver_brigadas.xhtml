@@ -15,7 +15,7 @@
 
     <ui:define name="contenido">
 
-        <h:form>
+        <h:form id="GVB_form">
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
             
             <div class="row">          
@@ -23,27 +23,27 @@
                     <div> <h:outputLabel value="Brigada" />
                     </div>
                     <div>     
-                        <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                        <p:inputText id="GVB_id_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div> <h:outputLabel value="Contrata" />
                     </div>
                     <div>     
-                        <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                        <p:inputText id="GVB_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
                     </div>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Buscar" action="grid_ver_brigadas.xhtml"/>
+                    <h:commandButton id="GVB_buscar" class="boton" value="Buscar" action="grid_ver_brigadas.xhtml"/>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                    <h:commandButton id="GVB_resetear" class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                 </div>
             </div>
 
             <p:separator />
 
-            <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+            <p:dataTable id="GVB_lista_brigadas_filtro" value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
                 <p:column headerText="Brigada">
                     <h:outputText value="#{brigadas_filtro.id_brigada}" />
                 </p:column>

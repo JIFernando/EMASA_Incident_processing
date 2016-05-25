@@ -15,7 +15,7 @@
     <ui:define name="title">Nueva orden de trabajo</ui:define>
 
     <ui:define name="contenido">
-        <h:form>
+        <h:form id="NOT_form">
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
             <p:accordionPanel>
                 <p:tab title="Datos principales">
@@ -30,7 +30,7 @@
                             <h:outputLabel value="Fecha Programada" />
                         </div>
                         <div class="col-md-3">
-                            <p:calendar id="button2" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
+                            <p:calendar id="NOT_boton_calendario" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
                         </div>
                     </div>
                     <div class="row" style="height:5px">
@@ -41,13 +41,13 @@
                             <h:outputLabel value="Motivo de operación" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{nuevaOrdenTrabajo.ot.motivo}"/> 
+                            <p:inputText id="NOT_motivo" value="#{nuevaOrdenTrabajo.ot.motivo}"/> 
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Brigada" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{nuevaOrdenTrabajo.id_brigada}" />
+                            <p:inputText id="NOT_id_brigada" value="#{nuevaOrdenTrabajo.id_brigada}" />
                         </div>
                     </div>
                     <div class="row" style="height:5px">
@@ -59,14 +59,14 @@
                             <h:outputLabel value="Pto trabajo" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{nuevaOrdenTrabajo.ot.pto_trabajo}" />
+                            <p:inputText id="NOT_pto_trabajo" value="#{nuevaOrdenTrabajo.ot.pto_trabajo}" />
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Taller" />
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="TallerMenu" value=""/>
-                            <h:selectOneMenu id="TallerMenu" value="#{nuevaOrdenTrabajo.ot.taller}">
+                            <p:outputLabel for="NOT_taller" value=""/>
+                            <h:selectOneMenu id="NOT_taller" value="#{nuevaOrdenTrabajo.ot.taller}">
                                 <f:selectItem id="t1" itemLabel="Taller1" itemValue="Taller1" />
                                 <f:selectItem id="t2" itemLabel="Taller2" itemValue="Taller2" />
                                 <f:selectItem id="t3" itemLabel="Taller3" itemValue="Taller3" />
@@ -84,8 +84,8 @@
                             <h:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="estado" value="" />
-                            <h:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.estado_id}" style="width:120px">
+                            <p:outputLabel for="NOT_estado" value="" />
+                            <h:selectOneMenu id="NOT_estado" value="#{nuevaOrdenTrabajo.estado_id}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
@@ -96,8 +96,8 @@
                             <h:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.prioridad_id}">
+                            <p:outputLabel for="NOT_prioridad" value="" />
+                            <h:selectOneMenu id="NOT_prioridad" value="#{nuevaOrdenTrabajo.prioridad_id}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                             </h:selectOneMenu>  
@@ -113,7 +113,7 @@
                             <h:outputLabel value="Trabajo" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{nuevaOrdenTrabajo.ot.trabajo}"/> 
+                            <p:inputText id="NOT_trabajo" value="#{nuevaOrdenTrabajo.ot.trabajo}"/> 
                         </div>
                     </div>
                 </p:tab>
@@ -124,27 +124,27 @@
                             <div> <h:outputLabel value="Brigada" />
                             </div>
                             <div>     
-                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                                <p:inputText id="NOT_id_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div> <h:outputLabel value="Contrata" />
                             </div>
                             <div>     
-                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                                <p:inputText id="NOT_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
                             </div>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                            <h:commandButton id="NOT_buscar_brigada" class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                            <h:commandButton id="NOT_resetear_brigada" class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                         </div>
                     </div>
 
                     <p:separator />
 
-                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="NOT_lista_brigadas_filtro" value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
@@ -165,7 +165,7 @@
                             <h:outputLabel value="Calle" styleClass="combi" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText  id ="calle" value="#{nuevaOrdenTrabajo.calle}"/>
+                            <p:inputText  id ="NOT_calle" value="#{nuevaOrdenTrabajo.calle}"/>
                         </div>
                     </div>   
                     <div class="row" style="margin-top:5px;">
@@ -173,7 +173,7 @@
                             <h:outputLabel value="Localidad" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText  id ="localidad" value="#{nuevaOrdenTrabajo.localidad}"/>
+                            <p:inputText  id ="NOT_localidad" value="#{nuevaOrdenTrabajo.localidad}"/>
                         </div>
                     </div> 
                     <div class="row" style="margin-top:5px;">
@@ -181,7 +181,7 @@
                             <h:outputLabel value="CP"/>
                         </div>
                         <div class="col-md-3">
-                            <p:inputText  id = "cp" value="#{nuevaOrdenTrabajo.cp}"/>
+                            <p:inputText  id = "NOT_cp" value="#{nuevaOrdenTrabajo.cp}"/>
                         </div>
                     </div> 
                     <div class="row" style="margin-top:5px;">
@@ -189,14 +189,14 @@
                             <h:outputLabel value="Ubicación Técnica" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText  id = "ut" value="#{nuevaOrdenTrabajo.ut}" />
+                            <p:inputText  id = "NOT_ubicacion_tecnica" value="#{nuevaOrdenTrabajo.ut}" />
                         </div>
                     </div> 
                 </p:tab>
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <p:inputTextarea rows="5" cols="90" value="#{nuevaOrdenTrabajo.ot.observaciones}"/>
+                        <p:inputTextarea id="NOT_observaciones" rows="5" cols="90" value="#{nuevaOrdenTrabajo.ot.observaciones}"/>
                     </div>
                 </p:tab>
             </p:accordionPanel>
@@ -209,13 +209,13 @@
 
                     </div>
                     <div class="col-md-1" style="margin-top:5px;">
-                        <h:commandButton id="guardar" action="#{nuevaOrdenTrabajo.guardarOT()}" styleClass="boton" value="Guardar"/>
+                        <h:commandButton id="NOT_guardar" action="#{nuevaOrdenTrabajo.guardarOT()}" styleClass="boton" value="Guardar"/>
                     </div>
                     <div class="col-md-1" style="margin-top:5px;">
-                        <h:commandButton id="reset" styleClass="boton" type="reset" value="Reiniciar" />
+                        <h:commandButton id="NOT_reset" styleClass="boton" type="reset" value="Reiniciar" />
                     </div>
                     <div class="col-md-1" style="margin-top:5px;">
-                        <a href="grid_ordenTrabajo.xhtml" class="boton" >Cancelar</a>
+                        <a id="NOT_cancelar" href="grid_ordenTrabajo.xhtml" class="boton" >Cancelar</a>
                     </div>
                 </div>
             </div>

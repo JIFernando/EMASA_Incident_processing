@@ -14,7 +14,7 @@
     <ui:define name="title">Crear un nuevo aviso vinculado</ui:define>
 
     <ui:define name="contenido">
-        <h:form id="nuevoAviso">
+        <h:form id="NAV">
             <p:remoteCommand name="onload" action="#{controlFiltrosGridAvisos.resetear()}" autoRun="true" />
 
             <p:accordionPanel>
@@ -23,11 +23,9 @@
                         <div class="col-md-2">
                             <h:outputLabel value="Aviso al que está vinculado" style="padding-right: 8px"/>
                         </div>
-
                         <div class="col-md-2">
-                            <p:inputText value="#{mostrarAviso.aviso.id_aviso}" disabled="true" style="width:30px;"/>
+                            <p:inputText id="NAV_id_aviso" value="#{mostrarAviso.aviso.id_aviso}" disabled="true" style="width:30px;"/>
                         </div>
-
                         <!-- <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px"> -->
                         <div class="col-md-1">
                             <h:outputLabel value="ID" />
@@ -39,7 +37,7 @@
                             <h:outputLabel value="Fecha de inicio" />
                         </div>
                         <div class="col-md-3">
-                            <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                            <p:calendar id="NAV_calendario" value="#{calendarView.date3}" showOn="button" />
                         </div>
 
                     </div>
@@ -57,7 +55,7 @@
                             <h:outputLabel value="Fecha de finalización" />
                         </div>
                         <div class="col-md-3">
-                            <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
+                            <p:calendar id="NAV_calendario2" value="#{calendarView.date4}" showOn="button" />
                         </div>
 
                     </div>
@@ -69,8 +67,8 @@
                             <h:outputLabel value="Estado" style="margin-left: 13px"/>
                         </div>
                         <div class="col-md-2">
-                            <p:outputLabel for="estado" value="" />
-                            <h:selectOneMenu id="estado" value="#{nuevoAviso.aviso.estado}">
+                            <p:outputLabel for="NAV_estado" value="" />
+                            <h:selectOneMenu id="NAV-estado" value="#{nuevoAviso.aviso.estado}">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
@@ -80,8 +78,8 @@
                             <h:outputLabel value="Prioridad" style="margin-left: 13px"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{nuevoAviso.aviso.prioridad}">
+                            <p:outputLabel for="NAV_prioridad" value="" />
+                            <h:selectOneMenu id="NAV_prioridad" value="#{nuevoAviso.aviso.prioridad}">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                             </h:selectOneMenu>
@@ -96,27 +94,27 @@
                             <div> <h:outputLabel value="Brigada" />
                             </div>
                             <div>     
-                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                                <p:inputText id="NAV_id_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div> <h:outputLabel value="Contrata" />
                             </div>
                             <div>     
-                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                                <p:inputText id="NAV_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
                             </div>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                            <h:commandButton id="NAV_buscar" class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                            <h:commandButton id="NAV_resetear" class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                         </div>
                     </div>
 
                     <p:separator />
 
-                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="NAV_lista_brigada_filtro" value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
@@ -131,9 +129,9 @@
                         </p:column>
                     </p:dataTable>
                 </p:tab>
-                <p:tab title="DiagnÃ³stico">
+                <p:tab title="Diagnóstico">
                     <div align="center">
-                        <h:selectManyCheckbox id="diagnosticos">
+                        <h:selectManyCheckbox id="NAV_diagnosticos">
                             <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
                             <f:selectItem id="tuberia" itemLabel="TuberÃ­a rota" itemValue="2" />
                             <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
@@ -145,19 +143,19 @@
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <p:inputTextarea value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="90"/>
+                        <p:inputTextarea id="NAV_observaciones" value="#{nuevoAviso.aviso.observaciones}" rows="5" cols="90"/>
                     </div>
                 </p:tab>
 
 
-                <p:tab title="UbicaciÃ³n">
+                <p:tab title="Ubicación">
                     <div align="center">
                         <p:panelGrid columns="2">
-                            <h:outputLabel value="UbicaciÃ³n: " />
-                            <h:inputText value="#{nuevoAviso.aviso.ubicacion}"/>
+                            <h:outputLabel value="Ubicación: " />
+                            <h:inputText id="NAV_ubicaicon" value="#{nuevoAviso.aviso.ubicacion}"/>
 
                             <h:outputLabel value="Coordenadas: " />
-                            <h:inputText value="#{nuevoAviso.aviso.coordenada}" />
+                            <h:inputText id="NAV_coordenada" value="#{nuevoAviso.aviso.coordenada}" />
                         </p:panelGrid>
                     </div><br/>
                 </p:tab>
@@ -172,17 +170,17 @@
                         
                     </div>
                     <div class="col-md-1">
-                        <h:commandButton id="guardar" styleClass="boton" style="margin-top:5px;" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.tomarSiguienteId(), calendarView.date3, calendarView.date4,
+                        <h:commandButton id="NAV_guardar" styleClass="boton" style="margin-top:5px;" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.tomarSiguienteId(), calendarView.date3, calendarView.date4,
                                                                                                    nuevoAviso.aviso.ubicacion, nuevoAviso.aviso.coordenada, nuevoAviso.aviso.observaciones,
                                                                                                    nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado, mostrarAviso.aviso)}"/>
 
                     </div>
                     <div class="col-md-1">
-                        <h:commandButton type="reset" id="reset" styleClass="boton" value="Reiniciar" style="margin-top:5px;"/>
+                        <h:commandButton type="reset" id="NAV_reset" styleClass="boton" value="Reiniciar" style="margin-top:5px;"/>
 
                     </div>
                     <div class="col-md-1">
-                        <h:commandButton id="cancelar" styleClass="boton" value="Cancelar" action="grid_avisos.xhtml" style="margin-top:5px;"/>
+                        <h:commandButton id="NAV_cancelar" styleClass="boton" value="Cancelar" action="grid_avisos.xhtml" style="margin-top:5px;"/>
                     </div>
                 </div>
             </div>
