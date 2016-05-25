@@ -30,7 +30,7 @@ public class NuevaOrdenTrabajo {
     @Inject
     MostrarAviso ma;
     private OrdenTrabajo ot;
-    
+
     public NuevaOrdenTrabajo() {
         ot = new OrdenTrabajo();
     }
@@ -41,7 +41,6 @@ public class NuevaOrdenTrabajo {
     private String ubicacion;
     private Date fecha_progr;
     private Estado estado;
-
 
     private String taller;
     private Prioridad prioridad;
@@ -70,30 +69,54 @@ public class NuevaOrdenTrabajo {
 //        not.setObservaciones(observaciones);
 //        not.setUbicacion(calle+" "+ localidad +" " + cp + " " + ut);
 //        not.setPto_trabajo(pto_trabajo);
-        if (id_brigada != null){
-            Brigada b =  this.lot.getBrigada(id_brigada);
-            if (b!= null){
+        if (id_brigada != null) {
+            Brigada b = this.lot.getBrigada(id_brigada);
+            if (b != null) {
                 ot.setBrigada_ot(b);
-            }else return "errorBrigadaNoEncontrada.xhtml";
+            } else {
+                return "errorBrigadaNoEncontrada.xhtml";
+            }
         }
         ot.setAviso(ma.getAviso());
         Date d = new Date();
         ot.setFecha_creac(d);
 //        ot.setTaller(taller);
-        ubicacion = calle +" "+ localidad +" " + cp + " " + ut;
-        if(ubicacion != null){
-            ot.setUbicacion(ubicacion);        
+        ubicacion = calle + " " + localidad + " " + cp + " " + ut;
+        if (ubicacion != null) {
+            ot.setUbicacion(ubicacion);
         }
         ot.setEstado(this.stringEstado(this.estado_id));
         ot.setPrioridad(this.stringPrioridad(this.prioridad_id));
-        
+        ot.setId_OT(tomarSiguienteId());
         lot.setOT(ot);
         ot = new OrdenTrabajo();
-        return "OTcreado.xhtml";
+        return "grid_ordenTrabajo.xhtml";
     }
+
+    public Integer tomarMaximoId() {
+        List<OrdenTrabajo> ots = lot.datos;
+        System.out.println("Ordenes: " + ots);
+        if (ots.isEmpty()) {
+            return 0;
+        } else {
+            int maximo = Integer.MIN_VALUE;
+            for (OrdenTrabajo orden : ots) {
+                if (maximo < orden.getId_OT()) {
+                    maximo = orden.getId_OT();
+                }
+            }
+            return maximo;
+        }
+    }
+
+    public Integer tomarSiguienteId() {
+        return tomarMaximoId() + 1;
+    }
+
     public <T> T nvl(T arg0, T arg1) {
-        return (arg0 == null)?arg1:arg0;
+        return (arg0 == null) ? arg1 : arg0;
     }
+
     private Estado stringEstado(String e) {
         Estado res;
         switch (e) {
@@ -109,7 +132,7 @@ public class NuevaOrdenTrabajo {
         }
         return res;
     }
-    
+
     private Prioridad stringPrioridad(String p) {
         Prioridad res;
 
@@ -124,7 +147,8 @@ public class NuevaOrdenTrabajo {
         }
         return res;
     }
-        public MostrarAviso getMa() {
+
+    public MostrarAviso getMa() {
         return ma;
     }
 
@@ -147,6 +171,7 @@ public class NuevaOrdenTrabajo {
     public void setPrioridad_id(String prioridad_id) {
         this.prioridad_id = prioridad_id;
     }
+
     public OrdenTrabajo getOt() {
         return ot;
     }
@@ -219,8 +244,6 @@ public class NuevaOrdenTrabajo {
         this.prioridad = prioridad;
     }
 
-    
-
     public String getObservaciones() {
         return observaciones;
     }
@@ -276,6 +299,5 @@ public class NuevaOrdenTrabajo {
     public void setId_brigada(Integer id_brigada) {
         this.id_brigada = id_brigada;
     }
-    
-    
+
 }

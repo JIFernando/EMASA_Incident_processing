@@ -20,14 +20,14 @@
             <p:accordionPanel>
                 <p:tab title="Datos principales">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h:outputLabel value="ID Aviso" />
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <h:outputText id="idAviso" value="#{mostrarAviso.aviso.id_aviso}"/>
                         </div>
                         <div class="col-md-2">
-                            <p:outputLabel value="Fecha Programada" />
+                            <h:outputLabel value="Fecha Programada" />
                         </div>
                         <div class="col-md-3">
                             <p:calendar id="button2" value="#{nuevaOrdenTrabajo.ot.fecha_progr}" showOn="button" />
@@ -37,10 +37,10 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h:outputLabel value="Motivo de operación" />
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <p:inputText value="#{nuevaOrdenTrabajo.ot.motivo}"/> 
                         </div>
                         <div class="col-md-2">
@@ -55,10 +55,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h:outputLabel value="Pto trabajo" />
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <p:inputText value="#{nuevaOrdenTrabajo.ot.pto_trabajo}" />
                         </div>
                         <div class="col-md-2">
@@ -79,10 +79,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
-                            <p:outputLabel value="Estado"/>
-                        </div>
                         <div class="col-md-2">
+                            <h:outputLabel value="Estado"/>
+                        </div>
+                        <div class="col-md-3">
                             <p:outputLabel for="estado" value="" />
                             <h:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.estado_id}" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
@@ -92,7 +92,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <p:outputLabel value="Prioridad"/>
+                            <h:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
@@ -108,10 +108,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h:outputLabel value="Trabajo" />
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <p:inputText value="#{nuevaOrdenTrabajo.ot.trabajo}"/> 
                         </div>
                     </div>

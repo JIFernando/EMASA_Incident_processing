@@ -14,6 +14,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import jpa.OrdenTrabajo;
+import jpa.OrdenTrabajo.Estado;
 import sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "mostrarOrdenTrabajo")
@@ -46,7 +47,7 @@ public class MostrarOrdenTrabajo implements Serializable {
     }
     
     public String capturarYEditar() {
-        
+
         bdl.modificarOT(ordenTrabajo);
         
         //return "modificar_ordenTrabajo?faces-redirect=true";

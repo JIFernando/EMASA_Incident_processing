@@ -21,7 +21,7 @@
                 <p:tab title="Resumen">
                     <div class="row">
                         <div class="col-md-2">
-                            <h:outputLabel value="Aviso al que está vinculado" style="padding-right: 8px"/>
+                            <h:outputLabel value="Aviso al que estÃ¡ vinculado" style="padding-right: 8px"/>
                         </div>
 
                         <div class="col-md-1">
@@ -33,7 +33,7 @@
                             <h:outputLabel value="ID" />
                         </div>
                         <div class="col-md-2">
-                            <p:inputText value="#{nuevoAviso.aviso.id_aviso}" />
+                            <h:outputLabel value="#{nuevoAviso.tomarSiguienteId()}" />
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Fecha de inicio" />
@@ -54,7 +54,7 @@
                             <p:inputText value="#{listaDeAvisos.id_brigada}" />
                         </div>
                         <div class="col-md-2">
-                            <h:outputLabel value="Fecha de finalización" />
+                            <h:outputLabel value="Fecha de finalizacion" />
                         </div>
                         <div class="col-md-3">
                             <p:calendar id="button2" value="#{calendarView.date4}" showOn="button" />
@@ -131,11 +131,11 @@
                         </p:column>
                     </p:dataTable>
                 </p:tab>
-                <p:tab title="Diagnóstico">
+                <p:tab title="DiagnÃ³stico">
                     <div align="center">
                         <h:selectManyCheckbox id="diagnosticos">
                             <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
-                            <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
+                            <f:selectItem id="tuberia" itemLabel="TuberÃ­a rota" itemValue="2" />
                             <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
                             <f:selectItem id="desborde" itemLabel="Desborde de presa" itemValue="4" />
                             <f:selectItem id="canaleta" itemLabel="Canaleta rota" itemValue="5" />
@@ -150,10 +150,10 @@
                 </p:tab>
 
 
-                <p:tab title="Ubicación">
+                <p:tab title="UbicaciÃ³n">
                     <div align="center">
                         <p:panelGrid columns="2">
-                            <h:outputLabel value="Ubicación: " />
+                            <h:outputLabel value="UbicaciÃ³n: " />
                             <h:inputText value="#{nuevoAviso.aviso.ubicacion}"/>
 
                             <h:outputLabel value="Coordenadas: " />
@@ -172,7 +172,7 @@
                         
                     </div>
                     <div class="col-md-1">
-                        <h:commandButton id="guardar" styleClass="boton" style="margin-top:5px;" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.aviso.id_aviso, calendarView.date3, calendarView.date4,
+                        <h:commandButton id="guardar" styleClass="boton" style="margin-top:5px;" value="Guardar" action="#{listaDeAvisos.crearAvisoVinculado(nuevoAviso.tomarSiguienteId(), calendarView.date3, calendarView.date4,
                                                                                                    nuevoAviso.aviso.ubicacion, nuevoAviso.aviso.coordenada, nuevoAviso.aviso.observaciones,
                                                                                                    nuevoAviso.aviso.prioridad, nuevoAviso.aviso.estado, mostrarAviso.aviso)}"/>
 
