@@ -14,7 +14,7 @@
     <ui:define name="title">Visualizar aviso</ui:define>
 
     <ui:define name="contenido">
-        <h:form id="verAviso">
+        <h:form id="va_formulario">
 
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
 
@@ -70,8 +70,8 @@
                             <h:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="estado" value="" />
-                            <h:selectOneMenu id="estado" value="#{mostrarAviso.aviso.estado}" disabled="true">
+                            <p:outputLabel for="va_estado" value="" />
+                            <h:selectOneMenu id="va_estado" value="#{mostrarAviso.aviso.estado}" disabled="true">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
@@ -81,8 +81,8 @@
                             <h:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
+                            <p:outputLabel for="va_prioridad" value="" />
+                            <h:selectOneMenu id="va_prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                             </h:selectOneMenu> 
@@ -101,7 +101,7 @@
                 </p:tab>
                 
                 <p:tab title="Ciudadanos">
-                    <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="va_grid_ciudadanos" value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
                             <h:outputText value="#{lista_ciudadanos.id_ciudadano}" />
                         </p:column>
@@ -118,7 +118,7 @@
                 </p:tab>
                 
                 <p:tab title="Empleados">
-                    <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="va_grid_empleados" value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
                             <h:outputText value="#{lista_empleados.id_empl}" />
                         </p:column>
@@ -136,7 +136,7 @@
 
                 <p:tab title="Diagnóstico">
                     <div align="center">
-                        <p:selectManyCheckbox id="diagnosticos" disabled="true" value="#{mostrarAviso.diagnosticos_id}">
+                        <p:selectManyCheckbox id="va_diagnosticos" disabled="true" value="#{mostrarAviso.diagnosticos_id}">
                             <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
                             <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
                             <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
@@ -148,12 +148,12 @@
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <p:inputTextarea value="#{mostrarAviso.aviso.observaciones}" rows="5" cols="90" disabled="true" />
+                        <p:inputTextarea id="va_textarea_observaciones" value="#{mostrarAviso.aviso.observaciones}" rows="5" cols="90" disabled="true" />
                     </div>
                 </p:tab>
 
                 <p:tab title="Órdenes de trabajo">
-                    <p:dataTable value="#{listaDeOrdenTrabajo.obtenerOTsVinculadas(mostrarAviso.aviso)}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="va_grid_ots" value="#{listaDeOrdenTrabajo.obtenerOTsVinculadas(mostrarAviso.aviso)}" var="orden" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Orden de trabajo">
                             <h:outputText value="#{orden.id_OT}" />
                         </p:column>
@@ -172,14 +172,14 @@
                     </p:dataTable><br/>
 
                     <div align="center">
-                        <h:commandButton id="nuevaOrden" action ="NuevaOrdenTrabajo?faces-redirect=true" styleClass="boton" value="Nueva orden de trabajo"/>
+                        <h:commandButton id="va_nueva_OT" action ="NuevaOrdenTrabajo?faces-redirect=true" styleClass="boton" value="Nueva orden de trabajo"/>
                     </div>
                 </p:tab>
 
                 <p:tab title="Avisos vinculados">
                     <!--<c:choose>
                         <c:when test="${mostrarAviso.aviso.avisoEnlazado != null}">-->
-                    <p:dataTable value="#{mostrarAviso.aviso.avisoEnlazado}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="va_grid_avisos_vinculados" value="#{mostrarAviso.aviso.avisoEnlazado}" var="lista" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Aviso">
                             <h:outputText value="#{lista.id_aviso}" />
                         </p:column>
@@ -202,7 +202,7 @@
                     
                     </c:choose> -->
                     <div align="center">
-                        <a href="nuevo_aviso_vinculado.xhtml" id="nuevoAvisoVinculado" class="boton">Nuevo aviso vinculado</a>
+                        <a href="nuevo_aviso_vinculado.xhtml" id="va_nuevo_aviso_vinculado" class="boton">Nuevo aviso vinculado</a>
                     </div>
                 </p:tab>
 
@@ -212,27 +212,27 @@
                             <div> <h:outputLabel value="Brigada" />
                             </div>
                             <div>     
-                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                                <p:inputText id="va_buscar_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div> <h:outputLabel value="Contrata" />
                             </div>
                             <div>     
-                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                                <p:inputText id="va_buscar_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
                             </div>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                            <h:commandButton id="va_boton_buscar_brigada" class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                            <h:commandButton id="va_reiniciar_brigada" class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                         </div>
                     </div>
 
                     <p:separator />
 
-                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="va_grid_brigada" value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
@@ -262,9 +262,9 @@
             </p:accordionPanel><br/>
 
             <div align="center">
-                <h:commandButton id="editar" styleClass="boton" action="#{mostrarAviso.capturarYEditar()}" value="Editar" />
+                <h:commandButton id="va_boton_editar" styleClass="boton" action="#{mostrarAviso.capturarYEditar()}" value="Editar" />
                 <div class="col-md-1"></div>
-                <h:commandButton id="volver" styleClass="boton" action="grid_avisos.xhtml?faces-redirect=true" value="Volver a la página anterior" />
+                <h:commandButton id="va_boton_volver" styleClass="boton" action="grid_avisos.xhtml?faces-redirect=true" value="Volver a la página anterior" />
                 <!-- <a href="grid_avisos.xhtml" class="boton">Volver atrás</a> -->
             </div>
         </h:form>
@@ -272,7 +272,7 @@
         <form action="mailto:#{mostrarAviso.aviso.ciudadano.email}" method="post">
             <div align ="center" >
                 <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
-                    <input class="boton" type="submit" value="Petición de reasignación"></input>
+                    <input id="va_boton_reasignacion" class="boton" type="submit" value="Petición de reasignación"></input>
                 </c:if>
             </div>
         </form>
