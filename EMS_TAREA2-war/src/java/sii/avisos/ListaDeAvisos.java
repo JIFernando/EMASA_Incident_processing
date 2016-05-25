@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
+import jpa.Brigada;
 import jpa.Empleado;
 import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
@@ -25,6 +26,8 @@ import sii.ejb.BaseDeDatosLocal;
 public class ListaDeAvisos implements Serializable {
 
     List<Aviso> datos;
+    
+    private Integer id_brigada;
 
     @EJB
     BaseDeDatosLocal bdl;
@@ -100,6 +103,11 @@ public class ListaDeAvisos implements Serializable {
         a.setObservaciones(observaciones);
         a.setPrioridad(prioridad);
         a.setEstado(estado);
+        
+        if (id_brigada != null) {
+            Brigada bri = bdl.obtenerBrigada(id_brigada);
+            a.setBrigada(bri);
+        }
 
         Supervisor sup = bdl.obtenerSupervisor(1);
         a.setSupervisor(sup);
@@ -123,5 +131,13 @@ public class ListaDeAvisos implements Serializable {
         //datos.add(a);
 
         return "grid_avisos.xhtml";
+    }
+
+    public Integer getId_brigada() {
+        return id_brigada;
+    }
+
+    public void setId_brigada(Integer id_brigada) {
+        this.id_brigada = id_brigada;
     }
 }
