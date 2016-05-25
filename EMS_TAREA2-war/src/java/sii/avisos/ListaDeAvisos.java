@@ -1,15 +1,15 @@
+
 package sii.avisos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
-import jpa.Brigada;
-import static jpa.Aviso.Estado.SIN_ATENDER;
 import jpa.Diagnostico;
 import jpa.Empleado;
 import jpa.Supervisor;
@@ -23,8 +23,6 @@ import sii.ejb.BaseDeDatosLocal;
 public class ListaDeAvisos implements Serializable {
 
     List<Aviso> datos;
-
-    private Integer id_brigada;
 
     @EJB
     BaseDeDatosLocal bdl;
@@ -63,13 +61,15 @@ public class ListaDeAvisos implements Serializable {
         a.setPrioridad(prioridad);
         a.setEstado(estado);
 
-        if (id_brigada != null) {
-            Brigada bri = bdl.obtenerBrigada(id_brigada);
-            a.setBrigada(bri);
-        }
+        List<Supervisor> supervisores = bdl.getSupervisores();
+        int num = supervisores.size();
 
-        Supervisor sup = bdl.obtenerSupervisor(1);
+        Random rnd = new Random();
+        int aleatorio = rnd.nextInt(num);
+
+        Supervisor sup = supervisores.get(aleatorio);
         a.setSupervisor(sup);
+        
         if (vin.getAvisoEnlazado() == null) {
             List<Aviso> avisosVincu2 = new ArrayList<>();
             avisosVincu2.add(a);
@@ -91,16 +91,8 @@ public class ListaDeAvisos implements Serializable {
 
         return "grid_avisos.xhtml";
     }
-
-    public Integer getId_brigada() {
-        return id_brigada;
-    }
-
-    public void setId_brigada(Integer id_brigada) {
-        this.id_brigada = id_brigada;
-    }
-
-    public List<Diagnostico> getDiagnosticos() {
+    
+    public List<Diagnostico> getDiagnosticos(){
         return bdl.getDiagnosticos();
     }
 }
