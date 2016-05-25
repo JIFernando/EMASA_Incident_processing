@@ -20,8 +20,6 @@ public interface BaseDeDatosLocal {
     // Devuelve una lista con todos los avisos creados
     public List<Aviso> getAvisos();
 
-    public void compruebaLogin(Empleado empleado) throws EmasaException;
-
     // Inserta un aviso en la base de datos
     public void insertarAviso(Aviso aviso);
 
@@ -59,4 +57,6 @@ public interface BaseDeDatosLocal {
     public List<Empleado> getEmpleados();
     
     public List<Ciudadano> getCiudadanos();
+    
+    public void cerrarAviso(Integer id_aviso);
 }
