@@ -94,8 +94,6 @@ public class NuevoAviso {
 
         List<Diagnostico> diagnosticos_bd = lda.getDiagnosticos();
         List<Diagnostico> diagnosticos_nuevos = new ArrayList<>();
-        System.out.println("Diagnósticos del checkbox: " + diagnosticos_bd);
-        System.out.println("Diagnósticos de la BD: " + diagnosticos_bd);
         for (String d : diagnosticos) {
             diagnosticos_nuevos.add(diagnosticos_bd.get(Integer.parseInt(d) - 1));
         }
