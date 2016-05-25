@@ -71,7 +71,11 @@ public class NuevoAviso {
 
         if (id_brigada != null) {
             Brigada bri = bdl.obtenerBrigada(id_brigada);
-            aviso.setBrigada(bri);
+            if (bri == null) {
+                    return "errorBrigadaNoEncontrada.xhtml";
+            } else {
+                aviso.setBrigada(bri);
+            }
         }
 
         if (id_ciudadano != null) {
