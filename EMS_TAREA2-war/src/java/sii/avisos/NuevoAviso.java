@@ -1,5 +1,6 @@
 package sii.avisos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +13,7 @@ import jpa.Aviso.Estado;
 import jpa.Aviso.Prioridad;
 import jpa.Brigada;
 import jpa.Ciudadano;
+import jpa.Diagnostico;
 import jpa.Empleado;
 import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
@@ -33,6 +35,8 @@ public class NuevoAviso {
     private Integer id_brigada;
     private Integer id_ciudadano;
     private Integer id_empleado;
+
+    private String[] diagnosticos;
 
     @Inject
     ListaDeAvisos lda;
@@ -88,7 +92,14 @@ public class NuevoAviso {
 
         aviso.setId_aviso(tomarMaximoId() + 1);
 
-        System.out.println("Id en NuevoAviso: " + aviso.getId_aviso());
+        List<Diagnostico> diagnosticos_bd = lda.getDiagnosticos();
+        List<Diagnostico> diagnosticos_nuevos = new ArrayList<>();
+        System.out.println("Diagnósticos del checkbox: " + diagnosticos_bd);
+        System.out.println("Diagnósticos de la BD: " + diagnosticos_bd);
+        for (String d : diagnosticos) {
+            diagnosticos_nuevos.add(diagnosticos_bd.get(Integer.parseInt(d) - 1));
+        }
+        aviso.setEsDeTipo(diagnosticos_nuevos);
         bdl.insertarAviso(aviso);
 
         return "grid_avisos.xhtml";
@@ -168,6 +179,14 @@ public class NuevoAviso {
         this.bdl = bdl;
     }
 
+    public String[] getDiagnosticos() {
+        return diagnosticos;
+    }
+
+    public void setDiagnosticos(String[] diagnosticos) {
+        this.diagnosticos = diagnosticos;
+    }
+
     public Integer tomarMaximoId() {
         List<Aviso> avisos = lda.getDatos();
         int maximo = Integer.MIN_VALUE;
@@ -179,8 +198,8 @@ public class NuevoAviso {
         System.out.println("Nuevo id: " + (maximo + 1));
         return maximo;
     }
-    
-     public Integer tomarSiguienteId() {
-        return tomarMaximoId()+1;
+
+    public Integer tomarSiguienteId() {
+        return tomarMaximoId() + 1;
     }
 }
