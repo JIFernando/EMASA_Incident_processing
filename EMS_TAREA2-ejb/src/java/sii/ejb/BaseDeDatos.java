@@ -181,4 +181,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
             }
         }
     }
+
+    @Override
+    public List<Diagnostico> getDiagnosticos() {
+        List<Diagnostico> res = em.createQuery("select c from Diagnostico c", Diagnostico.class).getResultList();
+        return res;
+    }
 }

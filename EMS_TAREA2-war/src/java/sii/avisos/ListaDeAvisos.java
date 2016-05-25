@@ -10,6 +10,7 @@ import javax.inject.Named;
 import jpa.Aviso;
 import jpa.Brigada;
 import static jpa.Aviso.Estado.SIN_ATENDER;
+import jpa.Diagnostico;
 import jpa.Empleado;
 import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
@@ -22,51 +23,13 @@ import sii.ejb.BaseDeDatosLocal;
 public class ListaDeAvisos implements Serializable {
 
     List<Aviso> datos;
-    
+
     private Integer id_brigada;
 
     @EJB
     BaseDeDatosLocal bdl;
 
     public ListaDeAvisos() {
-
-        /*
-        Aviso a1 = new Aviso();
-        a1.setId_aviso(12);
-        a1.setFecha_creacion(new Date(116, 9, 1));
-        a1.setInic_Averia(new Date(116, 9, 1));
-        a1.setFin_averia(new Date(116, 9, 1));
-        a1.setFecha_asig(new Date(116, 9, 1));
-        a1.setUbicacion("Ciudad Jardín");
-        a1.setCoordenada("0.3,34.3");
-        a1.setObservaciones("observaciones");
-        a1.setPrioridad(Aviso.Prioridad.URGENTE);
-        a1.setEstado(Aviso.Estado.SIN_ATENDER);
-        Aviso a2 = new Aviso();
-        a2.setId_aviso(13);
-        a2.setFecha_creacion(new Date(116, 3, 12));
-        a2.setInic_Averia(new Date(116, 9, 1));
-        a2.setFin_averia(new Date(116, 9, 1));
-        a2.setFecha_asig(new Date(116, 9, 1));
-        a2.setUbicacion("El Palo");
-        a2.setCoordenada("0.3,34.3");
-        a2.setObservaciones("observaciones");
-        a2.setPrioridad(Aviso.Prioridad.PLANIFICADO);
-        a2.setEstado(Aviso.Estado.EN_PROCESO);
-        Aviso a3 = new Aviso();
-        a3.setId_aviso(14);
-        a3.setFecha_creacion(new Date(116, 0, 14));
-        a3.setInic_Averia(new Date(116, 9, 1));
-        a3.setFin_averia(new Date(116, 9, 1));
-        a3.setFecha_asig(new Date(116, 9, 1));
-        a3.setUbicacion("Centro");
-        a3.setCoordenada("0.3,34.3");
-        a3.setObservaciones("observaciones");
-        a3.setPrioridad(Aviso.Prioridad.URGENTE);
-        a3.setEstado(Aviso.Estado.EN_PROCESO);
-        datos.add(a1);
-        datos.add(a2);
-        datos.add(a3);*/
     }
 
     public List<Aviso> getDatos() {
@@ -99,7 +62,7 @@ public class ListaDeAvisos implements Serializable {
         a.setObservaciones(observaciones);
         a.setPrioridad(prioridad);
         a.setEstado(estado);
-        
+
         if (id_brigada != null) {
             Brigada bri = bdl.obtenerBrigada(id_brigada);
             a.setBrigada(bri);
@@ -135,5 +98,9 @@ public class ListaDeAvisos implements Serializable {
 
     public void setId_brigada(Integer id_brigada) {
         this.id_brigada = id_brigada;
+    }
+
+    public List<Diagnostico> getDiagnosticos() {
+        return bdl.getDiagnosticos();
     }
 }
