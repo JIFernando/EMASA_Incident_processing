@@ -14,8 +14,11 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.inject.Inject;
+import jpa.Aviso;
 import jpa.Brigada;
+import sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlFiltrosGridBrigadas")
 @SessionScoped
@@ -85,5 +88,24 @@ public class ControlFiltrosGridBrigadas implements Serializable {
     public void setLb(ListaDeBrigadas lb) {
         this.lb = lb;
     }
+    
+    /*
+    @EJB
+    BaseDeDatosLocal bdl;
+    
+    
+    public int getNumAvisos () {
+        List<Aviso> avisos = bdl.getAvisos();
+        List<Aviso> avisosBrigada;
+        avisosBrigada = new ArrayList<>();
+        
+        for (Aviso aviso : avisos) {
+            if (id_brigada.equals(aviso.getBrigada().getId_brigada())) {
+                avisosBrigada.add(aviso);
+            }
+        }
+        //return avisosBrigada.size();
+        return avisos.size();
+    }*/
 
 }

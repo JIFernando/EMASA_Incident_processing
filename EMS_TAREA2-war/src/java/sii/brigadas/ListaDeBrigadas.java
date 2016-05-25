@@ -12,8 +12,6 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Brigada;
-import jpa.Capataz;
-import jpa.Contrata;
 import jpa.Operario;
 import sii.ejb.BaseDeDatosLocal;
 
@@ -168,5 +166,5 @@ public class ListaDeBrigadas implements Serializable {
     public void setBdl(BaseDeDatosLocal bdl) {
         this.bdl = bdl;
     }
-
+    
 }

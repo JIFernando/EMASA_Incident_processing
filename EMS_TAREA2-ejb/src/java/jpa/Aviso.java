@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -77,6 +78,15 @@ public class Aviso implements Serializable {
     private List<Aviso> avisoEnlazado;
     @ManyToMany(mappedBy = "avisoEnlazado")
     private List<Aviso> avisoEnlazado2;
+    
+    //  NUEVO CÓDIGO AÑADIR AVISO ENLAZADO
+    
+    public void agnadirAvisoEnlazado (Aviso a) {
+        avisoEnlazado.add(a);
+    }
+    
+    //  FIN NUEVO CÓDIGO
+    
     //-----------------------------------------------//
 
     //  Relación muchos a uno de AVISO a EMPLEADO
@@ -101,7 +111,7 @@ public class Aviso implements Serializable {
     //------------------------------------------//
 
     //  Relación de muchos a uno entre AVISO Y BRIGADA
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Brigada brigada;
     //------------------------------------------//
 
