@@ -32,14 +32,35 @@ public class Aviso implements Serializable {
     private Date fecha_creacion, inic_Averia, fin_averia, fecha_asig;
 
     public enum Estado {
-        SIN_ATENDER, EN_PROCESO, CERRADO, TODOS
+        SIN_ATENDER, EN_PROCESO, CERRADO, TODOS;
+        
+        @Override
+        public String toString() {
+            switch(this) {
+                case SIN_ATENDER: return "Sin atender";
+                case EN_PROCESO: return "En proceso";
+                case CERRADO: return "Cerrado";
+                case TODOS: return "Todos";
+                default: throw new IllegalArgumentException();
+            }
+        }
     }
     private Estado estado;
     private String ubicacion;
     private String observaciones;
 
     public enum Prioridad {
-        URGENTE, PLANIFICADO, TODOS
+        URGENTE, PLANIFICADO, TODOS;
+        
+        @Override
+        public String toString() {
+            switch(this) {
+                case URGENTE: return "Urgente";
+                case PLANIFICADO: return "Planificado";
+                case TODOS: return "Todos";
+                default: throw new IllegalArgumentException();
+            }
+        }
     }
     private Prioridad prioridad;
     private String coordenada;
@@ -106,7 +127,8 @@ public class Aviso implements Serializable {
 
     @Override
     public String toString() {
-        return "emasa.Aviso[ id=" + id_aviso + " ]";
+        //return "emasa.Aviso[ id=" + id_aviso + " ]";
+        return "" + id_aviso;
     }
 
     /**
@@ -358,5 +380,5 @@ public class Aviso implements Serializable {
     public void setBrigada(Brigada brigada) {
         this.brigada = brigada;
     }
-
+    
 }

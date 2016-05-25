@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
+import static jpa.Aviso.Estado.SIN_ATENDER;
 import jpa.Empleado;
 import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
