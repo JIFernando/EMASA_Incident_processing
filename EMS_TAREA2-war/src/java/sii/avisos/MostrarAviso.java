@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import jpa.Aviso;
+import jpa.Brigada;
 import jpa.Diagnostico;
 import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
@@ -45,6 +46,9 @@ public class MostrarAviso implements Serializable {
     public String editarAviso() {
         Supervisor sup = bdl.obtenerSupervisor(aviso.getSupervisor().getId_empl());
         aviso.setSupervisor(sup);
+        
+        Brigada bri = bdl.obtenerBrigada(aviso.getBrigada().getId_brigada());
+        aviso.setBrigada(bri);
         
         List<Diagnostico> diagnosticos_bd = bdl.getDiagnosticos();
         List<Diagnostico> diagnosticos_nuevos = new ArrayList<>();

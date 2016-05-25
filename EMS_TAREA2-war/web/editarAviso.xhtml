@@ -35,17 +35,16 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px;">
-                        <!-- <div class="col-md-2">
-                            <c:if test="#{mostrarAviso.aviso.brigada != null}">
-                                <h:outputLabel value="Brigada" />
-                                <h:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" />
-                            </c:if>
-                        </div> -->
                         <div class="col-md-2">
                             <h:outputLabel value="Brigada" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true" />
+                            <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
+                                <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" />
+                            </c:if>
+                            <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
+                                <p:inputText value="#{mostrarAviso.aviso.brigada.id_brigada}" disabled="true" />
+                            </c:if>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Fin avería" />
@@ -157,7 +156,7 @@
                         </c:if>
                     </div>
                 </p:tab>
-                
+
                 <p:tab title="Ciudadanos">
                     <p:dataTable value="#{nuevoAviso.ciudadanos}" var="lista_ciudadanos" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
@@ -174,7 +173,7 @@
                         </p:column>
                     </p:dataTable>
                 </p:tab>
-                
+
                 <p:tab title="Empleados">
                     <p:dataTable value="#{nuevoAviso.empleados}" var="lista_empleados" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Id">
@@ -194,13 +193,13 @@
 
                 <p:tab title="Diagnóstico">
                     <div align="center">
-                        <h:selectManyCheckbox id="diagnosticos" value="#{mostrarAviso.diagnosticos_id}">
+                        <p:selectManyCheckbox id="diagnosticos" value="#{mostrarAviso.diagnosticos_id}">
                             <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
                             <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
                             <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
                             <f:selectItem id="desborde" itemLabel="Desborde de presa" itemValue="4" />
                             <f:selectItem id="canaleta" itemLabel="Canaleta rota" itemValue="5" />
-                        </h:selectManyCheckbox>
+                        </p:selectManyCheckbox>
                     </div>
                 </p:tab>
 
@@ -292,7 +291,7 @@
                             <h:outputText value="#{brigadas_filtro.nombreContrata}" />
                         </p:column>
                         <p:column headerText="Capataz">
-                            <h:outputText value="#{brigadas_filtro.nombreContrata}" />
+                            <h:outputText value="#{brigadas_filtro.capataz.nombre}" />
                         </p:column>
                         <p:column headerText="Operarios">
                             <h:outputText value="#{brigadas_filtro.nombresOperarios}" />
