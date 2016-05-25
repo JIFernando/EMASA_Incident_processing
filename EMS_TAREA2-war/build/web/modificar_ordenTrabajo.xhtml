@@ -16,7 +16,7 @@
 
 
     <ui:define name="contenido">
-        <h:form>
+        <h:form id="mot_formulario">
 
             <p:remoteCommand name="onload" action="#{controlFiltrosGridBrigadas.resetear()}" autoRun="true" />
 
@@ -27,13 +27,13 @@
                             <h:outputLabel value="ID Aviso" />
                         </div>
                         <div class="col-md-3">
-                            <h:outputText id="mot_idAviso" value="#{mostrarOrdenTrabajo.ordenTrabajo.aviso.id_aviso}"/>  
+                            <h:outputText id="mot_id_aviso" value="#{mostrarOrdenTrabajo.ordenTrabajo.aviso.id_aviso}"/>  
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="ID OT" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarOrdenTrabajo.ordenTrabajo.id_OT}" disabled="true"/> 
+                            <p:inputText id="mot_id_ot" value="#{mostrarOrdenTrabajo.ordenTrabajo.id_OT}" disabled="true"/> 
                         </div>
                     </div>
 
@@ -65,13 +65,13 @@
                             <h:outputLabel value="Motivo de operación" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarOrdenTrabajo.ordenTrabajo.pto_trabajo}"/>
+                            <p:inputText id="mot_motivo" value="#{mostrarOrdenTrabajo.ordenTrabajo.motivo}"/>
                         </div>
                         <div class="col-md-2">
                             <h:outputLabel value="Pto trabajo" />
                         </div>
                         <div class="col-md-3">
-                            <p:inputText value="#{mostrarOrdenTrabajo.ordenTrabajo.motivo}"/>
+                            <p:inputText id="mot_pto_trabajo" value="#{mostrarOrdenTrabajo.ordenTrabajo.pto_trabajo}"/>
                         </div>
                     </div>
 
@@ -135,27 +135,27 @@
                                 <h:outputLabel value="Brigada" />
                             </div>
                             <div>     
-                                <p:inputText id="input_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
+                                <p:inputText id="mot_buscar_brigada"  value="#{controlFiltrosGridBrigadas.id_brigada}"/>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div> <h:outputLabel value="Contrata" />
                             </div>
                             <div>     
-                                <p:inputText id="input_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
+                                <p:inputText id="mot_buscar_contrata" value="#{controlFiltrosGridBrigadas.contrata}"/>
                             </div>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
+                            <h:commandButton id="mot_buscar_brigada" class="boton" value="Buscar" action="#{controlFiltrosGridBrigadas.buscar()}"/>
                         </div>
                         <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                            <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
+                            <h:commandButton id="mot_reiniciar_brigada" class="boton" value="Reiniciar"  action="#{controlFiltrosGridBrigadas.resetear()}"/>
                         </div>
                     </div>
 
                     <p:separator />
 
-                    <p:dataTable value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
+                    <p:dataTable id="mot_grid_brigada" value="#{controlFiltrosGridBrigadas.listaBrigadasFiltrados}" var="brigadas_filtro" resizableColumns="true" emptyMessage="No hay datos">
                         <p:column headerText="Brigada">
                             <h:outputText value="#{brigadas_filtro.id_brigada}" />
                         </p:column>
@@ -175,22 +175,22 @@
                     <div align="center">
                         <h:panelGrid columns="2" cellpadding="10">
                             <h:outputLabel value="Ubicación" styleClass="combi" />
-                            <h:inputTextarea rows="5" cols="90" id ="ub" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
+                            <h:inputTextarea id="mot_textarea_ubicacion" rows="5" cols="90" id ="ub" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
                         </h:panelGrid>
                     </div>
                 </p:tab>
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <p:inputTextarea rows="5" cols="90" value="#{mostrarOrdenTrabajo.ordenTrabajo.observaciones}" />
+                        <p:inputTextarea id="mot_textarea_observaciones" rows="5" cols="90" value="#{mostrarOrdenTrabajo.ordenTrabajo.observaciones}" />
                     </div>
                 </p:tab>
             </p:accordionPanel>
 
             <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px">
                 <!--<a href="OTmodificada.xhtml" class="boton"  id="volver">Guardar</a> -->
-                <h:commandButton id="guardar" styleClass="boton" value="Guardar" action="#{mostrarOrdenTrabajo.capturarYEditar()}" style="padding-right: 5px"/>
-                <a href="grid_ordenTrabajo.xhtml" class="boton"  id="volver">Volver</a>  
+                <h:commandButton id="mot_guardar" styleClass="boton" value="Guardar" action="#{mostrarOrdenTrabajo.capturarYEditar()}" style="padding-right: 5px"/>
+                <a href="grid_ordenTrabajo.xhtml" id="mot_boton_volver" class="boton"  id="volver">Volver</a>  
             </h:panelGrid>
         </h:form><br/><br/><br/><br/>
     </ui:define>
