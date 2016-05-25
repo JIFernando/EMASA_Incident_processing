@@ -15,27 +15,27 @@
 
     <ui:define name="contenido">
 
-        <h:form>
+        <h:form id="got_form">
             <div class="row">
                 <div class="col-md-4">
                     <div>
                         <h:outputLabel value="Fecha creación" />                  
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:calendar id="fecha_c" value="#{controlFiltrosGridOrdenTrabajo.fecha_creacion}" showOn="button" />
+                            <p:calendar id="got_fecha_cre" value="#{controlFiltrosGridOrdenTrabajo.fecha_creacion}" showOn="button" />
                         </h:panelGrid>
 
                         <h:outputLabel value="Fecha programada" />
 
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:calendar id="fecha_p" value="#{controlFiltrosGridOrdenTrabajo.fecha_programada}" showOn="button" />
+                            <p:calendar id="got_fecha_pro" value="#{controlFiltrosGridOrdenTrabajo.fecha_programada}" showOn="button" />
                         </h:panelGrid>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <h:outputLabel value="Prioridad" style="margin-left: 13px"/>
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                        <h:outputLabel for="prioridad_ot" value="" />
-                        <p:selectOneListbox id="prioridad_ot" value="#{controlFiltrosGridOrdenTrabajo.prioridad }">
+                        <h:outputLabel for="got_prioridad_ot" value="" />
+                        <p:selectOneListbox id="got_prioridad_ot" value="#{controlFiltrosGridOrdenTrabajo.prioridad }">
                             <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                             <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                             <f:selectItem itemLabel="TODOS" itemValue="TODOS" />
@@ -45,8 +45,8 @@
                 <div class="col-md-3">
                     <h:outputLabel value="Estado" style="margin-left: 13px"/>
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                        <h:outputLabel for="estado_ot" value="" />
-                        <p:selectOneListbox id="estado_ot" value="#{controlFiltrosGridOrdenTrabajo.estado}" >
+                        <h:outputLabel for="got_estado_ot" value="" />
+                        <p:selectOneListbox id="got_estado_ot" value="#{controlFiltrosGridOrdenTrabajo.estado}" >
                             <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                             <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                             <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
@@ -61,34 +61,34 @@
                     <div> <h:outputLabel value="Código de OT" />
                     </div>
                     <div>     
-                        <p:inputText value="#{controlFiltrosGridOrdenTrabajo.id_ot}"/>
+                        <p:inputText value="#{controlFiltrosGridOrdenTrabajo.id_ot}" id="got_id_OT"/>
                     </div>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Buscar" action="grid_ordenTrabajo.xhtml"/>
+                    <h:commandButton class="boton" value="Buscar" action="grid_ordenTrabajo.xhtml" id="got_boton_buscar"/>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridOrdenTrabajo.resetear() }"/>
+                    <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridOrdenTrabajo.resetear() }" id="got_boton_reiniciar"/>
                 </div>
             </div>
 
             <p:separator />
 
-            <h:outputText value="Resultado filtrado por:  Estado:#{controlFiltrosGridOrdenTrabajo.estado} "/>
+            <h:outputText value="Resultado filtrado por:  Estado:#{controlFiltrosGridOrdenTrabajo.estado} " id="got_resultado_filtro_estado"/>
 
-            <h:outputText value=" // Prioridad:#{controlFiltrosGridOrdenTrabajo.prioridad} "/>
+            <h:outputText value=" // Prioridad:#{controlFiltrosGridOrdenTrabajo.prioridad} " id="got_resultado_filtro_prioridad"/>
 
             <c:if test="#{controlFiltrosGridOrdenTrabajo.fecha_creacion!= null}">
-                <h:outputText value =" // Fecha creación#{controlFiltrosGridOrdenTrabajo.fecha_creacion} "/>
+                <h:outputText value =" // Fecha creación#{controlFiltrosGridOrdenTrabajo.fecha_creacion} " id="got_resultado_filtro_fecha_cre"/>
             </c:if>
             <c:if test="#{controlFiltrosGridOrdenTrabajo.fecha_programada != null}">
-                <h:outputText value =" // Fecha programada#{controlFiltrosGridOrdenTrabajo.fecha_programada} "/>
+                <h:outputText value =" // Fecha programada#{controlFiltrosGridOrdenTrabajo.fecha_programada} " id="got_resultado_filtro_fecha_pro"/>
             </c:if>
             <c:if test="#{controlFiltrosGridOrdenTrabajo.id_ot != null}">
-                <h:outputText value =" // Código de Orden:#{controlFiltrosGridOrdenTrabajo.id_ot}"/>
+                <h:outputText value =" // Código de Orden:#{controlFiltrosGridOrdenTrabajo.id_ot}" id="got_resultado_filtro_id_ot"/>
             </c:if>
 
-            <p:dataTable value="#{controlFiltrosGridOrdenTrabajo.listaOrdenTrabajoFiltrados}" var="ordenTrabajo_filtro" resizableColumns="true" emptyMessage="No hay datos">
+            <p:dataTable value="#{controlFiltrosGridOrdenTrabajo.listaOrdenTrabajoFiltrados}" var="ordenTrabajo_filtro" resizableColumns="true" emptyMessage="No hay datos" id="got_tabla_ot">
                 <p:column headerText="OT">
                     <h:outputText value="#{ordenTrabajo_filtro.id_OT}" />
                 </p:column>
@@ -108,9 +108,9 @@
                     <h:outputText value="#{ordenTrabajo_filtro.estado}" />
                 </p:column>
                 <p:column >
-                    <p:commandButton value = "Mostrar" id="mostrar_ot" action="#{mostrarOrdenTrabajo.capturarYMostrarOrdenTrabajo(ordenTrabajo_filtro)}" style="margin-left: 7px;"/><br/>
-                    <p:commandButton value = "Modificar" id="modificar_ot" action="#{mostrarOrdenTrabajo.capturarYEditar(ordenTrabajo_filtro)}" style="margin-left: 7px;"/><br/>
-                    <p:commandButton value = "Borrar" id="borrar_ot" action="#{mostrarOrdenTrabajo.eliminarOT(ordenTrabajo_filtro)}" style="margin-left: 7px;"/>
+                    <p:commandButton value = "Mostrar" action="#{mostrarOrdenTrabajo.capturarYMostrarOrdenTrabajo(ordenTrabajo_filtro)}" style="margin-left: 7px;" id="got_boton_mostrar"/><br/>
+                    <p:commandButton value = "Modificar" action="#{mostrarOrdenTrabajo.capturarYEditar(ordenTrabajo_filtro)}" style="margin-left: 7px;" id="got_boton_editar"/><br/>
+                    <p:commandButton value = "Borrar" action="#{mostrarOrdenTrabajo.eliminarOT(ordenTrabajo_filtro)}" style="margin-left: 7px;" id="got_boton_eliminar"/>
                 </p:column>
             </p:dataTable>
             <br/>
