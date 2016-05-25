@@ -14,7 +14,8 @@
         </group>
         <group name="Documents">
             <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/modificar_ordenTrabajo.xhtml</file>
-            <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/grid_avisos.xhtml</file>
+            <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/verAviso.xhtml</file>
+            <file>file:/C:/Users/Manuel/Documents/NetBeansProjects/SII-Tarea2-F/EMS_TAREA2-war/web/ver_ordenTrabajo.xhtml</file>
         </group>
     </open-files>
 </project-private>
