@@ -80,8 +80,8 @@
                             <h:outputLabel value="Taller" />
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="mot_TallerMenu" value=""/>
-                            <h:selectOneMenu id="mot_TallerMenu" value="#{mostrarOrdenTrabajo.ordenTrabajo.taller}" disabled="true">
+                            <p:outputLabel for="vot_TallerMenu" value=""/>
+                            <h:selectOneMenu id="vot_TallerMenu" value="#{mostrarOrdenTrabajo.ordenTrabajo.taller}" disabled="true">
                                 <f:selectItem id="t1" itemLabel="Taller1" itemValue="Taller1" />
                                 <f:selectItem id="t2" itemLabel="Taller2" itemValue="Taller2" />
                                 <f:selectItem id="t3" itemLabel="Taller3" itemValue="Taller3" />
@@ -105,8 +105,8 @@
                             <h:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="estado" value=""/>
-                            <h:selectOneMenu id="estado" value="#{nuevaOrdenTrabajo.ot.estado}" disabled="true" style="width:120px">
+                            <p:outputLabel for="vot_estado" value=""/>
+                            <h:selectOneMenu id="vot_estado" value="#{nuevaOrdenTrabajo.ot.estado}" disabled="true" style="width:120px">
                                 <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
                                 <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
@@ -117,8 +117,8 @@
                             <h:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
-                            <p:outputLabel for="prioridad" value="" />
-                            <h:selectOneMenu id="prioridad" value="#{nuevaOrdenTrabajo.ot.prioridad}" disabled="true">
+                            <p:outputLabel for="vot_prioridad" value="" />
+                            <h:selectOneMenu id="vot_prioridad" value="#{nuevaOrdenTrabajo.ot.prioridad}" disabled="true">
                                 <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
                                 <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                             </h:selectOneMenu>  
@@ -130,21 +130,21 @@
                     <div align="center">
                         <h:panelGrid columns="2" cellpadding="10">
                             <h:outputLabel value="Ubicación" styleClass="combi" />
-                            <h:inputTextarea rows="5" cols="90" disabled="true" id ="ub" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
+                            <h:inputTextarea id="vot_textarea_ubicacion" rows="5" cols="90" disabled="true" id ="ub" value="#{mostrarOrdenTrabajo.ordenTrabajo.ubicacion}"/>
                         </h:panelGrid>
                     </div>
                 </p:tab>               
 
                 <p:tab title="Observaciones">
                     <div align="center">
-                        <p:inputTextarea rows="5" cols="90" value="#{mostrarOrdenTrabajo.ordenTrabajo.observaciones}" disabled="true" />
+                        <p:inputTextarea id="vot_textarea_observaciones" rows="5" cols="90" value="#{mostrarOrdenTrabajo.ordenTrabajo.observaciones}" disabled="true" />
                     </div>
                 </p:tab>
             </p:accordionPanel>
 
             <h:panelGrid columns="5" cellspacing="15px" cellpadding="10px">
                 <br/>
-                <a href="grid_ordenTrabajo.xhtml" class="boton"  id="volver">Volver</a>            
+                <a href="grid_ordenTrabajo.xhtml" class="boton"  id="vot_boton_volver">Volver</a>            
             </h:panelGrid>
         </h:form>
 
