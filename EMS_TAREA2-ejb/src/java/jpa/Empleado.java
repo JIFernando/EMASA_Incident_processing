@@ -65,7 +65,7 @@ public class Empleado implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date inic_cont, fin_cont;
     private String tipo_horario;
-    private Long salario;
+    private Float salario;
 
     public enum Rol {
         SUPERVISOR, CAPATAZ, OPERARIO
@@ -228,14 +228,14 @@ public class Empleado implements Serializable {
     /**
      * @return the salario
      */
-    public Long getSalario() {
+    public Float getSalario() {
         return salario;
     }
 
     /**
      * @param salario the salario to set
      */
-    public void setSalario(Long salario) {
+    public void setSalario(Float salario) {
         this.salario = salario;
     }
 

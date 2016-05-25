@@ -3,12 +3,18 @@ var map;
 function initialize()
 {
     geocoder = new google.maps.Geocoder();
+    var myLatLng = {lat: 36.716427, lng: -4.470143};
     map = new google.maps.Map(document.getElementById("map"),
             {
-                zoom: 8,
-                center: new google.maps.LatLng(22.7964, 79.5410),
+                zoom: 14,
+                center: new google.maps.LatLng(36.716427, -4.470143),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Universidad de Malaga',
+    });
 }
 
 function codeAddress()
