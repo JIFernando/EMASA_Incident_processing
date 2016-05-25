@@ -84,9 +84,4 @@ public class Login {
         }
         return encontrado;
     }
-
-    private boolean comprobarContrasenia(int i) {
-        return (empleados.get(i).getPassword().equals(contrasenia));
-    }
-
 }

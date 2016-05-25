@@ -38,16 +38,6 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
     /**
      *
-     * @param empleado
-     * @throws EmasaException
-     */
-    @Override
-    public void compruebaLogin(Empleado empleado) throws EmasaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
      * Inserta un aviso en la base de datos
      *
      * @param aviso
@@ -55,7 +45,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public void insertarAviso(Aviso aviso) {
         // throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("NUEVO ID: "+ aviso.getId_aviso());
+        System.out.println("NUEVO ID: " + aviso.getId_aviso());
         em.persist(aviso);
     }
 
@@ -94,8 +84,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     }
 
     @Override
-    public void modificarOT(OrdenTrabajo a) {
-        em.merge(a);
+    public void modificarOT(OrdenTrabajo ot) {
+        em.merge(ot);
+        if (ot.getEstado().equals(OrdenTrabajo.Estado.CERRADO)) {
+            cerrarAviso(ot.getAviso().getId_aviso());
+        }
     }
 
     @Override
@@ -132,18 +125,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
         return sup;
     }
-    
+
     @Override
-    public Empleado obtenerEmpleado(Integer id){
+    public Empleado obtenerEmpleado(Integer id) {
         Empleado emp = em.find(Empleado.class, id);
-        
+
         return emp;
     }
-    
+
     @Override
     public Ciudadano obtenerCiudadano(Integer id) {
         Ciudadano ciu = em.find(Ciudadano.class, id);
-        
+
         return ciu;
     }
 
@@ -174,5 +167,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     public List<Ciudadano> getCiudadanos() {
         List<Ciudadano> res = em.createQuery("select c from Ciudadano c", Ciudadano.class).getResultList();
         return res;
+    }
+
+    @Override
+    public void cerrarAviso(Integer id_aviso) {
+        List<Aviso> avisos = getAvisos();
+        Aviso aviso;
+        for (Aviso a : avisos) {
+            if (a.getId_aviso().equals(id_aviso)) {
+                aviso = a;
+                aviso.setEstado(Aviso.Estado.CERRADO);
+                em.merge(aviso);
+            }
+        }
     }
 }
