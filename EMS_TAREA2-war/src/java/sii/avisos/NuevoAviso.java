@@ -71,7 +71,11 @@ public class NuevoAviso {
 
         if (id_brigada != null) {
             Brigada bri = bdl.obtenerBrigada(id_brigada);
-            aviso.setBrigada(bri);
+            if (bri == null) {
+                    return "errorBrigadaNoEncontrada.xhtml";
+            } else {
+                aviso.setBrigada(bri);
+            }
         }
 
         if (id_ciudadano != null) {
@@ -91,6 +95,9 @@ public class NuevoAviso {
         aviso.setEstado(estado);
 
         aviso.setId_aviso(tomarMaximoId() + 1);
+        
+        System.out.println("Comprobando avisos duplicados");
+        comprobarAvisosDuplicados();
 
         List<Diagnostico> diagnosticos_bd = lda.getDiagnosticos();
         List<Diagnostico> diagnosticos_nuevos = new ArrayList<>();
@@ -200,4 +207,52 @@ public class NuevoAviso {
     public Integer tomarSiguienteId() {
         return tomarMaximoId() + 1;
     }
+     
+     public void comprobarAvisosDuplicados () {
+         
+        List<Aviso> avisos;
+        avisos = bdl.getAvisos();
+        String c = aviso.getCoordenada();
+        String [] cs = c.split(",");
+        double Lat1 = Double.parseDouble(cs[0]);
+        double Lon1 = Double.parseDouble(cs[1]);
+        System.out.println(c);
+        
+        for (Aviso a : avisos) {
+            
+            if (a.getCoordenada() != null) { 
+                String coordenada = a.getCoordenada();
+                System.out.println(" Aviso " + a.getId_aviso() + " :coordenada");
+                String [] coordenadas  = coordenada.split(",");
+                double Lat2 = Double.parseDouble(coordenadas[0]);
+                double Lon2 = Double.parseDouble(coordenadas[1]);
+            
+            
+                double PI = 3.14159265358979323846;
+                Lat1 = Lat1 * PI / 180;
+                Lon1 = Lon1 * PI / 180;
+                Lat2 = Lat2 * PI / 180;
+                Lon2 = Lon2 * PI / 180;
+                
+                double distancia;
+                
+                distancia = 6378.137 * Math.acos(Math.cos(Lat1) * Math.cos(Lat2) * Math.cos(Lon2 - Lon1) + Math.sin(Lat1) * Math.sin(Lat2));
+                System.out.println("Distancia: " + distancia);
+                
+                if (distancia < 200) {
+                    List<Aviso> ae = new ArrayList<>();
+                    ae.add(a);
+                    aviso.setAvisoEnlazado(ae);
+                    
+                    List ae2 = aviso.getAvisoEnlazado2();
+                    ae2.add(a);
+                    aviso.setAvisoEnlazado2(ae2);
+                    
+            } else {
+                System.out.println("Aviso " + a.getId_aviso() + " sin coordenadas");
+            }
+        }
+    }
+}
+
 }

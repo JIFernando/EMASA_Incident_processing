@@ -5,6 +5,7 @@
  */
 package sii.ejb;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 import sii.exception.EmasaException;
@@ -55,6 +56,10 @@ public interface BaseDeDatosLocal {
     public List<Operario> getOperarios();
 
     public List<Empleado> getEmpleados();
+    
+    public int getAvisosConBrigradas(Date date);
+    
+    public int avisosPrioridad(Aviso.Prioridad prio, Date d);
     
     public List<Ciudadano> getCiudadanos();
     
