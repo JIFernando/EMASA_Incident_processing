@@ -15,42 +15,42 @@
 
     <ui:define name="contenido">
 
-        <h:form>
+        <h:form id="ca_form1">
             <div class="row">
                 <div class="col-md-4">
                     <div>
                         <h:outputLabel value="Fecha: desde" />                  
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:calendar id="button" value="#{controlFiltrosGridAvisos.fecha_inicio}" showOn="button" />
+                        <h:panelGrid columns="2" cellpadding="5" id="ca_panel1">
+                            <p:calendar id="button" value="#{controlFiltrosGridAvisos.fecha_inicio}" showOn="button" id="ca_calendar1"/>
                         </h:panelGrid>
 
                         <h:outputLabel value="Fecha: hasta" />
 
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:calendar id="button2" value="#{controlFiltrosGridAvisos.fecha_fin}" showOn="button" />
+                        <h:panelGrid columns="2" cellpadding="5" id="ca_panel2">
+                            <p:calendar id="button2" value="#{controlFiltrosGridAvisos.fecha_fin}" showOn="button" id="ca_calendar2"/>
                         </h:panelGrid>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <h:outputLabel value="Prioridad" style="margin-left: 13px"/>
-                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value" id="ca_panel3">
                         <h:outputLabel for="prioridad" value="" />
-                        <p:selectOneListbox id="prioridad" value="#{controlFiltrosGridAvisos.prioridad }">
-                            <f:selectItem itemLabel="URGENTE" itemValue="URGENTE"/>
-                            <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
-                            <f:selectItem itemLabel="TODOS" itemValue="TODOS" />
+                        <p:selectOneListbox id="prioridad" value="#{controlFiltrosGridAvisos.prioridad }" id="ca_select1">
+                            <f:selectItem itemLabel="URGENTE" itemValue="URGENTE" id="ca_item1"/>
+                            <f:selectItem itemLabel="PLANIFICADO" itemValue="PLANIFICADO" id="ca_item2"/>
+                            <f:selectItem itemLabel="TODOS" itemValue="TODOS" id="ca_item3"/>
                         </p:selectOneListbox>             
                     </h:panelGrid>
                 </div>
                 <div class="col-md-3">
                     <h:outputLabel value="Estado" style="margin-left: 13px"/>
-                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value" id="ca_panel4">
                         <h:outputLabel for="estado" value="" />
-                        <p:selectOneListbox id="estado" value="#{controlFiltrosGridAvisos.estado}" >
-                            <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" />
-                            <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" />
-                            <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
-                            <f:selectItem itemLabel="TODOS" itemValue="TODOS"/>
+                        <p:selectOneListbox id="estado" value="#{controlFiltrosGridAvisos.estado}" id="ca_select2" >
+                            <f:selectItem itemLabel="SIN ATENDER" itemValue="SIN_ATENDER" id="ca_item4"/>
+                            <f:selectItem itemLabel="EN PROCESO" itemValue="EN_PROCESO" id="ca_item5"/>
+                            <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" id="ca_item6"/>
+                            <f:selectItem itemLabel="TODOS" itemValue="TODOS" id="ca_item7"/>
                         </p:selectOneListbox>
                     </h:panelGrid>
                 </div>
@@ -61,14 +61,14 @@
                     <div> <h:outputLabel value="Código de Aviso" />
                     </div>
                     <div>     
-                        <p:inputText value="#{controlFiltrosGridAvisos.id_aviso}"/>
+                        <p:inputText value="#{controlFiltrosGridAvisos.id_aviso}" id="ca_input1"/>
                     </div>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Buscar" action="grid_avisos.xhtml"/>
+                    <h:commandButton class="boton" value="Buscar" action="grid_avisos.xhtml" id="ca_command1"/>
                 </div>
                 <div class="col-md-1" style="margin-top: 13px; margin-left: 13px">
-                    <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridAvisos.resetear() }"/>
+                    <h:commandButton class="boton" value="Reiniciar"  action="#{controlFiltrosGridAvisos.resetear() }" id="ca_command2"/>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                 <h:outputText value =" // Código de aviso:#{controlFiltrosGridAvisos.id_aviso}"/>
             </c:if>
 
-            <p:dataTable value="#{controlFiltrosGridAvisos.listaAvisosFiltrados}" var="avisos_filtro" resizableColumns="true" emptyMessage="No hay datos">
+            <p:dataTable value="#{controlFiltrosGridAvisos.listaAvisosFiltrados}" var="avisos_filtro" resizableColumns="true" emptyMessage="No hay datos" id="ca_data1">
                 <p:column headerText="Aviso">
                     <h:outputText value="#{avisos_filtro.id_aviso}" />
                 </p:column>
@@ -108,8 +108,8 @@
                     <h:outputText value="#{avisos_filtro.ciudadano.email}" />
                 </p:column>
                 <p:column>
-                    <form action="mailto:#{avisos_filtro.ciudadano.email}" method="post">
-                        <input class="boton" type="submit" value="Avisar"></input>
+                    <form action="mailto:#{avisos_filtro.ciudadano.email}" method="post" id="ca_form2">
+                        <input class="boton" type="submit" value="Avisar" id="ca_input1"></input>
                     </form>
                 </p:column>
             </p:dataTable>

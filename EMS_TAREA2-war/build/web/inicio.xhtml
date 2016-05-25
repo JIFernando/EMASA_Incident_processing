@@ -12,31 +12,31 @@
 
     <ui:define name="contenido">
         
-        <h:form>
+        <h:form id="i_reset">
             <p:remoteCommand name="onload" action="#{controlFiltrosGridAvisos.resetear()}" autoRun="true" />
         </h:form>
         
-        <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}">
+        <c:if test="#{controlAutorizacion.empleado.rol == 'SUPERVISOR'}" id="i_control">
             <div class="row" style="margin-top:25px;">
                 <div class="col-md-2">
 
                 </div>
                 <div class="col-md-4">
-                    <h:form>
-                        <p:growl id="growl" showDetail="true" />
-                        <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
-                            <p:chart type="pie" model="#{chartView.pieModel1}" style="width:300px;height:200px">
-                                <p:ajax event="itemSelect" listener="#{chartView.itemSelect}" update="growl" />
+                    <h:form id="i_form1">
+                        <p:growl id="growl" showDetail="true"/>
+                        <h:panelGrid columns="2" columnClasses="left,right" style="width:100%" id="i_panel1">
+                            <p:chart type="pie" model="#{chartView.pieModel1}" style="width:300px;height:200px" id="i_chart1">
+                                <p:ajax event="itemSelect" listener="#{chartView.itemSelect}" update="growl" id="i_ajax1"/>
                             </p:chart>
                         </h:panelGrid> 
                     </h:form>
                 </div>
                 <div class="col-md-4">
-                    <h:form>
-                        <p:growl id="growl" showDetail="true" />
-                        <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
-                            <p:chart type="bar" model="#{chartView.barModel}" style="width:300px;height:200px">
-                                <p:ajax event="itemSelect" listener="#{chartView.itemSelect}" update="growl" />
+                    <h:form id="i_form2">
+                        <p:growl id="growl" showDetail="true"/>
+                        <h:panelGrid columns="2" columnClasses="left,right" style="width:100%" id="i_panel2">
+                            <p:chart type="bar" model="#{chartView.barModel}" style="width:300px;height:200px" id="i_chart2">
+                                <p:ajax event="itemSelect" listener="#{chartView.itemSelect}" update="growl" id="i_ajax2"/>
                             </p:chart>  
                         </h:panelGrid>
 
@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-8">
                 <!--<p:dataTable var="avisos" value="#{listaDeAvisos.datos}" resizableColumns="true" emptyMessage="No hay datos">-->
-                <p:dataTable var="avisos" value="#{listaDeAvisosSinAsignar.avisosSinAsignar}" resizableColumns="true" emptyMessage="No hay datos">
+                <p:dataTable var="avisos" value="#{listaDeAvisosSinAsignar.avisosSinAsignar}" resizableColumns="true" emptyMessage="No hay datos" id="i_data1">
                     <p:column headerText="Id">
                         <h:outputText value="#{avisos.id_aviso}" />
                     </p:column>
