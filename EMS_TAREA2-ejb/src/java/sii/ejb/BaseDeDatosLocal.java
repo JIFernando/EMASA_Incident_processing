@@ -59,4 +59,6 @@ public interface BaseDeDatosLocal {
     public List<Ciudadano> getCiudadanos();
     
     public void cerrarAviso(Integer id_aviso);
+    
+    public List<Diagnostico> getDiagnosticos();
 }

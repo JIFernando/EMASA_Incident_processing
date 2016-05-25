@@ -20,51 +20,51 @@
             <p:accordionPanel>              
                 <p:tab title="Resumen">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <h:outputLabel value="ID" />
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel value="#{nuevoAviso.tomarMaximoId() + 1}"/>
                         </div>
-                        <div class="col-md-3">
-                            <p:outputLabel value="Fecha de inicio" />
+                        <div class="col-md-2">
+                            <h:outputLabel value="Fecha de inicio" />
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <p:calendar id="button" value="#{nuevoAviso.aviso.inic_Averia}" showOn="button" />
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px">
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <h:outputLabel value="Brigada" />
                         </div>
                         <div class="col-md-3">
                             <p:inputText  value="#{nuevoAviso.id_brigada}"/>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h:outputLabel value="Fecha de finalización"/>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <p:calendar id="button2" value="#{nuevoAviso.aviso.fin_averia}" showOn="button" />
                         </div>
 
                     </div>
                     <div class="row" style="margin-top:5px">
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <h:outputLabel value="Ciudadano originador" />
                         </div>
                         <div class="col-md-3">
                             <p:inputText value="#{nuevoAviso.id_ciudadano}" />
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h:outputLabel value="Empleado originador" />
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <p:inputText value="#{nuevoAviso.id_empleado}" />
                         </div>
                     </div>
                     <div class="row" style="margin-top:5px">
-                        <div class="col-md-1">
-                            <p:outputLabel value="Estado"/>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Estado"/>
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="estado" value="" />
@@ -74,8 +74,8 @@
                                 <f:selectItem itemLabel="CERRADO" itemValue="CERRADO" />
                             </h:selectOneMenu>
                         </div>
-                        <div class="col-md-3">
-                            <p:outputLabel value="Prioridad"/>
+                        <div class="col-md-2">
+                            <h:outputLabel value="Prioridad"/>
                         </div>
                         <div class="col-md-3">
                             <p:outputLabel for="prioridad" value="" />
@@ -166,7 +166,7 @@
                 <p:tab title="Diagnóstico">
                     <div align="center">
                         <div class="row">
-                            <p:selectManyCheckbox id="diagnosticos">
+                            <p:selectManyCheckbox id="diagnosticos" value="#{nuevoAviso.diagnosticos}">
                                 <f:selectItem id="arquetaRota" itemLabel="Arqueta rota" itemValue="1" />
                                 <f:selectItem id="tuberia" itemLabel="Tubería rota" itemValue="2" />
                                 <f:selectItem id="fuga" itemLabel="Fuga de agua" itemValue="3" />
@@ -214,7 +214,7 @@
                         <p:outputLabel value="Coordenadas"></p:outputLabel>
                     </div>
                     <div class="col-md-2">
-                        <input id="coordenadas" disabled="true" type="textbox"></input>
+                        <input id="coordenadas" type="textbox"></input>
                     </div>
                 </div>
                 <div class="row">

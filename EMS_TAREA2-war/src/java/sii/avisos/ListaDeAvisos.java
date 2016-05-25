@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sii.avisos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.Aviso;
-import static jpa.Aviso.Estado.SIN_ATENDER;
+import jpa.Diagnostico;
 import jpa.Empleado;
 import jpa.Supervisor;
 import sii.ejb.BaseDeDatosLocal;
@@ -31,44 +28,6 @@ public class ListaDeAvisos implements Serializable {
     BaseDeDatosLocal bdl;
 
     public ListaDeAvisos() {
-
-        /*
-        Aviso a1 = new Aviso();
-        a1.setId_aviso(12);
-        a1.setFecha_creacion(new Date(116, 9, 1));
-        a1.setInic_Averia(new Date(116, 9, 1));
-        a1.setFin_averia(new Date(116, 9, 1));
-        a1.setFecha_asig(new Date(116, 9, 1));
-        a1.setUbicacion("Ciudad Jardín");
-        a1.setCoordenada("0.3,34.3");
-        a1.setObservaciones("observaciones");
-        a1.setPrioridad(Aviso.Prioridad.URGENTE);
-        a1.setEstado(Aviso.Estado.SIN_ATENDER);
-        Aviso a2 = new Aviso();
-        a2.setId_aviso(13);
-        a2.setFecha_creacion(new Date(116, 3, 12));
-        a2.setInic_Averia(new Date(116, 9, 1));
-        a2.setFin_averia(new Date(116, 9, 1));
-        a2.setFecha_asig(new Date(116, 9, 1));
-        a2.setUbicacion("El Palo");
-        a2.setCoordenada("0.3,34.3");
-        a2.setObservaciones("observaciones");
-        a2.setPrioridad(Aviso.Prioridad.PLANIFICADO);
-        a2.setEstado(Aviso.Estado.EN_PROCESO);
-        Aviso a3 = new Aviso();
-        a3.setId_aviso(14);
-        a3.setFecha_creacion(new Date(116, 0, 14));
-        a3.setInic_Averia(new Date(116, 9, 1));
-        a3.setFin_averia(new Date(116, 9, 1));
-        a3.setFecha_asig(new Date(116, 9, 1));
-        a3.setUbicacion("Centro");
-        a3.setCoordenada("0.3,34.3");
-        a3.setObservaciones("observaciones");
-        a3.setPrioridad(Aviso.Prioridad.URGENTE);
-        a3.setEstado(Aviso.Estado.EN_PROCESO);
-        datos.add(a1);
-        datos.add(a2);
-        datos.add(a3);*/
     }
 
     public List<Aviso> getDatos() {
@@ -102,8 +61,15 @@ public class ListaDeAvisos implements Serializable {
         a.setPrioridad(prioridad);
         a.setEstado(estado);
 
-        Supervisor sup = bdl.obtenerSupervisor(1);
+        List<Supervisor> supervisores = bdl.getSupervisores();
+        int num = supervisores.size();
+
+        Random rnd = new Random();
+        int aleatorio = rnd.nextInt(num);
+
+        Supervisor sup = supervisores.get(aleatorio);
         a.setSupervisor(sup);
+        
         if (vin.getAvisoEnlazado() == null) {
             List<Aviso> avisosVincu2 = new ArrayList<>();
             avisosVincu2.add(a);
@@ -124,5 +90,9 @@ public class ListaDeAvisos implements Serializable {
         //datos.add(a);
 
         return "grid_avisos.xhtml";
+    }
+    
+    public List<Diagnostico> getDiagnosticos(){
+        return bdl.getDiagnosticos();
     }
 }
