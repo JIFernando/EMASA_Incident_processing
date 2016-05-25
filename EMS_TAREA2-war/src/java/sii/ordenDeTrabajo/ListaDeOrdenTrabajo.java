@@ -25,29 +25,12 @@ import sii.ejb.BaseDeDatosLocal;
 @SessionScoped
 public class ListaDeOrdenTrabajo implements Serializable {
 
-    List<OrdenTrabajo> datos;
+    private List<OrdenTrabajo> datos;
     @EJB
-    BaseDeDatosLocal bdl;
+    private BaseDeDatosLocal bdl;
     public ListaDeOrdenTrabajo() {
 
         datos = new ArrayList<>();
-
-        /*OrdenTrabajo ot = new OrdenTrabajo();
-        ot.setMotivo("Motivo1");
-        ot.setEstado(OrdenTrabajo.Estado.CERRADO);
-        ot.setFecha_creac(new Date(116, 3, 12));
-        ot.setFecha_progr(new Date(116, 3, 12));
-        ot.setTaller("Taller2");
-        ot.setPto_trabajo(12);
-        ot.setObservaciones("Observaciones");
-        ot.setUbicacion("Calle Alegría");
-        Random rd = new Random();
-        ot.setId_OT(rd.nextInt(1993));
-        Aviso av = new Aviso();
-        av.setId_aviso(123);
-        ot.setAviso(av);
-        ot.setPrioridad(OrdenTrabajo.Prioridad.URGENTE);
-        datos.add(ot);*/
     }
 
     public List<OrdenTrabajo> getDatos() {
@@ -75,4 +58,5 @@ public class ListaDeOrdenTrabajo implements Serializable {
     public void addDatos(OrdenTrabajo ot) {
         this.datos.add(ot);
     }
+    
 }

@@ -104,7 +104,7 @@ public class ChartView implements Serializable {
 
 
         ChartSeries briDisp = new ChartSeries();
-        briDisp.setLabel("Brigadas Disponibles");
+        /*briDisp.setLabel("Brigadas Disponibles");
         int da = bdl.getAvisosConBrigradas(d3);
         int da2 =bdl.getAvisosConBrigradas(d2);
         int da3 =bdl.getAvisosConBrigradas(d);
@@ -114,10 +114,10 @@ public class ChartView implements Serializable {
         briDisp.set(date,(int)  da3);
 
         
-        briDisp.set(date,1);
+        briDisp.set(date,1);*/
         model.addSeries(urg);
         model.addSeries(plani);
-        model.addSeries(briDisp);
+        //model.addSeries(briDisp);
 
         return model;
     }
