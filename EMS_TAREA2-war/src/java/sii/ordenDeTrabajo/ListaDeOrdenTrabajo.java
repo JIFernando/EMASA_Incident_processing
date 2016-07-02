@@ -60,7 +60,7 @@ public class ListaDeOrdenTrabajo implements Serializable {
 
     public List<OrdenTrabajo> obtenerOTsVinculadas(Aviso a) {
         List<OrdenTrabajo> datosAvisos = new ArrayList<>();
-        for (OrdenTrabajo ot : datos) {
+        for (OrdenTrabajo ot : getDatos()) {
             if (ot.getAviso().getId_aviso() == a.getId_aviso()) {
                 datosAvisos.add(ot);
             }

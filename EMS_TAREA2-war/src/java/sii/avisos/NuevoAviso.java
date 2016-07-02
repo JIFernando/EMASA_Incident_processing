@@ -236,10 +236,10 @@ public class NuevoAviso {
 
                     double distancia;
 
-                    distancia = 6378.137 * Math.acos(Math.cos(Lat1) * Math.cos(Lat2) * Math.cos(Lon2 - Lon1) + Math.sin(Lat1) * Math.sin(Lat2));
+                    distancia = 1000 * 6378.137 * Math.acos(Math.cos(Lat1) * Math.cos(Lat2) * Math.cos(Lon2 - Lon1) + Math.sin(Lat1) * Math.sin(Lat2));
                     System.out.println("Distancia: " + distancia);
 
-                    if (distancia < 500) {
+                    if (distancia < 1000) {
                         List<Aviso> ae = new ArrayList<>();
                         ae.add(a);
                         aviso.setAvisoEnlazado(ae);
@@ -251,6 +251,15 @@ public class NuevoAviso {
                             ae2.add(a);
                         }
                         aviso.setAvisoEnlazado2(ae2);
+
+                        aviso.setObservaciones(aviso.getObservaciones() + "\nEl aviso con ID " + aviso.getId_aviso());
+                        if (aviso.getObservaciones().equals("") || aviso.getObservaciones() == null) {
+                            aviso.setObservaciones(aviso.getObservaciones());
+                        } else {
+                            aviso.setObservaciones(aviso.getObservaciones() + " ubicado en " + aviso.getUbicacion());
+                        }
+                        aviso.setObservaciones(aviso.getObservaciones() + " se abrió con fecha " + aviso.getFechaCreacion());
+                        aviso.setObservaciones(aviso.getObservaciones() + " y se encuentra a " + Math.floor(distancia) + " metros");
 
                     } else {
                         System.out.println("Aviso " + a.getId_aviso() + " sin coordenadas");
