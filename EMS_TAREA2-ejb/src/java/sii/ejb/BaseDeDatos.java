@@ -120,47 +120,47 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
         return sup;
     }
-         @Override
-    public int getAvisosConBrigradas(Date d) {        
+
+    @Override
+    public int getAvisosConBrigradas(Date d) {
         List<Brigada> brigadas = this.getBrigadas();
         List<Brigada> aux = new ArrayList<>();
         List<Aviso> la = this.getAvisos();
-        for(Aviso a : la){
-            for(Brigada br : brigadas){                
-                if (a.getBrigada().getId_brigada()!=null & br.getId_brigada() != null){// && a.getFin_averia()!= null) {
-                    if(a.getFin_averia()!= null){
-                        if(a.getEstado().equals(Estado.EN_PROCESO) && Objects.equals(a.getBrigada().getId_brigada(), br.getId_brigada()) && !aux.contains(br) &&
-                                !a.getEstado().equals(Estado.CERRADO) 
-                                && (a.getFin_averia().equals(d) || a.getFin_averia().before(d))){
+        for (Aviso a : la) {
+            for (Brigada br : brigadas) {
+                if (a.getBrigada().getId_brigada() != null & br.getId_brigada() != null) {// && a.getFin_averia()!= null) {
+                    if (a.getFin_averia() != null) {
+                        if (a.getEstado().equals(Estado.EN_PROCESO) && Objects.equals(a.getBrigada().getId_brigada(), br.getId_brigada()) && !aux.contains(br)
+                                && !a.getEstado().equals(Estado.CERRADO)
+                                && (a.getFin_averia().equals(d) || a.getFin_averia().before(d))) {
                             aux.add(br);
                         }
-                    }else{
-                        if(a.getEstado().equals(Estado.EN_PROCESO) && Objects.equals(a.getBrigada().getId_brigada(), br.getId_brigada()) && !aux.contains(br) &&
-                                !a.getEstado().equals(Estado.CERRADO)){
-                            aux.add(br);
-                        }
+                    } else if (a.getEstado().equals(Estado.EN_PROCESO) && Objects.equals(a.getBrigada().getId_brigada(), br.getId_brigada()) && !aux.contains(br)
+                            && !a.getEstado().equals(Estado.CERRADO)) {
+                        aux.add(br);
                     }
                 }
             }
         }
-        return brigadas.size()-aux.size()-1;
+        return brigadas.size() - aux.size() - 1;
     }
+
     @Override
     public int avisosPrioridad(Aviso.Prioridad prio, Date d) {
-        List<Aviso> la= this.getAvisos();
-        List<Aviso> aux = new ArrayList<>(); 
-        for(Aviso a : la){
-            if (a.getFin_averia()!= null){
-                if(a.getPrioridad().equals(prio) && !a.getEstado().equals(Estado.CERRADO) && (a.getFin_averia().equals(d) || a.getFin_averia().before(d)))
+        List<Aviso> la = this.getAvisos();
+        List<Aviso> aux = new ArrayList<>();
+        for (Aviso a : la) {
+            if (a.getFin_averia() != null) {
+                if (a.getPrioridad().equals(prio) && !a.getEstado().equals(Estado.CERRADO) && (a.getFin_averia().equals(d) || a.getFin_averia().before(d))) {
                     aux.add(a);
-            }else{
-                if(a.getPrioridad().equals(prio) && !a.getEstado().equals(Estado.CERRADO) )
-                    aux.add(a);
-                
-            }               
-        }        
+                }
+            } else if (a.getPrioridad().equals(prio) && !a.getEstado().equals(Estado.CERRADO)) {
+                aux.add(a);
+            }
+        }
         return aux.size();
     }
+
     @Override
     public Supervisor obtenerSupervisor(Integer id) {
         Supervisor sup = em.find(Supervisor.class, id);
@@ -227,6 +227,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     @Override
     public List<Diagnostico> getDiagnosticos() {
         List<Diagnostico> res = em.createQuery("select c from Diagnostico c", Diagnostico.class).getResultList();
+        return res;
+    }
+
+    @Override
+    public List<Capataz> getCapataces() {
+        List<Capataz> res = em.createQuery("select c from Capataz c", Capataz.class).getResultList();
         return res;
     }
 }

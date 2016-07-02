@@ -7,6 +7,7 @@ package jpa;
 //
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,15 +35,20 @@ public class Aviso implements Serializable {
 
     public enum Estado {
         SIN_ATENDER, EN_PROCESO, CERRADO, TODOS;
-        
+
         @Override
         public String toString() {
-            switch(this) {
-                case SIN_ATENDER: return "Sin atender";
-                case EN_PROCESO: return "En proceso";
-                case CERRADO: return "Cerrado";
-                case TODOS: return "Todos";
-                default: throw new IllegalArgumentException();
+            switch (this) {
+                case SIN_ATENDER:
+                    return "Sin atender";
+                case EN_PROCESO:
+                    return "En proceso";
+                case CERRADO:
+                    return "Cerrado";
+                case TODOS:
+                    return "Todos";
+                default:
+                    throw new IllegalArgumentException();
             }
         }
     }
@@ -52,14 +58,18 @@ public class Aviso implements Serializable {
 
     public enum Prioridad {
         URGENTE, PLANIFICADO, TODOS;
-        
+
         @Override
         public String toString() {
-            switch(this) {
-                case URGENTE: return "Urgente";
-                case PLANIFICADO: return "Planificado";
-                case TODOS: return "Todos";
-                default: throw new IllegalArgumentException();
+            switch (this) {
+                case URGENTE:
+                    return "Urgente";
+                case PLANIFICADO:
+                    return "Planificado";
+                case TODOS:
+                    return "Todos";
+                default:
+                    throw new IllegalArgumentException();
             }
         }
     }
@@ -78,17 +88,14 @@ public class Aviso implements Serializable {
     private List<Aviso> avisoEnlazado;
     @ManyToMany(mappedBy = "avisoEnlazado")
     private List<Aviso> avisoEnlazado2;
-    
+
     //  NUEVO CÓDIGO AÑADIR AVISO ENLAZADO
-    
-    public void agnadirAvisoEnlazado (Aviso a) {
+    public void agnadirAvisoEnlazado(Aviso a) {
         avisoEnlazado.add(a);
     }
-    
-    //  FIN NUEVO CÓDIGO
-    
-    //-----------------------------------------------//
 
+    //  FIN NUEVO CÓDIGO
+    //-----------------------------------------------//
     //  Relación muchos a uno de AVISO a EMPLEADO
     @ManyToOne
     private Empleado empleado;
@@ -114,6 +121,24 @@ public class Aviso implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Brigada brigada;
     //------------------------------------------//
+
+    public String getFechaCreacion() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        Date d = fecha_creacion;
+        return d == null ? "" : sdf.format(d);
+    }
+
+    public String getFechaAsignacion() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        Date d = inic_Averia;
+        return d == null ? "" : sdf.format(d);
+    }
+
+    public String getFechaFin() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        Date d = fin_averia;
+        return d == null ? "" : sdf.format(d);
+    }
 
     @Override
     public int hashCode() {
@@ -142,8 +167,10 @@ public class Aviso implements Serializable {
     }
 
     /**
-     * ***************GETTERS Y SETTERS****************
-     * @return 
+     * ***************GETTERS Y SETTERS
+     *
+     ****************
+     * @return
      */
     public Integer getId_aviso() {
         return id_aviso;
@@ -390,5 +417,5 @@ public class Aviso implements Serializable {
     public void setBrigada(Brigada brigada) {
         this.brigada = brigada;
     }
-    
+
 }

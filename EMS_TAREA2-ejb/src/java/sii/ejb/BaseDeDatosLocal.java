@@ -66,4 +66,6 @@ public interface BaseDeDatosLocal {
     public void cerrarAviso(Integer id_aviso);
     
     public List<Diagnostico> getDiagnosticos();
+    
+    public List<Capataz> getCapataces();
 }

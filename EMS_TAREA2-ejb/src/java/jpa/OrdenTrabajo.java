@@ -6,6 +6,7 @@
 package jpa;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -184,6 +185,18 @@ public class OrdenTrabajo implements Serializable {
 
     public void setBrigada_ot(Brigada brigada_ot) {
         this.brigada_ot = brigada_ot;
+    }
+    
+    public String getFechaCreacion () {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        Date d = fecha_creac;
+        return d == null ? "" : sdf.format(d);
+    }
+    
+    public String getFechaProg () {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        Date d = fecha_progr;
+        return d == null ? "" : sdf.format(d);
     }
 
 }

@@ -63,6 +63,7 @@ public class ChartView implements Serializable {
         yAxis.setLabel("Cantidad");
         yAxis.setMin((int) 0);
         yAxis.setMax((int) 20);
+        yAxis.setTickFormat("%1$.0f");
         
     }
 

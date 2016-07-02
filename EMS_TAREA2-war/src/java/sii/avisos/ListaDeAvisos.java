@@ -1,4 +1,3 @@
-
 package sii.avisos;
 
 import java.io.Serializable;
@@ -8,12 +7,17 @@ import java.util.List;
 import java.util.Random;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import jpa.Aviso;
+import jpa.Brigada;
+import jpa.Capataz;
 import jpa.Diagnostico;
 import jpa.Empleado;
+import jpa.Empleado.Rol;
+import jpa.Operario;
 import jpa.Supervisor;
+import sii.controlUsuarios.ControlAutorizacion;
 import sii.ejb.BaseDeDatosLocal;
 
 /**
@@ -28,11 +32,51 @@ public class ListaDeAvisos implements Serializable {
     @EJB
     BaseDeDatosLocal bdl;
 
+    /*AÑADIDO*/
+    @Inject
+    ControlAutorizacion ca;
+
     public ListaDeAvisos() {
     }
 
     public List<Aviso> getDatos() {
-        datos = bdl.getAvisos();
+        /*AÑADIDO*/
+        datos = new ArrayList<>();
+        List<Aviso> resultado = bdl.getAvisos();
+        Empleado e = ca.getEmpleado();
+        Rol rol = e.getRol();
+        System.out.println(rol);
+        for (Aviso a : resultado) {
+            switch (rol) {
+                case SUPERVISOR:
+                    if (a.getSupervisor().getId_empl().equals(e.getId_empl())) {
+                        datos.add(a);
+                    }
+                    break;
+                case OPERARIO:
+                    if (a.getBrigada() != null) {
+                        Operario o = averiguarOperario(e);
+                        Brigada b = o.getBrigada_operario();
+                        Integer id_brigada = b.getId_brigada();
+                        if (a.getBrigada().getId_brigada().equals(id_brigada)) {
+                            datos.add(a);
+                        }
+                    }
+                    break;
+                default:
+                    if (a.getBrigada() != null) {
+                        Capataz c = averiguarCapataz(e);
+                        List<Brigada> brigadas_capataz = c.getBrigadas();
+                        for (Brigada br : brigadas_capataz) {
+                            if (a.getBrigada().getId_brigada().equals(br.getId_brigada())) {
+                                datos.add(a);
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+
         return datos;
     }
 //    public List<Aviso> getAvisosVinculados(Aviso avs) {
@@ -70,7 +114,7 @@ public class ListaDeAvisos implements Serializable {
 
         Supervisor sup = supervisores.get(aleatorio);
         a.setSupervisor(sup);
-        
+
         if (vin.getAvisoEnlazado() == null) {
             List<Aviso> avisosVincu2 = new ArrayList<>();
             avisosVincu2.add(a);
@@ -92,8 +136,28 @@ public class ListaDeAvisos implements Serializable {
 
         return "grid_avisos.xhtml";
     }
-    
-    public List<Diagnostico> getDiagnosticos(){
+
+    public List<Diagnostico> getDiagnosticos() {
         return bdl.getDiagnosticos();
+    }
+
+    private Operario averiguarOperario(Empleado e) {
+        List<Operario> operarios = bdl.getOperarios();
+        for (Operario o : operarios) {
+            if (o.getId_empl().equals(e.getId_empl())) {
+                return o;
+            }
+        }
+        return null;
+    }
+
+    private Capataz averiguarCapataz(Empleado e) {
+        List<Capataz> capataces = bdl.getCapataces();
+        for (Capataz c : capataces) {
+            if (c.getId_empl().equals(e.getId_empl())) {
+                return c;
+            }
+        }
+        return null;
     }
 }
