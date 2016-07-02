@@ -94,7 +94,7 @@ public class NuevaOrdenTrabajo {
     }
 
     public Integer tomarMaximoId() {
-        List<OrdenTrabajo> ots = lot.getDatos();
+        List<OrdenTrabajo> ots = lot.getDatosBD();
         System.out.println("Ordenes: " + ots);
         if (ots.isEmpty()) {
             return 0;

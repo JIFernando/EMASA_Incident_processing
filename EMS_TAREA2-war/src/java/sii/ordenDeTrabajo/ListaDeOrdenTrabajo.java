@@ -39,6 +39,10 @@ public class ListaDeOrdenTrabajo implements Serializable {
         datos = new ArrayList<>();
     }
 
+    public List<OrdenTrabajo> getDatosBD() {
+        return bdl.getOrdenesTrabajo();
+    }
+    
     public List<OrdenTrabajo> getDatos() {
         List<OrdenTrabajo> ordenes = bdl.getOrdenesTrabajo();
         List<Aviso> avisos = la.getDatos();

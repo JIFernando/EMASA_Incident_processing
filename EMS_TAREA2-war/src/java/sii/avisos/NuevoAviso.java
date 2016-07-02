@@ -193,7 +193,7 @@ public class NuevoAviso {
     }
 
     public Integer tomarMaximoId() {
-        List<Aviso> avisos = lda.getDatos();
+        List<Aviso> avisos = lda.getDatosBD();
         int maximo = Integer.MIN_VALUE;
         for (Aviso a : avisos) {
             if (maximo < a.getId_aviso()) {

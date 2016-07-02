@@ -39,6 +39,10 @@ public class ListaDeAvisos implements Serializable {
     public ListaDeAvisos() {
     }
 
+    public List<Aviso> getDatosBD() {
+        return bdl.getAvisos();
+    }
+    
     public List<Aviso> getDatos() {
         /*AÑADIDO*/
         datos = new ArrayList<>();

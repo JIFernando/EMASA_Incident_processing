@@ -109,7 +109,7 @@
                         <c:if test="#{controlAutorizacion.empleado.rol != 'SUPERVISOR'}">
                             <div class="col-md-3">
                                 <p:outputLabel for="prioridad" value="" />
-                                <h:selectOneMenu id="prioridad2" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
+                                <h:selectOneMenu id="prioridad" value="#{mostrarAviso.aviso.prioridad}" disabled="true">
                                     <f:selectItem id="ea_pr1" itemLabel="URGENTE" itemValue="URGENTE"/>
                                     <f:selectItem id="ea_pr2" itemLabel="PLANIFICADO" itemValue="PLANIFICADO" />
                                 </h:selectOneMenu> 
